@@ -123,6 +123,47 @@ bool CollisionManager::DoPolygonToPolygonCollisionCheck(Polygon* A, Polygon* B, 
 			return false;
 		}
 	}
+
+	//// Calculate the axes to project the polygons onto
+	//std::vector<Vector2> axes;
+	//for (int i = 0; i < A->num_points; i++) {
+	//	Vector2 point1 = Vector2(A->points[i].x + A->position.x, A->points[i].y + A->position.y);
+	//	Vector2 point2 = Vector2(A->points[(i + 1) % A->num_points].x + A->position.x, A->points[(i + 1) % A->num_points].y + A->position.y);
+	//	Vector2 edge = (point2 - point1).Normalize();
+	//	axes.push_back(Vector2(-edge.y, edge.x));
+	//}
+	//for (int i = 0; i < B->num_points; i++) {
+	//	Vector2 point1 = Vector2(B->points[i].x + B->position.x, B->points[i].y + B->position.y);
+	//	Vector2 point2 = Vector2(B->points[(i + 1) % B->num_points].x + B->position.x, B->points[(i + 1) % B->num_points].y + B->position.y);
+	//	Vector2 edge = (point2 - point1).Normalize();
+	//	axes.push_back(Vector2(-edge.y, edge.x));
+	//}
+
+	//// Check for overlap on each axis
+	//for (auto& axis : axes) {
+	//	float Amin = INFINITY, Amax = -INFINITY;
+	//	float Bmin = INFINITY, Bmax = -INFINITY;
+
+	//	for (int i = 0; i < A->num_points; i++) {
+	//		Vector2 point = Vector2(A->points[i].x + A->position.x, A->points[i].y + A->position.y);
+	//		float projection = point.Dot(axis);
+	//		Amin = std::min(Amin, projection);
+	//		Amax = std::max(Amax, projection);
+	//	}
+	//	for (int i = 0; i < B->num_points; i++) {
+	//		Vector2 point = Vector2(B->points[i].x + B->position.x, B->points[i].y + B->position.y);
+	//		float projection = point.Dot(axis);
+	//		Bmin = std::min(Bmin, projection);
+	//		Bmax = std::max(Bmax, projection);
+	//	}
+
+	//	if (Amax < Bmin || Bmax < Amin) {
+	//		// There is a gap on this axis, so the polygons do not overlap
+	//		return false;
+	//	}
+	//}
+
+
 	return true;
 }
 

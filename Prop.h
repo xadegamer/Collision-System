@@ -2,6 +2,7 @@
 #include "GameObject.h"
 #include "BoxCollider.h"
 #include "CircleCollider.h"
+#include "PolygonCollider.h"
 
 enum class ColliderType {None,BOX,CIRCLE};
 
