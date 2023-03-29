@@ -6,13 +6,17 @@
 #include <stdio.h>
 #include <functional>
 
-class Collider : public Component
+class Collider
 {
+
 	
 protected:
-	
+
+	static std::vector<Collider*> allColliders;
+
 	Transform* owner;
 	Vector2 offset;
+	bool isEnabled;
 	bool isTrigger;
 	bool isStatic;
 	Collider* currentCollidedObject;
@@ -26,14 +30,12 @@ public:
 	Collider();
 	
 	~Collider();
-	
-	void someFunc();
 
 	virtual void SetUp(Transform* owner, Vector2 size, bool isStatic = false);
 
-	virtual void Update() {};
+	virtual void Update() = 0;
 
-	virtual void Draw() {};
+	virtual void Draw() = 0;
 
 	void OnCollision(Collider* other);
 
@@ -52,4 +54,10 @@ public:
 	Vector2 GetCentre();
 
 	virtual SDL_Rect* GetColliderRect() { return colliderRect; };
+
+	inline bool GetIsEnabled() { return isEnabled; }
+
+	inline void SetIsEnabled(bool isEnabled) { this->isEnabled = isEnabled; }
+
+	inline static std::vector<Collider*> GetAllColliders() { return allColliders; }
 };

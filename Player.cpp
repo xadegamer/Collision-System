@@ -70,10 +70,11 @@ void Player::LateUpdate(float deltaTime)
 
 void Player::OnCollisionEnter(Collider* other)
 {
-	if (!other->IsTrigger())
-	{
-		Vector2 direction = transform->GetPosition() - other->GetGameObject()->GetTransform()->GetPosition();
-		direction.normalize();
-		transform->SetPosition(transform->GetPosition() += direction * 1.8);
-	}
+	std:: cout << "Player collided with " << other->GetOwner()->GetGameObject()->GetTag()<< std::endl;
+	//if (!other->IsTrigger())
+	//{
+	//	Vector2 direction = transform->GetPosition() - other->GetGameObject()->GetTransform()->GetPosition();
+	//	direction.normalize();
+	//	transform->SetPosition(transform->GetPosition() += direction * 1.8);
+	//}
 }

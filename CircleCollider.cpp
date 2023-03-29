@@ -8,14 +8,12 @@ void CircleCollider::SetUp(Transform* owner, Vector2 size, float radiousMutiplie
 
 void CircleCollider::Update()
 {
-	if (!isEnabled) return;
 	colliderRect->x = owner->GetPosition().x;
 	colliderRect->y = owner->GetPosition().y;
 }
 
 void CircleCollider::Draw()
 {
-	if (!isEnabled) return;
 	SDL_SetRenderDrawColor(SDLManager::GetRenderer(), 0, 255, 0, 255);
 
 	Vector2 centre = GetCentre();

@@ -90,4 +90,6 @@ void Game::Render()
 	GameObject::DrawAllActive();
 	
 	GameObject::ShowAllDebugVisuals();
+
+	CollisionManager::VisualiseCollision();
 }

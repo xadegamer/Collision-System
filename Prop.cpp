@@ -8,14 +8,14 @@ Prop::Prop(Vector2 position, std::string spriteName, ColliderType colliderType, 
 
 	if (colliderType == ColliderType::BOX)
 	{
-		collider = AddComponent<BoxCollider>(new BoxCollider);
+		collider = new BoxCollider;
 		BoxCollider* boxCollider = static_cast<BoxCollider*>(collider);
 		boxCollider->SetUp(transform, Vector2(spriteRenderer->GetSprite()->textureWidth, spriteRenderer->GetSprite()->textureHeight));
 
 	}
 	else if (colliderType == ColliderType::CIRCLE)
 	{
-		collider = AddComponent<CircleCollider>(new CircleCollider);
+		collider = new CircleCollider;
 		CircleCollider* circleCollider = static_cast<CircleCollider*>(collider);
 		circleCollider->SetUp(transform, Vector2(spriteRenderer->GetSprite()->textureWidth, spriteRenderer->GetSprite()->textureHeight));
 	}

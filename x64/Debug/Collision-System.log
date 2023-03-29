@@ -1,26 +1,4 @@
 ﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(517,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (SDL Game.vcxproj, SDL-GAME-Colllision.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  AssetManager.cpp
-E:\Year 2\Semester 2\Git Projects\Collision-System\AssetManager.cpp(46,33): warning C4150: deletion of pointer to incomplete type 'Dialog'; no destructor called
-E:\Year 2\Semester 2\Git Projects\Collision-System\AssetManager.h(9,8): message : see declaration of 'Dialog'
-  AudioManager.cpp
-  BoxCollider.cpp
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(17,13): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(61,54): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(61,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(62,54): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(62,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(63,21): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(63,18): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\Collider.h(40,77): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\Collider.h(40,60): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\BoxCollider.cpp(7,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\BoxCollider.cpp(8,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\BoxCollider.cpp(9,37): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\BoxCollider.cpp(10,37): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\BoxCollider.cpp(16,40): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\BoxCollider.cpp(17,40): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\BoxCollider.cpp(18,37): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\BoxCollider.cpp(19,37): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
   Character.cpp
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(17,13): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(61,54): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
@@ -29,36 +7,10 @@ E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(62,54): warning
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(62,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(63,21): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(63,18): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\Collider.h(40,77): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\Collider.h(40,60): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collider.h(42,77): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collider.h(42,60): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\Character.cpp(15,113): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\Character.cpp(15,70): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  CircleCollider.cpp
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(17,13): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(61,54): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(61,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(62,54): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(62,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(63,21): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(63,18): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\Collider.h(40,77): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\Collider.h(40,60): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\CircleCollider.cpp(12,40): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\CircleCollider.cpp(13,40): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\CircleCollider.cpp(25,11): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\CircleCollider.cpp(26,11): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\CircleCollider.cpp(28,76): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\CircleCollider.cpp(28,60): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-  Collectable.cpp
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(17,13): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(61,54): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(61,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(62,54): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(62,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(63,21): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(63,18): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\Collider.h(40,77): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\Collider.h(40,60): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   Collider.cpp
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(17,13): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(61,54): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
@@ -67,14 +19,14 @@ E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(62,54): warning
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(62,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(63,21): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(63,18): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\Collider.h(40,77): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\Collider.h(40,60): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\Collider.cpp(23,24): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\Collider.cpp(24,24): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\Collider.cpp(25,40): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\Collider.cpp(26,40): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\Collider.cpp(38,72): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\Collider.cpp(38,33): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collider.h(42,77): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collider.h(42,60): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collider.cpp(35,24): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collider.cpp(36,24): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collider.cpp(37,40): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collider.cpp(38,40): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collider.cpp(50,72): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collider.cpp(50,33): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   CollisionManager.cpp
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(17,13): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(61,54): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
@@ -83,8 +35,8 @@ E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(62,54): warning
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(62,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(63,21): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(63,18): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\Collider.h(40,77): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\Collider.h(40,60): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collider.h(42,77): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collider.h(42,60): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\CollisionManager.cpp(19,56): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\CollisionManager.cpp(19,39): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\CollisionManager.cpp(21,56): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
@@ -101,14 +53,6 @@ E:\Year 2\Semester 2\Git Projects\Collision-System\CollisionManager.cpp(53,20): 
 E:\Year 2\Semester 2\Git Projects\Collision-System\CollisionManager.cpp(68,20): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\CollisionManager.cpp(73,50): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\CollisionManager.cpp(73,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-  Component.cpp
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(17,13): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(61,54): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(61,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(62,54): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(62,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(63,21): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(63,18): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   Enemy.cpp
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(17,13): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(61,54): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
@@ -117,23 +61,10 @@ E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(62,54): warning
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(62,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(63,21): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(63,18): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\Collider.h(40,77): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\Collider.h(40,60): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\Enemy.cpp(62,232): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\Enemy.cpp(62,188): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  Engine.cpp
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(17,13): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(61,54): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(61,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(62,54): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(62,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(63,21): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(63,18): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\Collider.h(40,77): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\Collider.h(40,60): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\Engine.cpp(56,38): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\Engine.cpp(63,110): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\Engine.cpp(63,74): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collider.h(42,77): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collider.h(42,60): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Year 2\Semester 2\Git Projects\Collision-System\Enemy.cpp(56,232): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Year 2\Semester 2\Git Projects\Collision-System\Enemy.cpp(56,188): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   Game.cpp
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(17,13): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(61,54): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
@@ -142,42 +73,8 @@ E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(62,54): warning
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(62,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(63,21): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(63,18): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\Collider.h(40,77): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\Collider.h(40,60): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  GameObject.cpp
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(17,13): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(61,54): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(61,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(62,54): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(62,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(63,21): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(63,18): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\Collider.h(40,77): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\Collider.h(40,60): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  GroundTileMap.cpp
-  InputManager.cpp
-  LayoutTileMap.cpp
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(17,13): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(61,54): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(61,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(62,54): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(62,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(63,21): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(63,18): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\Collider.h(40,77): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\Collider.h(40,60): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\LayoutTileMap.cpp(26,47): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\LayoutTileMap.cpp(26,33): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  main.cpp
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(17,13): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(61,54): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(61,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(62,54): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(62,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(63,21): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(63,18): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\Collider.h(40,77): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\Collider.h(40,60): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collider.h(42,77): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collider.h(42,60): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   Player.cpp
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(17,13): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(61,54): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
@@ -186,16 +83,15 @@ E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(62,54): warning
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(62,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(63,21): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(63,18): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\Collider.h(40,77): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\Collider.h(40,60): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collider.h(42,77): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collider.h(42,60): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\Player.cpp(29,153): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\Player.cpp(29,109): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\Player.cpp(32,147): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\Player.cpp(32,75): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\Player.cpp(33,149): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\Player.cpp(33,75): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\Player.cpp(77,69): warning C4305: 'argument': truncation from 'double' to 'float'
-  Prop.cpp
+  PolygonCollider.cpp
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(17,13): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(61,54): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(61,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
@@ -203,28 +99,8 @@ E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(62,54): warning
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(62,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(63,21): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(63,18): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\Collider.h(40,77): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\Collider.h(40,60): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\Prop.cpp(13,111): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\Prop.cpp(13,68): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\Prop.cpp(20,114): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\Prop.cpp(20,71): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  RigidBody.cpp
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collider.h(42,77): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collider.h(42,60): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   Generating Code...
-E:\Year 2\Semester 2\Git Projects\Collision-System\GameObject.h(81): warning C4715: 'GameObject::GetComponent<SpriteRenderer>': not all control paths return a value
-E:\Year 2\Semester 2\Git Projects\Collision-System\CollisionManager.cpp(108): warning C4715: 'CollisionManager::CheckCollision': not all control paths return a value
-  Compiling...
-  SDLManager.cpp
-  SpriteRenderer.cpp
-E:\Year 2\Semester 2\Git Projects\Collision-System\SpriteRenderer.cpp(24,23): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\SpriteRenderer.cpp(25,23): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\SpriteRenderer.cpp(38,23): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\SpriteRenderer.cpp(39,23): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-  TileMap.cpp
-E:\Year 2\Semester 2\Git Projects\Collision-System\TileMap.cpp(81,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\TileMap.cpp(81,22): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  TimeManager.cpp
-  Transform.cpp
-  Vector2.cpp
-  Generating Code...
+E:\Year 2\Semester 2\Git Projects\Collision-System\CollisionManager.cpp(153): warning C4715: 'CollisionManager::CheckCollision': not all control paths return a value
   Collision-System.vcxproj -> E:\Year 2\Semester 2\Git Projects\Collision-System\x64\Debug\Collision-System.exe

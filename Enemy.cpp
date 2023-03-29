@@ -6,12 +6,6 @@
 
 Enemy::Enemy(Vector2 position) : Character(position)
 {
-	despawnRate = 6;
-	despawnTimer = 0;
-	minAttackRange = 400;
-	MaxAttackRange = 450;
-	detectionRadius = 600;
-	
 	tag = Tag::ENEMY;
 
 	spriteRenderer->SetSortingOrder(SortingLayer::EnemyLayer);
@@ -41,12 +35,12 @@ void Enemy::Update(float deltaTime)
 
 void Enemy::OnCollisionEnter(Collider* other)
 {
-	if (other->GetGameObject()->CompareTag(Tag::ENEMY))
-	{
-		Vector2 direction = transform->GetPosition() - other->GetGameObject()->GetTransform()->GetPosition();
-		direction.normalize();
-		transform->SetPosition(transform->GetPosition() += direction * 1.5);
-	}
+	//if (other->GetGameObject()->CompareTag(Tag::ENEMY))
+	//{
+	//	Vector2 direction = transform->GetPosition() - other->GetGameObject()->GetTransform()->GetPosition();
+	//	direction.normalize();
+	//	transform->SetPosition(transform->GetPosition() += direction * 1.5);
+	//}
 }
 
 

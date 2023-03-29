@@ -49,17 +49,6 @@ void GameObject::DrawAllActive()
 void GameObject::ShowAllDebugVisuals()
 {
 	// draw only object with colliders
-
-	for (int i = 0; i < activeGameobjects.size(); i++)
-	{
-		Collider* collider = nullptr;
-		if (!activeGameobjects[i]->IsToBeDestroyed() && activeGameobjects[i]->TryGetComponent<Collider>(collider))
-		{
-			if (collider->GetIsEnabled()) collider->Draw();
-		}
-	}
-
-	// draw only object with colliders
 	for (int i = 0; i < activeGameobjects.size(); i++)
 	{
 		SpriteRenderer* spriteRen = activeGameobjects[i]->GetComponent<SpriteRenderer>();

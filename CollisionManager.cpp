@@ -81,6 +81,51 @@ bool CollisionManager::DoBoxToCircleCollsionCheck(SDL_Rect* box, SDL_Rect* circl
 	return false;
 }
 
+bool CollisionManager::DoPolygonToPolygonCollisionCheck(Polygon* A, Polygon* B, int buffer)
+{
+	// Loop through each edge in both polygons
+	for (int i = 0; i < A->num_points; i++) {
+		Vector2 point1 = { A->points[i].x + A->position.x, A->points[i].y + A->position.y };
+		Vector2 point2 = { A->points[(i + 1) % A->num_points].x + A->position.x, A->points[(i + 1) % A->num_points].y + A->position.y };
+		Vector2 edge = { point2.x - point1.x, point2.y - point1.y };
+		Vector2 normal = { -edge.y, edge.x };
+		float len = sqrt(normal.x * normal.x + normal.y * normal.y);
+		normal.x /= len;
+		normal.y /= len;
+
+		// Project each point in both polygons onto the normal of the current edge
+		float minA = INFINITY, maxA = -INFINITY;
+		for (int j = 0; j < A->num_points; j++) {
+			Vector2 p = { A->points[j].x + A->position.x, A->points[j].y + A->position.y };
+			float proj = p.x * normal.x + p.y * normal.y;
+			if (proj < minA) {
+				minA = proj;
+			}
+			if (proj > maxA) {
+				maxA = proj;
+			}
+		}
+
+		float minB = INFINITY, maxB = -INFINITY;
+		for (int j = 0; j < B->num_points; j++) {
+			Vector2 p = { B->points[j].x + B->position.x, B->points[j].y + B->position.y };
+			float proj = p.x * normal.x + p.y * normal.y;
+			if (proj < minB) {
+				minB = proj;
+			}
+			if (proj > maxB) {
+				maxB = proj;
+			}
+		}
+
+		// Check if the projections overlap
+		if (maxA + buffer < minB || maxB < minA - buffer) {
+			return false;
+		}
+	}
+	return true;
+}
+
 bool CollisionManager::CheckCollision(Collider* colA, Collider* colB)
 {
 	BoxCollider* boxA = dynamic_cast<BoxCollider*>(colA);
@@ -116,28 +161,29 @@ double CollisionManager::DistanceSquared(int x1, int y1, int x2, int y2)
 
 void CollisionManager::HandleAllCollision()
 {
-	//check collision between all game objects with colliders
-	for (int i = 0; i < GameObject::GetActiveGameobjects().size(); i++)
+	for (int i = 0; i < Collider::GetAllColliders().size(); i++)
 	{
-		Collider* colliderA = nullptr;
-		if (!GameObject::GetActiveGameobjects()[i]->IsToBeDestroyed() && GameObject::GetActiveGameobjects()[i]->TryGetComponent<Collider>(colliderA))
+		Collider* colliderA = Collider::GetAllColliders()[i];
+		for (int j = 0; j < Collider::GetAllColliders().size(); j++)
 		{
-			for (int j = 0; j < GameObject::GetActiveGameobjects().size(); j++)
+			Collider* colliderB = Collider::GetAllColliders()[j];
+			if (colliderA != colliderB && colliderA->GetIsEnabled() && colliderB->GetIsEnabled())
 			{
-				Collider* colliderB = nullptr;
-				if (!GameObject::GetActiveGameobjects()[i]->IsToBeDestroyed() && GameObject::GetActiveGameobjects()[j]->TryGetComponent<Collider>(colliderB))
+				if (CollisionManager::CheckCollision(colliderA, colliderB))
 				{
-					if (colliderA != colliderB && colliderA->GetIsEnabled() && colliderB->GetIsEnabled())
-					{
-						if (CollisionManager::CheckCollision(colliderA, colliderB))
-						{
-							colliderA->OnCollision(colliderB);
-							colliderB->OnCollision(colliderA);
-						}
-					}
+					colliderA->OnCollision(colliderB);
+					colliderB->OnCollision(colliderA);
 				}
 			}
 		}
+	}
+}
+
+void CollisionManager::VisualiseCollision()
+{
+	for (int i = 0; i < Collider::GetAllColliders().size(); i++)
+	{
+		Collider::GetAllColliders()[i]->Draw();
 	}
 }
 

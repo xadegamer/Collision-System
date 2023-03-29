@@ -12,7 +12,6 @@ void BoxCollider::SetUp(Transform* owner, Vector2 size, float sizeMutiplier, boo
 
 void BoxCollider::Update()
 {
-	if (!isEnabled || isStatic) return;
 	colliderRect->x = owner->GetPosition().x;
 	colliderRect->y = owner->GetPosition().y;
 	boxColliderRect->x = GetCentre().x - boxColliderRect->w / 2;
@@ -21,7 +20,6 @@ void BoxCollider::Update()
 
 void BoxCollider::Draw()
 {
-	if (!isEnabled) return;
 	SDL_SetRenderDrawColor(SDLManager::GetRenderer(), 0, 255, 0, 255);
 	SDL_Rect rect = *boxColliderRect;
 	SDL_RenderDrawRect(SDLManager::GetRenderer(), &rect);

@@ -9,13 +9,6 @@ class Enemy : public Character
 {
 private:
 
-	float despawnRate;
-	float despawnTimer;
-	
-	float minAttackRange;
-	float MaxAttackRange;
-	float detectionRadius;
-
 	Vector2 spawnPoint;
 	Vector2 currentPatrolPoint;
 	Vector2 direction;
