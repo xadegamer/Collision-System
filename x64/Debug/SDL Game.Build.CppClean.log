@@ -1,0 +1,56 @@
+d:\git repo\sdl-game\x64\debug\vc143.pdb
+d:\git repo\sdl-game\x64\debug\vc143.idb
+d:\git repo\sdl-game\x64\debug\gameobject.obj
+d:\git repo\sdl-game\x64\debug\game.obj
+d:\git repo\sdl-game\x64\debug\engine.obj
+d:\git repo\sdl-game\x64\debug\enemy.obj
+d:\git repo\sdl-game\x64\debug\dialogmanager.obj
+d:\git repo\sdl-game\x64\debug\component.obj
+d:\git repo\sdl-game\x64\debug\collisionmanager.obj
+d:\git repo\sdl-game\x64\debug\collider.obj
+d:\git repo\sdl-game\x64\debug\collectable.obj
+d:\git repo\sdl-game\x64\debug\circlecollider.obj
+d:\git repo\sdl-game\x64\debug\character.obj
+d:\git repo\sdl-game\x64\debug\canvas.obj
+d:\git repo\sdl-game\x64\debug\camera.obj
+d:\git repo\sdl-game\x64\debug\button.obj
+d:\git repo\sdl-game\x64\debug\bullet.obj
+d:\git repo\sdl-game\x64\debug\boxcollider.obj
+d:\git repo\sdl-game\x64\debug\audiomanager.obj
+d:\git repo\sdl-game\x64\debug\assetmanager.obj
+d:\git repo\sdl-game\x64\debug\animator.obj
+d:\git repo\sdl-game\x64\debug\animatedimage.obj
+d:\git repo\sdl-game\x64\debug\togglebutton.obj
+d:\git repo\sdl-game\x64\debug\timemanager.obj
+d:\git repo\sdl-game\x64\debug\timeddelayvfxeffect.obj
+d:\git repo\sdl-game\x64\debug\tilemap.obj
+d:\git repo\sdl-game\x64\debug\text.obj
+d:\git repo\sdl-game\x64\debug\spriterenderer.obj
+d:\git repo\sdl-game\x64\debug\slider.obj
+d:\git repo\sdl-game\x64\debug\sdlmanager.obj
+d:\git repo\sdl-game\x64\debug\rigidbody.obj
+d:\git repo\sdl-game\x64\debug\prop.obj
+d:\git repo\sdl-game\x64\debug\player.obj
+d:\git repo\sdl-game\x64\debug\money.obj
+d:\git repo\sdl-game\x64\debug\main.obj
+d:\git repo\sdl-game\x64\debug\layouttilemap.obj
+d:\git repo\sdl-game\x64\debug\inputmanager.obj
+d:\git repo\sdl-game\x64\debug\image.obj
+d:\git repo\sdl-game\x64\debug\healthkit.obj
+d:\git repo\sdl-game\x64\debug\healthcomponent.obj
+d:\git repo\sdl-game\x64\debug\groundtilemap.obj
+d:\git repo\sdl-game\x64\debug\gascylinder.obj
+d:\git repo\sdl-game\x64\debug\animationcontrolledvfxeffect.obj
+d:\git repo\sdl-game\x64\debug\vector2.obj
+d:\git repo\sdl-game\x64\debug\uiobject.obj
+d:\git repo\sdl-game\x64\debug\uimanager.obj
+d:\git repo\sdl-game\x64\debug\transform.obj
+d:\git repo\sdl-game\x64\debug\sdl game.ilk
+d:\git repo\sdl-game\x64\debug\sdl game.exe
+d:\git repo\sdl-game\x64\debug\sdl game.pdb
+d:\git repo\sdl-game\x64\debug\sdl game.tlog\cl.command.1.tlog
+d:\git repo\sdl-game\x64\debug\sdl game.tlog\cl.read.1.tlog
+d:\git repo\sdl-game\x64\debug\sdl game.tlog\cl.write.1.tlog
+d:\git repo\sdl-game\x64\debug\sdl game.tlog\link.command.1.tlog
+d:\git repo\sdl-game\x64\debug\sdl game.tlog\link.read.1.tlog
+d:\git repo\sdl-game\x64\debug\sdl game.tlog\link.write.1.tlog

@@ -1,0 +1,4 @@
+Welcome to the game!
+Use WASD to move
+Use the mouse to aim
+Left click to shoot
