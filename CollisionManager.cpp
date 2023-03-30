@@ -1,5 +1,7 @@
  #include "CollisionManager.h"
 
+#include <set>
+
 const static int s_buffer = 1;
 
 void CollisionManager::HandleAllCollision()
@@ -49,7 +51,7 @@ bool CollisionManager::CheckCollision(Collider* colA, Collider* colB)
 	{
 		return BoxToCircleCollsionCheck(boxB, circleA, s_buffer);
 	}
-	/*else if (polyA != nullptr && polyB != nullptr)
+	else if (polyA != nullptr && polyB != nullptr)
 	{
 		return PolygonToPolygonCollisionCheck(polyA, polyB, s_buffer);
 	}
@@ -60,7 +62,7 @@ bool CollisionManager::CheckCollision(Collider* colA, Collider* colB)
 	else if (circleA != nullptr && polyB != nullptr)
 	{
 		return PolygonToCircleCollisionCheck(polyB, circleA, s_buffer);
-	}*/
+	}
 	else if (polyA != nullptr && boxB != nullptr)
 	{
 		return PolygonToBoxCollisionCheck(polyA, boxB, s_buffer);
@@ -147,40 +149,127 @@ bool CollisionManager::BoxToCircleCollsionCheck(BoxCollider* box, CircleCollider
 
 bool CollisionManager::PolygonToPolygonCollisionCheck(PolygonCollider* A, PolygonCollider* B, int buffer)
 {
-	// Get the world points of both polygon colliders
-	std::vector<Vector2> pointsA = A->GetWorldPoints();
-	std::vector<Vector2> pointsB = B->GetWorldPoints();
+	// Get the world points of both polygons
+	std::vector<Vector2> polyAPoints = A->GetWorldPoints();
+	std::vector<Vector2> polyBPoints = B->GetWorldPoints();
 
-	// Get unique axes to test against
-	std::vector<Vector2> axesA = GetUniqueAxes(pointsA);
-	std::vector<Vector2> axesB = GetUniqueAxes(pointsB);
-	std::vector<Vector2> axes = axesA;
-	axes.insert(axes.end(), axesB.begin(), axesB.end());
+	// Set up unique axes
+	std::set<Vector2> uniqueAxes;
 
-	// Test for overlap on each axis
-	for (auto axis : axes)
+	// Get axes from polygon A
+	for (int i = 0; i < A->GetNumPoints(); i++)
 	{
-		// Project both polygons onto the axis
-		float minA, maxA, minB, maxB;
-		ProjectPolygonOntoAxis(pointsA, axis, minA, maxA);
-		ProjectPolygonOntoAxis(pointsB, axis, minB, maxB);
+		Vector2 edge = polyAPoints[(i + 1) % A->GetNumPoints()] - polyAPoints[i];
+		Vector2 normal = Vector2(-edge.y, edge.x).Normalized();
+		uniqueAxes.insert(normal);
+	}
 
-		// Test for overlap
-		float dist = std::max(minB - maxA, minA - maxB);
+	// Get axes from polygon B
+	for (int i = 0; i < B->GetNumPoints(); i++)
+	{
+		Vector2 edge = polyBPoints[(i + 1) % B->GetNumPoints()] - polyBPoints[i];
+		Vector2 normal = Vector2(-edge.y, edge.x).Normalized();
+		uniqueAxes.insert(normal);
+	}
+
+	// Check for overlap on each axis
+	for (auto axis : uniqueAxes)
+	{
+		float polyAMin = INFINITY;
+		float polyAMax = -INFINITY;
+		float polyBMin = INFINITY;
+		float polyBMax = -INFINITY;
+
+		// Project polygon A onto axis
+		for (auto point : polyAPoints)
+		{
+			float proj = Vector2::Dot(point, axis);
+			polyAMin = std::min(polyAMin, proj);
+			polyAMax = std::max(polyAMax, proj);
+		}
+
+		// Project polygon B onto axis
+		for (auto point : polyBPoints)
+		{
+			float proj = Vector2::Dot(point, axis);
+			polyBMin = std::min(polyBMin, proj);
+			polyBMax = std::max(polyBMax, proj);
+		}
+
+		// Check for overlap
+		float dist = std::max(polyBMin - polyAMax, polyAMin - polyBMax);
 		if (dist > buffer)
 		{
 			return false;
 		}
 	}
 
-	std:: cout << "Collision" << std::endl;
 	// If no separating axis found, the polygons overlap
 	return true;
 }
 
 bool CollisionManager::PolygonToCircleCollisionCheck(PolygonCollider* poly, CircleCollider* circle, int buffer)
 {
-	return false;
+	// Get the world points of the polygon collider
+	std::vector<Vector2> polyPoints = poly->GetWorldPoints();
+
+	// Get the position of the circle collider in world space
+	Vector2 circlePos = circle->GetPosition();
+
+	// Create axes to test against (only need axes perpendicular to the edges of the polygon)
+	std::vector<Vector2> axes;
+	for (int i = 0; i < poly->GetNumPoints(); i++)
+	{
+		Vector2 edge = polyPoints[(i + 1) % poly->GetNumPoints()] - polyPoints[i];
+		axes.push_back(Vector2(-edge.y, edge.x).Normalized());
+	}
+
+	// Add the axis perpendicular to the line segment connecting the circle center and the closest point on the polygon to the circle center
+	float minDist = INFINITY;
+	Vector2 closestPointOnPoly = Vector2::Zero();
+	for (auto point : polyPoints)
+	{
+		Vector2 toCircle = circlePos - point;
+		float dist = toCircle.Length();
+		if (dist < minDist)
+		{
+			minDist = dist;
+			closestPointOnPoly = point;
+		}
+	}
+	axes.push_back((closestPointOnPoly - circlePos).Normalized());
+
+	// Test for overlap on each axis
+	for (auto axis : axes)
+	{
+		float polyMin = INFINITY;
+		float polyMax = -INFINITY;
+		float circleMin = INFINITY;
+		float circleMax = -INFINITY;
+
+		// Project the polygon onto the axis
+		for (auto point : polyPoints)
+		{
+			float proj = Vector2::Dot(point, axis);
+			polyMin = std::min(polyMin, proj);
+			polyMax = std::max(polyMax, proj);
+		}
+
+		// Project the circle onto the axis
+		float circleCentreProj = Vector2::Dot(circlePos, axis);
+		circleMin = circleCentreProj - circle->GetRadius();
+		circleMax = circleCentreProj + circle->GetRadius();
+
+		// Test for overlap
+		float dist = std::max(circleMin - polyMax, polyMin - circleMax);
+		if (dist > buffer)
+		{
+			return false;
+		}
+	}
+
+	// If no separating axis found, the polygon and circle overlap
+	return true;
 }
 
 bool CollisionManager::PolygonToBoxCollisionCheck(PolygonCollider* poly, BoxCollider* box, int buffer)
@@ -243,59 +332,20 @@ double CollisionManager::DistanceSquared(int x1, int y1, int x2, int y2)
 	return deltaX * deltaX + deltaY * deltaY;
 }
 
-std::vector<Vector2> CollisionManager::GetUniqueAxes(std::vector<Vector2> edges)
+bool CollisionManager::PolygonContainsPoint(const std::vector<Vector2>& polyPoints, const Vector2& point)
 {
-	std::vector<Vector2> uniqueAxes;
-
-	// Loop through edges
-	for (auto edge : edges)
+	bool contains = false;
+	int i, j = polyPoints.size() - 1;
+	for (i = 0; i < polyPoints.size(); i++)
 	{
-		// Get the normal of the edge
-		Vector2 axis = Vector2(-edge.y, edge.x).Normalized();
-
-		bool isUnique = true;
-
-		// Check if axis is unique
-		for (auto uniqueAxis : uniqueAxes)
+		if ((polyPoints[i].y < point.y && polyPoints[j].y >= point.y || polyPoints[j].y < point.y && polyPoints[i].y >= point.y) &&
+			(polyPoints[i].x + (point.y - polyPoints[i].y) / (polyPoints[j].y - polyPoints[i].y) * (polyPoints[j].x - polyPoints[i].x) < point.x))
 		{
-			float dot = Vector2::Dot(axis, uniqueAxis);
-			if (std::abs(dot) > 0.999f)
-			{
-				isUnique = false;
-				break;
-			}
+			contains = !contains;
 		}
-
-		// Add axis to list of unique axes
-		if (isUnique)
-		{
-			uniqueAxes.push_back(axis);
-		}
+		j = i;
 	}
-
-	return uniqueAxes;
-}
-
-void CollisionManager::ProjectPolygonOntoAxis(const std::vector<Vector2>& polygon, const Vector2& axis, float& min, float& max)
-{
-	// Project first point
-	float projection = Vector2::Dot(polygon[0], axis);
-	min = projection;
-	max = projection;
-
-	// Project rest of points
-	for (int i = 1; i < polygon.size(); i++)
-	{
-		projection = Vector2::Dot(polygon[i], axis);
-		if (projection < min)
-		{
-			min = projection;
-		}
-		else if (projection > max)
-		{
-			max = projection;
-		}
-	}
+	return contains;
 }
 
 void CollisionManager::VisualiseCollision()

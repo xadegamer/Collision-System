@@ -2,6 +2,7 @@
 #include "Character.h"
 #include "BoxCollider.h"
 #include "CircleCollider.h"
+#include "PolygonCollider.h"
 
 #include "TimeManager.h"
 
@@ -15,7 +16,7 @@ class Player : public Character
 {
 private:
 
-	BoxCollider* boxCollider;
+	Collider* collider;
 	
 	float runSpeed;
 	

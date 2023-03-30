@@ -32,11 +32,8 @@ public:
 
 	static double DistanceSquared(int x1, int y1, int x2, int y2);
 
-	static std::vector<Vector2> GetUniqueAxes(std::vector<Vector2> edges);
-
-	static void ProjectPolygonOntoAxis(const std::vector<Vector2>& polygon, const Vector2& axis, float& min, float& max);
+	static bool PolygonContainsPoint(const std::vector<Vector2>& polyPoints, const Vector2& point);
 
 	static void VisualiseCollision();
-
 };
 

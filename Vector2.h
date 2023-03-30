@@ -26,6 +26,10 @@ public:
 
 	static float Dot(Vector2 v1, Vector2 v2);
 
+	static Vector2 Zero();
+
+	float Length() const;
+
 	float Magnitude() const;
 
 	// float * vector functions
@@ -54,6 +58,8 @@ public:
 	Vector2 operator/(const Vector2& v);
 	
 	bool operator==(const Vector2& v) const;
+
+	bool operator<(const Vector2& other) const;
 
 	// data - public
 	float     x{ 0 }, y{ 0 };

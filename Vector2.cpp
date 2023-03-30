@@ -91,6 +91,16 @@ bool   Vector2::operator==(const Vector2& v) const
 	return false;
 }
 
+bool Vector2::operator<(const Vector2& other) const
+{
+	if (x == other.x) {
+		return y < other.y;
+	}
+	else {
+		return x < other.x;
+	}
+}
+
 float Vector2::dist(const Vector2& v) const
 {
 	return static_cast<float>(std::sqrt((v.x - x) * (v.x - x) + (v.y - y) * (v.y - y)));
@@ -133,6 +143,16 @@ float Vector2::Distance(Vector2 v1, Vector2 v2)
 float Vector2::Dot(Vector2 v1, Vector2 v2)
 {
 	return v1.x * v2.x + v1.y * v2.y;
+}
+
+Vector2 Vector2::Zero()
+{
+	return Vector2(0, 0);
+}
+
+float Vector2::Length() const
+{
+	return static_cast<float>(std::sqrt(x * x + y * y));
 }
 
 float Vector2::Magnitude() const

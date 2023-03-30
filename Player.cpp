@@ -10,9 +10,21 @@ Player::Player(Vector2 position) : Character(position)
 
 	spriteRenderer->SetSortingOrder(SortingLayer::PlayerLayer);
 
-	boxCollider = new BoxCollider;
-	boxCollider->SetUp(transform, Vector2(spriteRenderer->GetSprite()->textureWidth, spriteRenderer->GetSprite()->textureHeight));
-	boxCollider->GetOnCollisionEnterEvent() = std::bind(&Player::OnCollisionEnter, this, std::placeholders::_1);
+	//collider = new BoxCollider;
+	//BoxCollider* boxCollider = static_cast<BoxCollider*>(collider);
+	//boxCollider->SetUp(transform, Vector2(spriteRenderer->GetSprite()->textureWidth, spriteRenderer->GetSprite()->textureHeight));
+	//boxCollider->GetOnCollisionEnterEvent() = std::bind(&Player::OnCollisionEnter, this, std::placeholders::_1);
+
+	//collider = new CircleCollider;
+	//CircleCollider* circleCollider = static_cast<CircleCollider*>(collider);
+	//circleCollider->SetUp(transform, spriteRenderer->GetSprite()->textureWidth / 2);
+	//circleCollider->GetOnCollisionEnterEvent() = std::bind(&Player::OnCollisionEnter, this, std::placeholders::_1);
+
+	collider = new PolygonCollider;
+	PolygonCollider* polygonCollider = static_cast<PolygonCollider*>(collider);
+	std::vector<Vector2> points = { Vector2(0,0), Vector2(0, 100), Vector2(100, 100), Vector2(100,0) };
+	polygonCollider->SetUp(transform, points);
+	polygonCollider->GetOnCollisionEnterEvent() = std::bind(&Player::OnCollisionEnter, this, std::placeholders::_1);
 
 	currentMoveSpeed = moveSpeed;
 
@@ -61,7 +73,7 @@ void Player::Update(float deltaTime)
 	// if hold shift, increase move speed
 	currentMoveSpeed = InputManager::GetKey(SDL_SCANCODE_LSHIFT) ? runSpeed : moveSpeed;
 	
-	boxCollider->Update();
+	collider->Update();
 	
 	GameObject::Update(deltaTime);
 }
