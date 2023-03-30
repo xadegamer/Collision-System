@@ -12,7 +12,6 @@ class Character : public GameObject
 protected:
 
 	SpriteRenderer* spriteRenderer;
-	CircleCollider* circleCollider;
 	RigidBody* rigidBody;
 
 	float moveSpeed;

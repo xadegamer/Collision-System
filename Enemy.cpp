@@ -11,6 +11,10 @@ Enemy::Enemy(Vector2 position) : Character(position)
 	spriteRenderer->SetSortingOrder(SortingLayer::EnemyLayer);
 	
 	rigidBody->SetPosition(transform->GetPosition());
+
+	circleCollider = new CircleCollider;
+	circleCollider->SetUp(transform, spriteRenderer->GetSprite()->textureWidth / 2, 1);
+	circleCollider->GetOnCollisionEnterEvent() = std::bind(&Character::OnCollisionEnter, this, std::placeholders::_1);
 	
 	spawnPoint = transform->GetPosition();
 	
@@ -30,7 +34,7 @@ void Enemy::Update(float deltaTime)
 	
 	circleCollider->Update();
 
-	PatrolState(deltaTime);
+	//PatrolState(deltaTime);
 }
 
 void Enemy::OnCollisionEnter(Collider* other)

@@ -1,5 +1,5 @@
 ﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(517,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (SDL Game.vcxproj, SDL-GAME-Colllision.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  Prop.cpp
+  CircleCollider.cpp
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(17,13): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(61,54): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(61,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
@@ -7,6 +7,8 @@ E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(62,54): warning
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(62,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(63,21): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(63,18): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\Collider.h(42,77): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\Collider.h(42,60): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Year 2\Semester 2\Git Projects\Collision-System\CircleCollider.cpp(24,11): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+E:\Year 2\Semester 2\Git Projects\Collision-System\CircleCollider.cpp(25,11): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+E:\Year 2\Semester 2\Git Projects\Collision-System\CircleCollider.cpp(27,76): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+E:\Year 2\Semester 2\Git Projects\Collision-System\CircleCollider.cpp(27,60): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
   Collision-System.vcxproj -> E:\Year 2\Semester 2\Git Projects\Collision-System\x64\Debug\Collision-System.exe

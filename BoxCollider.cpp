@@ -1,26 +1,30 @@
 #include "BoxCollider.h"
 
-void BoxCollider::SetUp(Transform* owner, Vector2 size, float sizeMutiplier, bool isStatic)
+void BoxCollider::SetUp(Transform* owner, Vector2 size, bool isStatic)
 {
-	Collider::SetUp(owner, size, isStatic);
-	boxColliderRect = new SDL_Rect();
-	boxColliderRect->w = size.x * sizeMutiplier;
-	boxColliderRect->h = size.y * sizeMutiplier;
-	boxColliderRect->x = GetCentre().x - boxColliderRect->w / 2;
-	boxColliderRect->y = GetCentre().y - boxColliderRect->h / 2;
+	Collider::SetUp(owner, isStatic);
+
+	width = size.x;
+	height = size.y;
+
+	position.x = owner->GetPosition().x;
+	position.y = owner->GetPosition().y;
 }
 
 void BoxCollider::Update()
 {
-	colliderRect->x = owner->GetPosition().x;
-	colliderRect->y = owner->GetPosition().y;
-	boxColliderRect->x = GetCentre().x - boxColliderRect->w / 2;
-	boxColliderRect->y = GetCentre().y - boxColliderRect->h / 2;
+	position.x = owner->GetPosition().x;
+	position.y = owner->GetPosition().y;
 }
 
 void BoxCollider::Draw()
 {
 	SDL_SetRenderDrawColor(SDLManager::GetRenderer(), 0, 255, 0, 255);
-	SDL_Rect rect = *boxColliderRect;
-	SDL_RenderDrawRect(SDLManager::GetRenderer(), &rect);
+	SDL_Rect visualRect  = { position.x, position.y, width, height };
+	SDL_RenderDrawRect(SDLManager::GetRenderer(), &visualRect);
+}
+
+Vector2 BoxCollider::GetCentre()
+{
+	return Vector2(position.x + width / 2, position.y + height / 2);
 }

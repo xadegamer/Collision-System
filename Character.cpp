@@ -10,10 +10,6 @@ Character::Character(Vector2 position) : GameObject(position)
 
 	// to remove
 	spriteRenderer->SetSprite(AssetManager::GetSprite("BarrelSmall"));
-
-	circleCollider = new CircleCollider;
-	circleCollider->SetUp(transform, Vector2(spriteRenderer->GetSprite()->textureWidth, spriteRenderer->GetSprite()->textureHeight));
-	circleCollider->GetOnCollisionEnterEvent() = std::bind(&Character::OnCollisionEnter, this, std::placeholders::_1);
 }
 
 Character::~Character()

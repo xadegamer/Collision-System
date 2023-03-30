@@ -4,13 +4,20 @@
 class BoxCollider : public Collider
 {
 private:
-	
-	SDL_Rect* boxColliderRect;
+
+	int width;
+	int height;
 	
 public:
-	void SetUp(Transform* owner, Vector2 size, float sizeMutiplier = 1 , bool isStatic = false);
+	void SetUp(Transform* owner, Vector2 size, bool isStatic = false);
 	void Update() override;
 	void Draw() override;
-	SDL_Rect* GetColliderRect() override { return boxColliderRect; };
+
+	Vector2 GetCentre() override;
+
+	//SDL_Rect* GetColliderRect() override { return boxColliderRect; };
+
+	inline int GetWidth() { return width; }
+	inline int GetHeight() { return height; }
 };
 

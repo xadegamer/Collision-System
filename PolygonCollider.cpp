@@ -2,7 +2,7 @@
 
 void PolygonCollider::SetUp(Transform* owner, SDL_Point* points, float sizeMutiplier, bool isStatic)
 {
-	Collider::SetUp(owner, Vector2(0, 0), isStatic);
+	Collider::SetUp(owner, isStatic);
 	polygon = new Polygon();
 	polygon->points = points;
 }

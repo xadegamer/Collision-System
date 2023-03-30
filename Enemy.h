@@ -9,6 +9,8 @@ class Enemy : public Character
 {
 private:
 
+	CircleCollider* circleCollider;
+
 	Vector2 spawnPoint;
 	Vector2 currentPatrolPoint;
 	Vector2 direction;

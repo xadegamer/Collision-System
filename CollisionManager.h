@@ -13,10 +13,12 @@ private:
 	~CollisionManager() = delete;
 	
 public:
-	
-	static bool DoBoxToBoxCollisionCheck(SDL_Rect* A, SDL_Rect* B, int buffer);
-	static bool DoCircleToCircleCollsionCheck(SDL_Rect* a,float radiousA, SDL_Rect* b, float radiousB);
-	static bool DoBoxToCircleCollsionCheck(SDL_Rect* box, SDL_Rect* circle, float radious);	
+
+	static bool BoxToBoxCollisionCheck(BoxCollider* A, BoxCollider* B, int buffer);
+
+	static bool CircleToCircleCollsionCheck (CircleCollider* A, CircleCollider* B, int buffer);
+
+	static bool BoxToCircleCollsionCheck(BoxCollider* box, CircleCollider* circle, int buffer);
 
 	static bool DoPolygonToPolygonCollisionCheck(Polygon* A, Polygon* B, int buffer);
 

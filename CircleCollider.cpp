@@ -1,15 +1,16 @@
 #include "CircleCollider.h"
 
-void CircleCollider::SetUp(Transform* owner, Vector2 size, float radiousMutiplier , bool isStatic)
+void CircleCollider::SetUp(Transform* owner, float _radius, float radiousMutiplier , bool isStatic)
 {
-	Collider::SetUp(owner, size, isStatic);
-	radius = colliderRect->w / (2 * radiousMutiplier);
+	Collider::SetUp(owner, isStatic);
+	radius = _radius * radiousMutiplier;
 }
 
 void CircleCollider::Update()
 {
-	colliderRect->x = owner->GetPosition().x;
-	colliderRect->y = owner->GetPosition().y;
+	Vector2 currentPosition = Vector2(owner->GetPosition().x + radius, owner->GetPosition().y + radius);
+	position.x = currentPosition.x;
+	position.y = currentPosition.y;
 }
 
 void CircleCollider::Draw()
@@ -25,4 +26,9 @@ void CircleCollider::Draw()
 
 		SDL_RenderDrawPoint(SDLManager::GetRenderer(), (centre.x + x), (centre.y + y));
 	}
+}
+
+Vector2 CircleCollider::GetCentre()
+{
+	return position;
 }

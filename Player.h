@@ -14,6 +14,8 @@ class Game;
 class Player : public Character
 {
 private:
+
+	BoxCollider* boxCollider;
 	
 	float runSpeed;
 	

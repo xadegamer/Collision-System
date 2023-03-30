@@ -10,6 +10,10 @@ Player::Player(Vector2 position) : Character(position)
 
 	spriteRenderer->SetSortingOrder(SortingLayer::PlayerLayer);
 
+	boxCollider = new BoxCollider;
+	boxCollider->SetUp(transform, Vector2(spriteRenderer->GetSprite()->textureWidth, spriteRenderer->GetSprite()->textureHeight));
+	boxCollider->GetOnCollisionEnterEvent() = std::bind(&Player::OnCollisionEnter, this, std::placeholders::_1);
+
 	currentMoveSpeed = moveSpeed;
 
 	runSpeed = 200;
@@ -57,7 +61,7 @@ void Player::Update(float deltaTime)
 	// if hold shift, increase move speed
 	currentMoveSpeed = InputManager::GetKey(SDL_SCANCODE_LSHIFT) ? runSpeed : moveSpeed;
 	
-	circleCollider->Update();
+	boxCollider->Update();
 	
 	GameObject::Update(deltaTime);
 }

@@ -7,20 +7,18 @@
 #include <functional>
 
 class Collider
-{
-
-	
+{	
 protected:
 
 	static std::vector<Collider*> allColliders;
 
 	Transform* owner;
-	Vector2 offset;
+
+	Vector2 position;
 	bool isEnabled;
 	bool isTrigger;
 	bool isStatic;
 	Collider* currentCollidedObject;
-	SDL_Rect* colliderRect;
 	std::function <void(Collider* other)> OnCollisionEnterEvent;
 	
 public:
@@ -31,15 +29,17 @@ public:
 	
 	~Collider();
 
-	virtual void SetUp(Transform* owner, Vector2 size, bool isStatic = false);
+	virtual void SetUp(Transform* owner, bool isStatic = false);
 
 	virtual void Update() = 0;
 
 	virtual void Draw() = 0;
 
+	virtual Vector2 GetCentre() = 0;
+
 	void OnCollision(Collider* other);
 
-	inline Vector2 GetPosition() { return Vector2(colliderRect->x, colliderRect->y); }
+	inline Vector2 GetPosition() { return position; }
 
 	inline Transform* GetOwner() { return owner; }
 	
@@ -50,10 +50,6 @@ public:
 	inline bool IsStatic() { return isStatic; }
 	
 	inline void SetStatic(bool isStatic) { this->isStatic = isStatic; }
-
-	Vector2 GetCentre();
-
-	virtual SDL_Rect* GetColliderRect() { return colliderRect; };
 
 	inline bool GetIsEnabled() { return isEnabled; }
 

@@ -8,9 +8,10 @@ private:
 	
 public:
 
-	void SetUp(Transform* owner, Vector2 size, float radiousMutiplier = 1, bool isStatic = false);
+	void SetUp(Transform* owner, float radius, float radiousMutiplier = 1, bool isStatic = false);
 	void Update() override;
 	void Draw() override;
 	inline float GetRadius() { return radius; };
+	Vector2 GetCentre() override;
 };
 

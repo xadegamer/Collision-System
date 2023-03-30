@@ -6,15 +6,12 @@ std::vector<Collider*> Collider::allColliders = std::vector<Collider*>();
 Collider::Collider()
 {
 	currentCollidedObject = nullptr;
-	colliderRect = new SDL_Rect();
 	allColliders.push_back(this);
 	isEnabled = true;
 }
 
 Collider::~Collider()
 {
-	colliderRect = nullptr;
-
 	for (int i = 0; i < allColliders.size(); i++)
 	{
 		if (allColliders[i] == this)
@@ -23,19 +20,12 @@ Collider::~Collider()
 			break;
 		}
 	}
-
-	delete colliderRect;
 }
 
-void Collider::SetUp(Transform* owner, Vector2 size, bool isStatic)
+void Collider::SetUp(Transform* owner, bool isStatic)
 {
 	this->owner = owner;
 	this->isStatic = isStatic;
-	
-	colliderRect->w = size.x;
-	colliderRect->h = size.y;
-	colliderRect->x = owner->GetPosition().x;
-	colliderRect->y = owner->GetPosition().y;
 }	
 
 void Collider::OnCollision(Collider* other)
@@ -43,9 +33,4 @@ void Collider::OnCollision(Collider* other)
 	if (other == nullptr || !isEnabled) return;
 	
 	if (OnCollisionEnterEvent != nullptr) OnCollisionEnterEvent(other);
-}
-
-Vector2 Collider::GetCentre()
-{
-	return Vector2(colliderRect->x + colliderRect->w / 2, colliderRect->y + colliderRect->h / 2);
 }
