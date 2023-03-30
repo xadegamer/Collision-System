@@ -4,22 +4,20 @@
 #include <iostream>
 #include <vector>
 
-struct Polygon 
-{
-	Vector2 position; // Position of polygon
-    int num_points; // Number of points in polygon
-    SDL_Point* points; // Array of points
-    SDL_Color color; // Color
-};
-
 class PolygonCollider : public Collider
 {
 private:
 
-	Polygon* polygon;
+    int num_points; // Number of points in polygon
+	std::vector<Vector2> points;
+
 public:
-	void SetUp(Transform* owner, SDL_Point* points, float sizeMutiplier = 1, bool isStatic = false);
+	void SetUp(Transform* owner, std::vector<Vector2> points, bool isStatic = false);
 	void Update() override;
 	void Draw() override;
+	Vector2 GetCentre() override;
+
+	inline int GetNumPoints() { return num_points; }
+	inline std::vector<Vector2> GetPoints() { return points; }
 };
 

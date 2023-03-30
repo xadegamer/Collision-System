@@ -6,28 +6,24 @@ Prop::Prop(Vector2 position, std::string spriteName, ColliderType colliderType, 
 	spriteRenderer->SetSortingOrder(sortingOrder);
 	spriteRenderer->SetSprite(AssetManager::GetSprite(spriteName));
 
-	if (colliderType == ColliderType::BOX)
-	{
-		collider = new BoxCollider;
-		BoxCollider* boxCollider = static_cast<BoxCollider*>(collider);
-		boxCollider->SetUp(transform, Vector2(spriteRenderer->GetSprite()->textureWidth, spriteRenderer->GetSprite()->textureHeight));
+	//if (colliderType == ColliderType::BOX)
+	//{
+	//	collider = new BoxCollider;
+	//	BoxCollider* boxCollider = static_cast<BoxCollider*>(collider);
+	//	boxCollider->SetUp(transform, Vector2(spriteRenderer->GetSprite()->textureWidth, spriteRenderer->GetSprite()->textureHeight));
 
-	}
-	else if (colliderType == ColliderType::CIRCLE)
-	{
-		collider = new CircleCollider;
-		CircleCollider* circleCollider = static_cast<CircleCollider*>(collider);
-		circleCollider->SetUp(transform, spriteRenderer->GetSprite()->textureWidth / 2, 1);
-	}
+	//}
+	//else if (colliderType == ColliderType::CIRCLE)
+	//{
+	//	collider = new CircleCollider;
+	//	CircleCollider* circleCollider = static_cast<CircleCollider*>(collider);
+	//	circleCollider->SetUp(transform, spriteRenderer->GetSprite()->textureWidth / 2, 1);
+	//}
 
-		//collider = new PolygonCollider;
-		//PolygonCollider* polygonCollider = static_cast<PolygonCollider*>(collider);
-		//SDL_Point* points = new SDL_Point[4];
-		//points[0] = { 10,20 };
-		//points[0] = { 20,20 };
-		//points[0] = { 50,10 };
-		//points[0] = { 10,10 };
-		//polygonCollider->SetUp(transform, points, 4);
+		collider = new PolygonCollider;
+		PolygonCollider* polygonCollider = static_cast<PolygonCollider*>(collider);
+		std::vector<Vector2> points = { Vector2(0,0), Vector2(0, 200), Vector2(200, 200), Vector2(200, 0) };
+		polygonCollider->SetUp(transform, points);
 
 	if (collider != nullptr)
 	{

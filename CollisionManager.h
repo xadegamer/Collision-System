@@ -20,7 +20,11 @@ public:
 
 	static bool BoxToCircleCollsionCheck(BoxCollider* box, CircleCollider* circle, int buffer);
 
-	static bool DoPolygonToPolygonCollisionCheck(Polygon* A, Polygon* B, int buffer);
+	static bool PolygonToPolygonCollisionCheck (PolygonCollider* A, PolygonCollider* B, int buffer);
+
+	static bool PolygonToCircleCollisionCheck(PolygonCollider* poly, CircleCollider* circle, int buffer);
+
+	static bool PolygonToBoxCollisionCheck(PolygonCollider* poly, BoxCollider* box, int buffer);
 
 	static bool CheckCollision(Collider* colA, Collider* colB);
 

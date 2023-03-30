@@ -22,6 +22,10 @@ public:
 
 	static float Distance(Vector2 v1, Vector2 v2);
 
+	static Vector2 Perpendicular (Vector2 v);
+
+	static float Dot(Vector2 v1, Vector2 v2);
+
 	// float * vector functions
 	Vector2 operator*(float f) const;
 	Vector2& operator*=(float f);

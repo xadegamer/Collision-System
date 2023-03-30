@@ -34,6 +34,8 @@ public:
 	void Render();
 	
 	void Update(float deltaTime);
+
+	void LateUpdate(float deltaTime);
 	
 	void HandleEvents();
 	

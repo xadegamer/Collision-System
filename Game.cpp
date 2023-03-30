@@ -1,6 +1,6 @@
 #include "Game.h"
 
-#include "CollisionManager.h"
+
 
 #include "AudioManager.h"
 
@@ -76,10 +76,13 @@ void Game::HandleEvents()
 
 void Game::Update(float deltaTime)
 {
+	HandleEvents();
+
 	GameObject::UpdateAllActive(deltaTime);
+}
 
-	CollisionManager::HandleAllCollision();
-
+void Game::LateUpdate(float deltaTime)
+{
 	GameObject::LateUpdateAllActive(deltaTime);
 }
 
@@ -90,6 +93,4 @@ void Game::Render()
 	GameObject::DrawAllActive();
 	
 	GameObject::ShowAllDebugVisuals();
-
-	CollisionManager::VisualiseCollision();
 }

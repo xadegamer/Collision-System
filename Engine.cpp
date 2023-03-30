@@ -1,5 +1,6 @@
 #include "Engine.h"
 
+#include "CollisionManager.h"
 
 TimeManager Engine::systemTimer;
 TimeManager Engine::deltaTimer;
@@ -54,14 +55,21 @@ void Engine::Update()
 {
 	game->HandleEvents();
 	game->Update(deltaTimer.getDeltaTime());
+	CollisionManager::HandleAllCollision();
+	game->LateUpdate(deltaTimer.getDeltaTime());
 }
 
 void Engine::Render()
 {
 	SDL_RenderClear(SDLManager::GetRenderer());
+
 	game->Render();
+
+	CollisionManager::VisualiseCollision();
+
 	SDLManager::CursorBlit(cursor->texture, InputManager::GetMousePosition().x, InputManager::GetMousePosition().y, true);
 	SDL_RenderPresent(SDLManager::GetRenderer());
+
 }
 
 void Engine::FrameCap()
