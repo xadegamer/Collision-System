@@ -14,6 +14,10 @@ private:
 	
 public:
 
+	static void HandleAllCollision();
+
+	static bool CheckCollision(Collider* colA, Collider* colB);
+
 	static bool BoxToBoxCollisionCheck(BoxCollider* A, BoxCollider* B, int buffer);
 
 	static bool CircleToCircleCollsionCheck (CircleCollider* A, CircleCollider* B, int buffer);
@@ -26,12 +30,13 @@ public:
 
 	static bool PolygonToBoxCollisionCheck(PolygonCollider* poly, BoxCollider* box, int buffer);
 
-	static bool CheckCollision(Collider* colA, Collider* colB);
-
 	static double DistanceSquared(int x1, int y1, int x2, int y2);
-	
-	static void HandleAllCollision();
+
+	static std::vector<Vector2> GetUniqueAxes(std::vector<Vector2> edges);
+
+	static void ProjectPolygonOntoAxis(const std::vector<Vector2>& polygon, const Vector2& axis, float& min, float& max);
 
 	static void VisualiseCollision();
+
 };
 

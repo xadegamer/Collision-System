@@ -2,6 +2,77 @@
 
 const static int s_buffer = 1;
 
+void CollisionManager::HandleAllCollision()
+{
+	for (int i = 0; i < Collider::GetAllColliders().size(); i++)
+	{
+		Collider* colliderA = Collider::GetAllColliders()[i];
+		for (int j = 0; j < Collider::GetAllColliders().size(); j++)
+		{
+			Collider* colliderB = Collider::GetAllColliders()[j];
+			if (colliderA != colliderB && colliderA->GetIsEnabled() && colliderB->GetIsEnabled())
+			{
+				if (CollisionManager::CheckCollision(colliderA, colliderB))
+				{
+					colliderA->OnCollision(colliderB);
+					colliderB->OnCollision(colliderA);
+				}
+			}
+		}
+	}
+}
+
+bool CollisionManager::CheckCollision(Collider* colA, Collider* colB)
+{
+	BoxCollider* boxA = dynamic_cast<BoxCollider*>(colA);
+	BoxCollider* boxB = dynamic_cast<BoxCollider*>(colB);
+
+	CircleCollider* circleA = dynamic_cast<CircleCollider*>(colA);
+	CircleCollider* circleB = dynamic_cast<CircleCollider*>(colB);
+
+	PolygonCollider* polyA = dynamic_cast<PolygonCollider*>(colA);
+	PolygonCollider* polyB = dynamic_cast<PolygonCollider*>(colB);
+
+	if (boxA != nullptr && boxB != nullptr)
+	{
+		return BoxToBoxCollisionCheck(boxA, boxB, s_buffer);
+	}
+	else if (circleA != nullptr && circleB != nullptr)
+	{
+		return CircleToCircleCollsionCheck(circleA, circleB, s_buffer);
+	}
+	else if (boxA != nullptr && circleB != nullptr)
+	{
+		return BoxToCircleCollsionCheck(boxA, circleB, s_buffer);
+	}
+	else if (circleA != nullptr && boxB != nullptr)
+	{
+		return BoxToCircleCollsionCheck(boxB, circleA, s_buffer);
+	}
+	/*else if (polyA != nullptr && polyB != nullptr)
+	{
+		return PolygonToPolygonCollisionCheck(polyA, polyB, s_buffer);
+	}
+	else if (polyA != nullptr && circleB != nullptr)
+	{
+		return PolygonToCircleCollisionCheck(polyA, circleB, s_buffer);
+	}
+	else if (circleA != nullptr && polyB != nullptr)
+	{
+		return PolygonToCircleCollisionCheck(polyB, circleA, s_buffer);
+	}*/
+	else if (polyA != nullptr && boxB != nullptr)
+	{
+		return PolygonToBoxCollisionCheck(polyA, boxB, s_buffer);
+	}
+	else if (boxA != nullptr && polyB != nullptr)
+	{
+		return PolygonToBoxCollisionCheck(polyB, boxA, s_buffer);
+	}
+
+	return false;
+}
+
 bool CollisionManager::BoxToBoxCollisionCheck(BoxCollider* boxA, BoxCollider* boxB, int buffer)
 {
 	if (boxA->GetPosition().x + boxA->GetWidth() - buffer > boxB->GetPosition().x && boxA->GetPosition().x + buffer < boxB->GetPosition().x + boxB->GetWidth() && boxA->GetPosition().y + boxA->GetHeight() - buffer > boxB->GetPosition().y && boxA->GetPosition().y + buffer < boxB->GetPosition().y + boxB->GetHeight())
@@ -76,7 +147,35 @@ bool CollisionManager::BoxToCircleCollsionCheck(BoxCollider* box, CircleCollider
 
 bool CollisionManager::PolygonToPolygonCollisionCheck(PolygonCollider* A, PolygonCollider* B, int buffer)
 {
-	return false;
+	// Get the world points of both polygon colliders
+	std::vector<Vector2> pointsA = A->GetWorldPoints();
+	std::vector<Vector2> pointsB = B->GetWorldPoints();
+
+	// Get unique axes to test against
+	std::vector<Vector2> axesA = GetUniqueAxes(pointsA);
+	std::vector<Vector2> axesB = GetUniqueAxes(pointsB);
+	std::vector<Vector2> axes = axesA;
+	axes.insert(axes.end(), axesB.begin(), axesB.end());
+
+	// Test for overlap on each axis
+	for (auto axis : axes)
+	{
+		// Project both polygons onto the axis
+		float minA, maxA, minB, maxB;
+		ProjectPolygonOntoAxis(pointsA, axis, minA, maxA);
+		ProjectPolygonOntoAxis(pointsB, axis, minB, maxB);
+
+		// Test for overlap
+		float dist = std::max(minB - maxA, minA - maxB);
+		if (dist > buffer)
+		{
+			return false;
+		}
+	}
+
+	std:: cout << "Collision" << std::endl;
+	// If no separating axis found, the polygons overlap
+	return true;
 }
 
 bool CollisionManager::PolygonToCircleCollisionCheck(PolygonCollider* poly, CircleCollider* circle, int buffer)
@@ -86,124 +185,55 @@ bool CollisionManager::PolygonToCircleCollisionCheck(PolygonCollider* poly, Circ
 
 bool CollisionManager::PolygonToBoxCollisionCheck(PolygonCollider* poly, BoxCollider* box, int buffer)
 {
-	// Get the world points of the polygon collider
-	std::vector<Vector2> poly_points = poly->GetPoints();
+	// Get the world points of the polygon and box colliders
+	std::vector<Vector2> polyPoints = poly->GetWorldPoints();
+	std::vector<Vector2> boxPoints = box->GetWorldPoints();
 
-	for (int i = 0; i < poly->GetNumPoints(); i++)
-	{
-		poly_points[i].x += poly->GetPosition().x;
-		poly_points[i].y += poly->GetPosition().y;
-	}
-
-	// Get the half dimensions of the box collider
-	Vector2 box_half_size(box->GetWidth() / 2.0f, box->GetHeight() / 2.0f);
-
-	// Get the world position of the box collider
-	Vector2 box_pos = box->GetPosition();
-
-	// Get the axes to project the polygon and box onto
+	// Create axes to test against
 	std::vector<Vector2> axes;
-
-	// Get the edge normals of the polygon
 	for (int i = 0; i < poly->GetNumPoints(); i++)
 	{
-		Vector2 p1 = poly_points[i];
-		Vector2 p2 = poly_points[(i + 1) % poly->GetNumPoints()];
-
-		Vector2 edge_normal = Vector2::Normalize(Vector2::Perpendicular(p2 - p1));
-		axes.push_back(edge_normal);
+		Vector2 edge = polyPoints[(i + 1) % poly->GetNumPoints()] - polyPoints[i];
+		axes.push_back(Vector2(-edge.y, edge.x).Normalized());
 	}
 
-	// Get the edge normals of the box
-	axes.push_back(Vector2(1.0f, 0.0f));
-	axes.push_back(Vector2(0.0f, 1.0f));
+	axes.push_back(Vector2(1, 0));
+	axes.push_back(Vector2(0, 1));
 
-	// Project the polygon and box onto the axes and check for overlap
-	for (int i = 0; i < axes.size(); i++)
+	// Test for overlap on each axis
+	for (auto axis : axes)
 	{
-		Vector2 axis = axes[i];
+		float polyMin = INFINITY;
+		float polyMax = -INFINITY;
+		float boxMin = INFINITY;
+		float boxMax = -INFINITY;
 
 		// Project the polygon onto the axis
-		float min_poly = Vector2::Dot(poly_points[0], axis);
-		float max_poly = min_poly;
-		for (int j = 1; j < poly->GetNumPoints(); j++)
+		for (auto point : polyPoints)
 		{
-			float projection = Vector2::Dot(poly_points[j], axis);
-			if (projection < min_poly)
-			{
-				min_poly = projection;
-			}
-			if (projection > max_poly)
-			{
-				max_poly = projection;
-			}
+			float proj = Vector2::Dot(point, axis);
+			polyMin = std::min(polyMin, proj);
+			polyMax = std::max(polyMax, proj);
 		}
 
 		// Project the box onto the axis
-		float min_box = Vector2::Dot(box_pos - box_half_size, axis);
-		float max_box = Vector2::Dot(box_pos + box_half_size, axis);
+		for (auto point : boxPoints)
+		{
+			float proj = Vector2::Dot(point, axis);
+			boxMin = std::min(boxMin, proj);
+			boxMax = std::max(boxMax, proj);
+		}
 
-		// Check for overlap
-		float overlap = std::min(max_poly, max_box) - std::max(min_poly, min_box);
-		if (overlap < 0)
+		// Test for overlap
+		float dist = std::max(boxMin - polyMax, polyMin - boxMax);
+		if (dist > buffer)
 		{
 			return false;
 		}
 	}
 
-	// If all axes have overlap, then the polygon and box intersect
+	// If no separating axis found, the polygons overlap
 	return true;
-}
-
-bool CollisionManager::CheckCollision(Collider* colA, Collider* colB)
-{
-	BoxCollider* boxA = dynamic_cast<BoxCollider*>(colA);
-	BoxCollider* boxB = dynamic_cast<BoxCollider*>(colB);
-
-	CircleCollider* circleA = dynamic_cast<CircleCollider*>(colA);
-	CircleCollider* circleB = dynamic_cast<CircleCollider*>(colB);
-
-	PolygonCollider* polyA = dynamic_cast<PolygonCollider*>(colA);
-	PolygonCollider* polyB = dynamic_cast<PolygonCollider*>(colB);
-
-	if (boxA != nullptr && boxB != nullptr)
-	{
-		return BoxToBoxCollisionCheck(boxA, boxB, s_buffer);
-	}
-	else if (circleA != nullptr && circleB != nullptr)
-	{
-		return CircleToCircleCollsionCheck(circleA, circleB, s_buffer);
-	}
-	else if (boxA != nullptr && circleB != nullptr)
-	{
-		return BoxToCircleCollsionCheck(boxA, circleB, s_buffer);
-	}
-	else if (circleA != nullptr && boxB != nullptr)
-	{
-		return BoxToCircleCollsionCheck(boxB, circleA, s_buffer);
-	}
-	/*else if (polyA != nullptr && polyB != nullptr)
-	{
-		return PolygonToPolygonCollisionCheck(polyA, polyB, s_buffer);
-	}
-	else if (polyA != nullptr && circleB != nullptr)
-	{
-		return PolygonToCircleCollisionCheck(polyA, circleB, s_buffer);
-	}
-	else if (circleA != nullptr && polyB != nullptr)
-	{
-		return PolygonToCircleCollisionCheck(polyB, circleA, s_buffer);
-	}*/
-	else if (polyA != nullptr && boxB != nullptr)
-	{
-		return PolygonToBoxCollisionCheck(polyA, boxB, s_buffer);
-	}
-	else if (boxA != nullptr && polyB != nullptr)
-	{
-		return PolygonToBoxCollisionCheck(polyB, boxA, s_buffer);
-	}
-
-	return false;
 }
 
 double CollisionManager::DistanceSquared(int x1, int y1, int x2, int y2)
@@ -213,22 +243,57 @@ double CollisionManager::DistanceSquared(int x1, int y1, int x2, int y2)
 	return deltaX * deltaX + deltaY * deltaY;
 }
 
-void CollisionManager::HandleAllCollision()
+std::vector<Vector2> CollisionManager::GetUniqueAxes(std::vector<Vector2> edges)
 {
-	for (int i = 0; i < Collider::GetAllColliders().size(); i++)
+	std::vector<Vector2> uniqueAxes;
+
+	// Loop through edges
+	for (auto edge : edges)
 	{
-		Collider* colliderA = Collider::GetAllColliders()[i];
-		for (int j = 0; j < Collider::GetAllColliders().size(); j++)
+		// Get the normal of the edge
+		Vector2 axis = Vector2(-edge.y, edge.x).Normalized();
+
+		bool isUnique = true;
+
+		// Check if axis is unique
+		for (auto uniqueAxis : uniqueAxes)
 		{
-			Collider* colliderB = Collider::GetAllColliders()[j];
-			if (colliderA != colliderB && colliderA->GetIsEnabled() && colliderB->GetIsEnabled())
+			float dot = Vector2::Dot(axis, uniqueAxis);
+			if (std::abs(dot) > 0.999f)
 			{
-				if (CollisionManager::CheckCollision(colliderA, colliderB))
-				{
-					colliderA->OnCollision(colliderB);
-					colliderB->OnCollision(colliderA);
-				}
+				isUnique = false;
+				break;
 			}
+		}
+
+		// Add axis to list of unique axes
+		if (isUnique)
+		{
+			uniqueAxes.push_back(axis);
+		}
+	}
+
+	return uniqueAxes;
+}
+
+void CollisionManager::ProjectPolygonOntoAxis(const std::vector<Vector2>& polygon, const Vector2& axis, float& min, float& max)
+{
+	// Project first point
+	float projection = Vector2::Dot(polygon[0], axis);
+	min = projection;
+	max = projection;
+
+	// Project rest of points
+	for (int i = 1; i < polygon.size(); i++)
+	{
+		projection = Vector2::Dot(polygon[i], axis);
+		if (projection < min)
+		{
+			min = projection;
+		}
+		else if (projection > max)
+		{
+			max = projection;
 		}
 	}
 }
@@ -240,4 +305,3 @@ void CollisionManager::VisualiseCollision()
 		Collider::GetAllColliders()[i]->Draw();
 	}
 }
-

@@ -104,6 +104,16 @@ Vector2 Vector2::normalize()
 	return *this;
 }
 
+Vector2 Vector2::Normalized() const
+{
+	float mag = Magnitude();
+	if (mag != 0.0f) {
+		return Vector2(x / mag, y / mag);
+	}
+	// Return a zero vector if the magnitude is 0
+	return Vector2(0.0f, 0.0f);
+}
+
 Vector2 Vector2::Lerp(Vector2 v1, Vector2 v2, float t)
 {
 	return Vector2(v1.x + (v2.x - v1.x) * t, v1.y + (v2.y - v1.y) * t);
@@ -120,14 +130,14 @@ float Vector2::Distance(Vector2 v1, Vector2 v2)
 	return static_cast<float>(std::sqrt((v2.x - v1.x) * (v2.x - v1.x) + (v2.y - v1.y) * (v2.y - v1.y)));
 }
 
-Vector2 Vector2::Perpendicular(Vector2 v)
-{
-	return Vector2(-v.y, v.x);
-}
-
 float Vector2::Dot(Vector2 v1, Vector2 v2)
 {
 	return v1.x * v2.x + v1.y * v2.y;
+}
+
+float Vector2::Magnitude() const
+{
+	return static_cast<float>(std::sqrt(x * x + y * y));
 }
 
 Vector2 Vector2::operator*(float f) const

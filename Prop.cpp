@@ -22,7 +22,7 @@ Prop::Prop(Vector2 position, std::string spriteName, ColliderType colliderType, 
 
 		collider = new PolygonCollider;
 		PolygonCollider* polygonCollider = static_cast<PolygonCollider*>(collider);
-		std::vector<Vector2> points = { Vector2(0,0), Vector2(0, 200), Vector2(200, 200), Vector2(200, 0) };
+		std::vector<Vector2> points = { Vector2(50,50), Vector2(50, 200), Vector2(200, 200), Vector2(200, 50) };
 		polygonCollider->SetUp(transform, points);
 
 	if (collider != nullptr)

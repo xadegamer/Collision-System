@@ -16,15 +16,17 @@ public:
 
 	Vector2 normalize();
 
+	Vector2 Normalized() const;
+
 	static Vector2 Lerp(Vector2 v1, Vector2 v2, float t);
 
 	static Vector2 Normalize(Vector2 v);
 
 	static float Distance(Vector2 v1, Vector2 v2);
 
-	static Vector2 Perpendicular (Vector2 v);
-
 	static float Dot(Vector2 v1, Vector2 v2);
+
+	float Magnitude() const;
 
 	// float * vector functions
 	Vector2 operator*(float f) const;

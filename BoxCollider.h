@@ -7,7 +7,7 @@ private:
 
 	int width;
 	int height;
-	
+
 public:
 	void SetUp(Transform* owner, Vector2 size, bool isStatic = false);
 	void Update() override;
@@ -15,9 +15,8 @@ public:
 
 	Vector2 GetCentre() override;
 
-	//SDL_Rect* GetColliderRect() override { return boxColliderRect; };
-
 	inline int GetWidth() { return width; }
 	inline int GetHeight() { return height; }
+	std::vector<Vector2> GetWorldPoints();
 };
 

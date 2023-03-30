@@ -28,3 +28,13 @@ Vector2 BoxCollider::GetCentre()
 {
 	return Vector2(position.x + width / 2, position.y + height / 2);
 }
+
+std::vector<Vector2> BoxCollider::GetWorldPoints()
+{
+	std::vector<Vector2> points;
+	points.push_back(Vector2(position.x, position.y));
+	points.push_back(Vector2(position.x + width, position.y));
+	points.push_back(Vector2(position.x + width, position.y + height));
+	points.push_back(Vector2(position.x, position.y + height));
+    return points;
+}
