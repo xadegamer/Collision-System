@@ -1,6 +1,5 @@
 #include "Collider.h"
 
-// init static 	static std::vector<GameObject*> activeGameobjects;
 std::vector<Collider*> Collider::allColliders = std::vector<Collider*>();
 
 Collider::Collider()

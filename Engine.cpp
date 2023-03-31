@@ -10,7 +10,7 @@ Sprite* Engine::cursor = nullptr;
 
 void Engine::Start()
 {
-	if (!SDLManager::Init("Wild West Ranger", P0S_X, P0S_Y, SCREEN_WIDTH, SCREEN_HEIGHT, false))
+	if (!SDLManager::Init("Collision System", P0S_X, P0S_Y, SCREEN_WIDTH, SCREEN_HEIGHT, false))
 	{
 		std::cout << "SDLManager::Init() failed\n";
 		return;
@@ -25,9 +25,9 @@ void Engine::Start()
 	game = new Game();
 
 	game->SetUp();
-	game->LoadLevel();
 
 	systemTimer.tick();
+
 	deltaTimer.tick();
 
 	while (game->IsRunning())
@@ -54,6 +54,7 @@ void Engine::Start()
 void Engine::Update()
 {
 	game->HandleEvents();
+
 	game->Update(deltaTimer.getDeltaTime());
 
 	CollisionManager::HandleAllCollision();
@@ -70,6 +71,7 @@ void Engine::Render()
 	CollisionManager::VisualiseCollision();
 
 	SDLManager::CursorBlit(cursor->texture, InputManager::GetMousePosition().x, InputManager::GetMousePosition().y, true);
+
 	SDL_RenderPresent(SDLManager::GetRenderer());
 
 }
@@ -91,6 +93,6 @@ void Engine::FrameCap()
 		//Wait remaining time
 		SDL_Delay(SCREEN_TICK_PER_FRAME - frameTicks);
 	}
-	std::string title = "Wild West Ranger [avg fps: " + std::to_string(int(avgFPS)) + "] ";
+	std::string title = "Collision System [avg fps: " + std::to_string(int(avgFPS)) + "] ";
 	SDL_SetWindowTitle(SDLManager::GetWindow(), title.c_str());
 }

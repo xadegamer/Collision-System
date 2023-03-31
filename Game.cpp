@@ -1,9 +1,5 @@
 #include "Game.h"
 
-
-
-#include "AudioManager.h"
-
 #include "Enemy.h"
 
 #include <iostream>
@@ -28,15 +24,14 @@ Game::~Game()
 void Game::SetUp()
 {
 	srand((unsigned)time(NULL));
-	isRunning = true; // everything inited successfully, start the main loop
+	isRunning = true; 
+	LoadLevel();
 }
 
 void Game::LoadLevel()
 {
 	groundTileMap = new GroundTileMap((Engine::SCREEN_WIDTH / Engine::TILE_SIZE) + 1, (Engine::SCREEN_HEIGHT / Engine::TILE_SIZE) + 1, Engine::TILE_SIZE, "Assets/Maps/Ground Map.txt");
 	layoutTileMap = new LayoutTileMap((Engine::SCREEN_WIDTH / Engine::TILE_SIZE) + 1, (Engine::SCREEN_HEIGHT / Engine::TILE_SIZE) + 1, Engine::TILE_SIZE, "Assets/Maps/Layout Map.txt");
-	
-	//AudioManager::PlayMusic(AssetManager::GetMusic("Level " + std::to_string(1)), true);
 }
 
 void Game::ResetGame()
