@@ -5,6 +5,9 @@
 #include "AssetManager.h"
 #include <stdio.h>
 #include <functional>
+#include <any>
+#include <iostream>
+#include <string>
 
 class Collider
 {	
@@ -12,9 +15,10 @@ protected:
 
 	static std::vector<Collider*> allColliders;
 
-	Transform* owner;
+	void* owner;
 
 	Vector2 position;
+
 	bool isEnabled;
 	bool isTrigger;
 	bool isStatic;
@@ -29,9 +33,9 @@ public:
 	
 	~Collider();
 
-	virtual void SetUp(Transform* owner, bool isStatic = false);
+	virtual void SetUp(void* owner, Vector2 nextPosition, bool isStatic = false);
 
-	virtual void Update() = 0;
+	virtual void UpdatePosition(Vector2 nextPosition) = 0;
 
 	virtual void Draw() = 0;
 
@@ -41,7 +45,7 @@ public:
 
 	inline Vector2 GetPosition() { return position; }
 
-	inline Transform* GetOwner() { return owner; }
+	inline void* GetOwner() { return owner; }
 	
 	inline bool IsTrigger() { return isTrigger; }
 	

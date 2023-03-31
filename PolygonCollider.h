@@ -13,9 +13,12 @@ private:
 	std::vector<Vector2> points;
 
 public:
-	void SetUp(Transform* owner, std::vector<Vector2> points, bool isStatic = false);
-	void Update() override;
+	void SetUp(void* owner, Vector2 nextPosition, std::vector<Vector2> points, bool isStatic = false);
+	void UpdatePosition(Vector2 nextPosition) override;
+
 	void Draw() override;
+
+
 	Vector2 GetCentre() override;
 
 	inline int GetNumPoints() { return num_points; }

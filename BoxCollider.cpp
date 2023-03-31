@@ -1,20 +1,15 @@
 #include "BoxCollider.h"
 
-void BoxCollider::SetUp(Transform* owner, Vector2 size, bool isStatic)
+void BoxCollider::SetUp(void* owner, Vector2 nextPosition, Vector2 size, bool isStatic)
 {
-	Collider::SetUp(owner, isStatic);
-
+	Collider::SetUp(owner, nextPosition, isStatic);
 	width = size.x;
 	height = size.y;
-
-	position.x = owner->GetPosition().x;
-	position.y = owner->GetPosition().y;
 }
 
-void BoxCollider::Update()
+void BoxCollider::UpdatePosition(Vector2 nextPosition)
 {
-	position.x = owner->GetPosition().x;
-	position.y = owner->GetPosition().y;
+	position = nextPosition;
 }
 
 void BoxCollider::Draw()

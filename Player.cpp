@@ -23,7 +23,7 @@ Player::Player(Vector2 position) : Character(position)
 	collider = new PolygonCollider;
 	PolygonCollider* polygonCollider = static_cast<PolygonCollider*>(collider);
 	std::vector<Vector2> points = { Vector2(0,0), Vector2(0, 100), Vector2(100, 100), Vector2(100,0) };
-	polygonCollider->SetUp(transform, points);
+	polygonCollider->SetUp(transform, transform->GetPosition(), points);
 	polygonCollider->GetOnCollisionEnterEvent() = std::bind(&Player::OnCollisionEnter, this, std::placeholders::_1);
 
 	currentMoveSpeed = moveSpeed;
@@ -33,7 +33,7 @@ Player::Player(Vector2 position) : Character(position)
 
 Player::~Player()
 {
-	
+
 }
 
 void Player::Update(float deltaTime)
@@ -73,7 +73,7 @@ void Player::Update(float deltaTime)
 	// if hold shift, increase move speed
 	currentMoveSpeed = InputManager::GetKey(SDL_SCANCODE_LSHIFT) ? runSpeed : moveSpeed;
 	
-	collider->Update();
+	collider->UpdatePosition(transform->GetPosition());
 	
 	GameObject::Update(deltaTime);
 }
@@ -86,11 +86,17 @@ void Player::LateUpdate(float deltaTime)
 
 void Player::OnCollisionEnter(Collider* other)
 {
-	std:: cout << "Player collided with " << other->GetOwner()->GetGameObject()->GetTag()<< std::endl;
+	//std:: cout << "Player collided with " << other->GetOwner()->GetGameObject()->GetTag()<< std::endl;
 	//if (!other->IsTrigger())
 	//{
 	//	Vector2 direction = transform->GetPosition() - other->GetGameObject()->GetTransform()->GetPosition();
 	//	direction.normalize();
 	//	transform->SetPosition(transform->GetPosition() += direction * 1.8);
 	//}
+
+	// object collided	((Transform*)other->GetOwner())
+
+		Vector2 direction = transform->GetPosition() - other->GetPosition();
+		direction.normalize();
+		transform->SetPosition(transform->GetPosition() += direction * 1.8);
 }

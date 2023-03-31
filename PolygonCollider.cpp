@@ -1,16 +1,15 @@
 #include "PolygonCollider.h"
 
-void PolygonCollider::SetUp(Transform* owner, std::vector<Vector2> _points, bool isStatic)
+void PolygonCollider::SetUp(void* owner, Vector2 nextPosition, std::vector<Vector2> _points, bool isStatic)
 {
-	Collider::SetUp(owner, isStatic);
+	Collider::SetUp(owner, nextPosition, isStatic);
 	points = _points;
 	num_points = points.size();
 }
 
-void PolygonCollider::Update()
+void PolygonCollider::UpdatePosition(Vector2 nextPosition)
 {
-	position.x = owner->GetPosition().x;
-	position.y = owner->GetPosition().y;
+	position = nextPosition;
 }
 
 void PolygonCollider::Draw()
@@ -50,7 +49,7 @@ void PolygonCollider::Draw()
 
 Vector2 PolygonCollider::GetCentre()
 {
-	return Vector2();
+	return position;
 }
 
 

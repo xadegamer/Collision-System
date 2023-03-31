@@ -55,7 +55,9 @@ void Engine::Update()
 {
 	game->HandleEvents();
 	game->Update(deltaTimer.getDeltaTime());
+
 	CollisionManager::HandleAllCollision();
+
 	game->LateUpdate(deltaTimer.getDeltaTime());
 }
 

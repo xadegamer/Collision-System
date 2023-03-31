@@ -22,11 +22,12 @@ Collider::~Collider()
 	}
 }
 
-void Collider::SetUp(Transform* owner, bool isStatic)
+void Collider::SetUp(void* owner, Vector2 nextPosition, bool isStatic)
 {
 	this->owner = owner;
 	this->isStatic = isStatic;
-}	
+	UpdatePosition(nextPosition);
+}
 
 void Collider::OnCollision(Collider* other)
 {

@@ -9,8 +9,9 @@ private:
 	int height;
 
 public:
-	void SetUp(Transform* owner, Vector2 size, bool isStatic = false);
-	void Update() override;
+	void SetUp(void* owner, Vector2 nextPosition, Vector2 size, bool isStatic = false);
+	void UpdatePosition(Vector2 nextPosition) override;
+
 	void Draw() override;
 
 	Vector2 GetCentre() override;

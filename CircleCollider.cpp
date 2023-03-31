@@ -1,16 +1,15 @@
 #include "CircleCollider.h"
 
-void CircleCollider::SetUp(Transform* owner, float _radius, float radiousMutiplier , bool isStatic)
+void CircleCollider::SetUp(void* owner, Vector2 nextPosition, float _radius, float radiousMutiplier , bool isStatic)
 {
-	Collider::SetUp(owner, isStatic);
+	Collider::SetUp(owner, nextPosition, isStatic);
 	radius = _radius * radiousMutiplier;
 }
 
-void CircleCollider::Update()
+void CircleCollider::UpdatePosition(Vector2 nextPosition)
 {
-	Vector2 currentPosition = Vector2(owner->GetPosition().x + radius, owner->GetPosition().y + radius);
-	position.x = currentPosition.x;
-	position.y = currentPosition.y;
+	Vector2 currentPosition = Vector2(nextPosition.x + radius, nextPosition.y + radius);
+	position = currentPosition;
 }
 
 void CircleCollider::Draw()
