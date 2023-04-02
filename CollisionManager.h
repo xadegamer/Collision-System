@@ -1,7 +1,5 @@
 #pragma once
 
-#include "SDLManager.h"
-
 #include "BoxCollider.h"
 #include "CircleCollider.h"
 #include "PolygonCollider.h"
