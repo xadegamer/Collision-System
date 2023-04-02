@@ -1,6 +1,7 @@
 #include "Engine.h"
 
 #include "CollisionManager.h"
+#include "CollsionVisualiser.h"
 
 TimeManager Engine::systemTimer;
 TimeManager Engine::deltaTimer;
@@ -68,7 +69,7 @@ void Engine::Render()
 
 	game->Render();
 
-	CollisionManager::VisualiseCollision();
+	CollsionVisualiser::DrawAllColliders();
 
 	SDLManager::CursorBlit(cursor->texture, InputManager::GetMousePosition().x, InputManager::GetMousePosition().y, true);
 

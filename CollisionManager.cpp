@@ -347,11 +347,3 @@ bool CollisionManager::PolygonContainsPoint(const std::vector<Vector2>& polyPoin
 	}
 	return contains;
 }
-
-void CollisionManager::VisualiseCollision()
-{
-	for (int i = 0; i < Collider::GetAllColliders().size(); i++)
-	{
-		Collider::GetAllColliders()[i]->Draw();
-	}
-}

@@ -34,8 +34,6 @@ public:
 
 	virtual void UpdatePosition(Vector2 nextPosition) = 0;
 
-	virtual void Draw() = 0;
-
 	virtual Vector2 GetCentre() = 0;
 
 	void OnCollision(Collider* other);

@@ -12,12 +12,12 @@ Player::Player(Vector2 position) : Character(position)
 
 	//collider = new BoxCollider;
 	//BoxCollider* boxCollider = static_cast<BoxCollider*>(collider);
-	//boxCollider->SetUp(transform, Vector2(spriteRenderer->GetSprite()->textureWidth, spriteRenderer->GetSprite()->textureHeight));
+	//boxCollider->SetUp(transform, transform->GetPosition(), Vector2(spriteRenderer->GetSprite()->textureWidth, spriteRenderer->GetSprite()->textureHeight));
 	//boxCollider->GetOnCollisionEnterEvent() = std::bind(&Player::OnCollisionEnter, this, std::placeholders::_1);
 
 	//collider = new CircleCollider;
 	//CircleCollider* circleCollider = static_cast<CircleCollider*>(collider);
-	//circleCollider->SetUp(transform, spriteRenderer->GetSprite()->textureWidth / 2);
+	//circleCollider->SetUp(transform,transform->GetPosition(), spriteRenderer->GetSprite()->textureWidth / 2);
 	//circleCollider->GetOnCollisionEnterEvent() = std::bind(&Player::OnCollisionEnter, this, std::placeholders::_1);
 
 	collider = new PolygonCollider;

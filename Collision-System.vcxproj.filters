@@ -120,6 +120,9 @@
     <ClCompile Include="PolygonCollider.cpp">
       <Filter>Source Files\Collision</Filter>
     </ClCompile>
+    <ClCompile Include="CollsionVisualiser.cpp">
+      <Filter>Source Files\Collision</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Vector2.h">
@@ -195,6 +198,9 @@
       <Filter>Header Files\Collision</Filter>
     </ClInclude>
     <ClInclude Include="PolygonCollider.h">
+      <Filter>Header Files\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="CollsionVisualiser.h">
       <Filter>Header Files\Collision</Filter>
     </ClInclude>
   </ItemGroup>
