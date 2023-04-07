@@ -124,7 +124,7 @@
       <Filter>Source Files\Collision</Filter>
     </ClCompile>
     <ClCompile Include="CollisionResolver.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Collision</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -206,11 +206,11 @@
     <ClInclude Include="CollsionVisualiser.h">
       <Filter>Header Files\Collision</Filter>
     </ClInclude>
-    <ClInclude Include="Collision.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="CollisionResolver.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision.h">
+      <Filter>Header Files\Collision</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
