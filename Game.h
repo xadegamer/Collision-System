@@ -3,7 +3,6 @@
 #include "SDL.h"
 #include "GameObject.h"
 #include "Player.h"
-#include "GroundTileMap.h"
 #include "LayoutTileMap.h"
 
 #include "SDLManager.h"
@@ -20,7 +19,6 @@ private:
 	bool isRunning;
 	bool showDebug;
 	int maxLevel;	
-	GroundTileMap* groundTileMap;
 	LayoutTileMap* layoutTileMap;
 	
 public:

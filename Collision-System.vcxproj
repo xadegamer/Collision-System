@@ -147,7 +147,6 @@
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
-    <ClCompile Include="GroundTileMap.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="LayoutTileMap.cpp" />
     <ClCompile Include="main.cpp" />

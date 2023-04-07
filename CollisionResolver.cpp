@@ -4,7 +4,7 @@
 
 void CollisionResolver::Initialize()
 {
-	CollisionManager::OnAnyCollisionEvent  = ResolveCollision;
+	CollisionManager::OnAnyCollisionEvent = ResolveCollision;
 }
 
 void CollisionResolver::Shutdown()

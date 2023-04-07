@@ -70,13 +70,15 @@ void Engine::Update()
 
 void Engine::Render()
 {
-	SDL_RenderClear(SDLManager::GetRenderer());
+	SDL_RenderClear(SDLManager::GetRenderer()); 
 
 	game->Render();
 
 	CollsionVisualiser::DrawAllColliders();
 
 	SDLManager::CursorBlit(cursor->texture, InputManager::GetMousePosition().x, InputManager::GetMousePosition().y, true);
+
+	SDL_SetRenderDrawColor(SDLManager::GetRenderer(), 0, 0, 255, 255);
 
 	SDL_RenderPresent(SDLManager::GetRenderer());
 
@@ -99,6 +101,7 @@ void Engine::FrameCap()
 		//Wait remaining time
 		SDL_Delay(SCREEN_TICK_PER_FRAME - frameTicks);
 	}
+
 	std::string title = "Collision System [avg fps: " + std::to_string(int(avgFPS)) + "] ";
 	SDL_SetWindowTitle(SDLManager::GetWindow(), title.c_str());
 }

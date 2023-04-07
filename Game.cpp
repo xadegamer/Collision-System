@@ -10,7 +10,6 @@ Game::Game()
 {
 	isRunning = false;
 	showDebug = false;
-	groundTileMap = nullptr;
 	layoutTileMap = nullptr;
 }
 
@@ -30,7 +29,6 @@ void Game::SetUp()
 
 void Game::LoadLevel()
 {
-	groundTileMap = new GroundTileMap((Engine::SCREEN_WIDTH / Engine::TILE_SIZE) + 1, (Engine::SCREEN_HEIGHT / Engine::TILE_SIZE) + 1, Engine::TILE_SIZE, "Assets/Maps/Ground Map.txt");
 	layoutTileMap = new LayoutTileMap((Engine::SCREEN_WIDTH / Engine::TILE_SIZE) + 1, (Engine::SCREEN_HEIGHT / Engine::TILE_SIZE) + 1, Engine::TILE_SIZE, "Assets/Maps/Layout Map.txt");
 }
 
@@ -83,9 +81,6 @@ void Game::LateUpdate(float deltaTime)
 
 void Game::Render()
 {
-	groundTileMap->DrawMap();
-
 	GameObject::DrawAllActive();
-	
-	GameObject::ShowAllDebugVisuals();
+	//GameObject::ShowAllDebugVisuals();
 }
