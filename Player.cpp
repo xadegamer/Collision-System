@@ -12,12 +12,12 @@ Player::Player(Vector2 position) : Character(position)
 
 	//collider = new BoxCollider;
 	//BoxCollider* boxCollider = static_cast<BoxCollider*>(collider);
-	//boxCollider->SetUp(transform, transform->GetPosition(), Vector2(spriteRenderer->GetSprite()->textureWidth, spriteRenderer->GetSprite()->textureHeight));
+	//boxCollider->SetUp((GameObject*)this, transform->GetPosition(), Vector2(spriteRenderer->GetSprite()->textureWidth, spriteRenderer->GetSprite()->textureHeight));
 	//boxCollider->GetOnCollisionEnterEvent() = std::bind(&Player::OnCollisionEnter, this, std::placeholders::_1);
 
 	collider = new CircleCollider;
 	CircleCollider* circleCollider = static_cast<CircleCollider*>(collider);
-	circleCollider->SetUp(transform,transform->GetPosition(), spriteRenderer->GetSprite()->textureWidth / 2);
+	circleCollider->SetUp((GameObject*)this,transform->GetPosition(), spriteRenderer->GetSprite()->textureWidth / 2);
 	circleCollider->GetOnCollisionEnterEvent() = std::bind(&Player::OnCollisionEnter, this, std::placeholders::_1);
 
 	//collider = new PolygonCollider;
@@ -86,11 +86,5 @@ void Player::LateUpdate(float deltaTime)
 
 void Player::OnCollisionEnter(Collision collision)
 {
-		//GameObject* collided = (GameObject*)collision.GetColliderHit()->GetOwner();
-
-		Vector2 mtv = collision.GetMinimumTranslationVector();
-
-		transform->SetPosition(transform->GetPosition() - mtv);
-
-		std::cout << "Player collided with  : " << mtv << std::endl;
+	GameObject* collided = (GameObject*)collision.GetColliderHit()->GetOwner();
 }

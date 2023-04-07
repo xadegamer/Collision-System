@@ -4,8 +4,15 @@
 #include "CircleCollider.h"
 #include "PolygonCollider.h"
 
+#include <stdio.h>
+#include <functional>
+
+
 class CollisionManager
 {
+public:
+	static std::function <void(std::vector<Collision> other)> OnAnyCollisionEvent;
+
 private:
 	CollisionManager() = delete;
 	~CollisionManager() = delete;

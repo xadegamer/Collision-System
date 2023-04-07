@@ -2,6 +2,9 @@
 
 #include <set>
 
+
+std::function <void(std::vector<Collision> other)> CollisionManager::OnAnyCollisionEvent = nullptr;
+
 const static int s_buffer = 1;
 
 void CollisionManager::HandleAllCollision()
@@ -18,6 +21,7 @@ void CollisionManager::HandleAllCollision()
 
 				if (collision.size() != 0)
 				{
+					if (OnAnyCollisionEvent != nullptr) OnAnyCollisionEvent(collision);
 					colliderA->OnCollision(collision[0]);
 					colliderB->OnCollision(collision[1]);
 				}
@@ -148,8 +152,8 @@ std::vector<Collision> CollisionManager::BoxToBoxCollisionCheck(BoxCollider* A, 
 	}
 
 	// Create collision objects and add them to the vector
-	Collision collisionA(B, mtv);
-	Collision collisionB(A, -mtv);
+	Collision collisionA(B, mtv, 1);
+	Collision collisionB(A, -mtv,1);
 	collisions.push_back(collisionA);
 	collisions.push_back(collisionB);
 
@@ -170,9 +174,9 @@ std::vector<Collision> CollisionManager::CircleToCircleCollsionCheck(CircleColli
 		Vector2 mtv = (B->GetPosition() - A->GetPosition()).Normalized() * ((A->GetRadius() + B->GetRadius() + buffer) - distance);
 
 		// Create collision objects
-		Collision collisionA = { B, mtv};
+		Collision collisionA = { B, mtv,1};
 
-		Collision collisionB = { A, -mtv};
+		Collision collisionB = { A, -mtv,1};
 
 		collisions.push_back(collisionA);
 		collisions.push_back(collisionB);
@@ -261,8 +265,8 @@ std::vector<Collision> CollisionManager::BoxToCircleCollsionCheck(BoxCollider* b
 	}
 
 	// If no separating axis found, the polygon and circle overlap
-	Collision collisionA =  { circle, mtv };
-	Collision collisionB =  { box, mtv };
+	Collision collisionA =  { circle, mtv , 1};
+	Collision collisionB =  { box, mtv ,-1};
 	collisions.push_back(collisionA);
 	collisions.push_back(collisionB);
 	return collisions;
@@ -341,8 +345,8 @@ std::vector<Collision> CollisionManager::PolygonToPolygonCollisionCheck(PolygonC
 	}
 
 	// Create collision objects and add them to the vector
-	Collision collisionA(B, mtv);
-	Collision collisionB(A, -mtv);
+	Collision collisionA(B, mtv, 1);
+	Collision collisionB(A, -mtv,1);
 	collisions.push_back(collisionA);
 	collisions.push_back(collisionB);
 
@@ -429,8 +433,8 @@ std::vector<Collision> CollisionManager::PolygonToCircleCollisionCheck(PolygonCo
 	}
 
 	// If no separating axis found, the polygon and circle overlap
-	Collision collisionA = { circle, mtv };
-	Collision collisionB = { poly, mtv };
+	Collision collisionA = { circle, mtv,1 };
+	Collision collisionB = { poly, mtv ,-1};
 	collisions.push_back(collisionA);
 	collisions.push_back(collisionB);
 	return collisions;
@@ -509,8 +513,8 @@ std::vector<Collision> CollisionManager::PolygonToBoxCollisionCheck(PolygonColli
 	}
 
 	// Create collision objects and add them to the vector
-	Collision collisionA(B, mtv);
-	Collision collisionB(A, -mtv);
+	Collision collisionA(B, mtv,1);
+	Collision collisionB(A, -mtv,1);
 	collisions.push_back(collisionA);
 	collisions.push_back(collisionB);
 

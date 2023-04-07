@@ -2,6 +2,7 @@
 
 #include "CollisionManager.h"
 #include "CollsionVisualiser.h"
+#include "CollisionResolver.h"
 
 TimeManager Engine::systemTimer;
 TimeManager Engine::deltaTimer;
@@ -20,6 +21,8 @@ void Engine::Start()
 	AssetManager::Init();
 	
 	InputManager::Init();
+
+	CollisionResolver::Initialize();
 
 	cursor = AssetManager::GetSprite("cursor");
 		
@@ -45,6 +48,8 @@ void Engine::Start()
 
 		FrameCap();
 	}
+
+	CollisionResolver::Shutdown();
 
 	AssetManager::Clear();
 

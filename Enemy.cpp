@@ -14,7 +14,7 @@ Enemy::Enemy(Vector2 position) : Character(position)
 
 	collider = new BoxCollider;
 	BoxCollider* boxCollider = static_cast<BoxCollider*>(collider);
-	boxCollider->SetUp(transform, transform->GetPosition(), Vector2(spriteRenderer->GetSprite()->textureWidth, spriteRenderer->GetSprite()->textureHeight));
+	boxCollider->SetUp((GameObject*)this, transform->GetPosition(), Vector2(spriteRenderer->GetSprite()->textureWidth, spriteRenderer->GetSprite()->textureHeight));
 	boxCollider->GetOnCollisionEnterEvent() = std::bind(&Enemy::OnCollisionEnter, this, std::placeholders::_1);
 
 	//collider = new CircleCollider;
@@ -46,23 +46,12 @@ void Enemy::Update(float deltaTime)
 	
 	collider->UpdatePosition(transform->GetPosition());
 
-	//PatrolState(deltaTime);
+	PatrolState(deltaTime);
 }
 
 void Enemy::OnCollisionEnter(Collision collision)
 {
-	//if (other->GetGameObject()->CompareTag(Tag::ENEMY))
-	//{
-	//	Vector2 direction = transform->GetPosition() - other->GetGameObject()->GetTransform()->GetPosition();
-	//	direction.normalize();
-	//	transform->SetPosition(transform->GetPosition() += direction * 1.5);
-	//}
 
-	Vector2 mtv = collision.GetMinimumTranslationVector();
-
-	transform->SetPosition(transform->GetPosition() - mtv);
-
-	// in circle to box collision - circle mtv needs to be reversed (+ mtv)
 }
 
 
