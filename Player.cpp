@@ -12,7 +12,7 @@ Player::Player(Vector2 position) : Character(position)
 
 	//collider = new BoxCollider;
 	//BoxCollider* boxCollider = static_cast<BoxCollider*>(collider);
-	//boxCollider->SetUp((GameObject*)this, transform->GetPosition(), Vector2(spriteRenderer->GetSprite()->textureWidth, spriteRenderer->GetSprite()->textureHeight));
+	//boxCollider->SetUp((GameObject*)this, transform->GetPosition(), Vector2(100, 100));
 	//boxCollider->GetOnCollisionEnterEvent() = std::bind(&Player::OnCollisionEnter, this, std::placeholders::_1);
 
 	collider = new CircleCollider;

@@ -44,13 +44,13 @@ void LayoutTileMap::PopulateLevel(std::string id, Vector2 position)
 	{
 		// random treee 1 - 6
 		int treeType = MathUtility::RandomRange(1, 6);
-		GameObject::Instantiate(new Prop(position, "Tree_" + std::to_string(treeType), ColliderType::None, SortingLayer::TreesLayer, true, false));
+		GameObject::Instantiate(new Prop(position, "Tree_" + std::to_string(treeType), ColliderType::BOX, SortingLayer::TreesLayer, true, false));
 	}
 	else if (id == "C")
 	{
 		// random car 1 - 2
 		int carType = MathUtility::RandomRange(1, 3);
-		GameObject::Instantiate(new Prop(position, "Car_" + std::to_string(carType), ColliderType::BOX, SortingLayer::PropsLayer, true, false));
+		GameObject::Instantiate(new Prop(position, "Car_" + std::to_string(carType), ColliderType::POLYGON, SortingLayer::PropsLayer, true, false));
 	}
 	else if (id == "P")
 	{

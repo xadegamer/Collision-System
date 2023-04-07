@@ -4,7 +4,7 @@
 #include "CircleCollider.h"
 #include "PolygonCollider.h"
 
-enum class ColliderType {None,BOX,CIRCLE};
+enum class ColliderType {BOX,CIRCLE, POLYGON};
 
 class Prop : public GameObject
 {

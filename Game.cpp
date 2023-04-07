@@ -81,6 +81,5 @@ void Game::LateUpdate(float deltaTime)
 
 void Game::Render()
 {
-	GameObject::DrawAllActive();
-	//GameObject::ShowAllDebugVisuals();
+
 }

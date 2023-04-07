@@ -78,7 +78,7 @@ void Engine::Render()
 
 	SDLManager::CursorBlit(cursor->texture, InputManager::GetMousePosition().x, InputManager::GetMousePosition().y, true);
 
-	SDL_SetRenderDrawColor(SDLManager::GetRenderer(), 0, 0, 255, 255);
+	SDL_SetRenderDrawColor(SDLManager::GetRenderer(), 0, 0, 0, 255);
 
 	SDL_RenderPresent(SDLManager::GetRenderer());
 

@@ -421,8 +421,6 @@ bool CollisionManager::PolygonToCircleCollisionCheck(PolygonCollider* poly, Circ
 
 bool CollisionManager::PolygonToBoxCollisionCheck(PolygonCollider* poly, BoxCollider* box, int buffer)
 {
-	std::vector<Collision> collisions;
-
 	// Get the world points of both polygons
 	std::vector<Vector2> polyAPoints = poly->GetWorldPoints();
 	std::vector<Vector2> polyBPoints = box->GetWorldPoints();
@@ -492,8 +490,9 @@ bool CollisionManager::PolygonToBoxCollisionCheck(PolygonCollider* poly, BoxColl
 	}
 
 	// Create collision objects and add them to the vector
-	Collision collisionB(box, mtv, 1);
-	Collision collisionA(poly, -mtv, 1);
+
+	poly ->SetCollisionProperty(box, mtv, 1);
+	box->SetCollisionProperty(poly, -mtv, 1);
 
 	return  true;
 }

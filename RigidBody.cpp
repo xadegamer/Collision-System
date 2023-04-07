@@ -27,6 +27,17 @@ void RigidBody::MoveToPosition(Vector2 position, float speed, float deltaTime)
 	this->position += velocity * deltaTime;	
 }
 
+void RigidBody::MoveInDirection(Vector2 direction, float speed, float deltaTime)
+{
+	// move in a direction with velocity and a constant speed
+
+	// set the velocity to the direction multiplied by the speed
+	velocity = direction * speed;
+
+	// move the object with the velocity
+	this->position += velocity * deltaTime;
+}
+
 void RigidBody::Update(float deltaTime)
 {
 	if (!isEnabled) return;

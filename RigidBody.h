@@ -36,6 +36,8 @@ public:
 	inline void ResetForceY() { this->force.y = 0; }
 
 	void MoveToPosition(Vector2 position, float speed, float deltaTime);
+
+	void MoveInDirection (Vector2 direction, float speed, float deltaTime);
 	
 	//Friction
 	inline void ApplyFriction(Vector2 friction) { this->friction = friction; }

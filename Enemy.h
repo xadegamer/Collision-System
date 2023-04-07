@@ -26,8 +26,10 @@ public:
 
 	void Update(float deltaTime) override;
 
+	void LateUpdate(float deltaTime) override;
+
 	void OnCollisionEnter(Collision collision) override;
 
-	void PatrolState(float deltaTime);
+	bool IsOutSideScreen();
 };
 

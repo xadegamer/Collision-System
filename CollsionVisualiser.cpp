@@ -74,7 +74,7 @@ void CollsionVisualiser::DrawAllColliders()
 		if (boxCollider != nullptr)
 		{
 			DrawBoxAtPosition(SDL_Color{ 0, 255, 0, 255 }, boxCollider->GetPosition(), boxCollider->GetWidth(), boxCollider->GetHeight());
-			DrawPolygon(SDL_Color{ 0, 255, 0, 255 }, boxCollider->GetWorldPoints());
+		//	DrawPolygon(SDL_Color{ 0, 255, 0, 255 }, boxCollider->GetWorldPoints());
 			continue;
 		}
 

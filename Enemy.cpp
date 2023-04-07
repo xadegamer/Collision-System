@@ -12,25 +12,29 @@ Enemy::Enemy(Vector2 position) : Character(position)
 	
 	rigidBody->SetPosition(transform->GetPosition());
 
-	collider = new BoxCollider;
-	BoxCollider* boxCollider = static_cast<BoxCollider*>(collider);
-	boxCollider->SetUp((GameObject*)this, transform->GetPosition(), Vector2(spriteRenderer->GetSprite()->textureWidth, spriteRenderer->GetSprite()->textureHeight));
-	boxCollider->GetOnCollisionEnterEvent() = std::bind(&Enemy::OnCollisionEnter, this, std::placeholders::_1);
+	//collider = new BoxCollider;
+	//BoxCollider* boxCollider = static_cast<BoxCollider*>(collider);
+	//boxCollider->SetUp((GameObject*)this, transform->GetPosition(), Vector2(spriteRenderer->GetSprite()->textureWidth, spriteRenderer->GetSprite()->textureHeight));
+	//boxCollider->GetOnCollisionEnterEvent() = std::bind(&Enemy::OnCollisionEnter, this, std::placeholders::_1);
 
 	//collider = new CircleCollider;
 	//CircleCollider* circleCollider = static_cast<CircleCollider*>(collider);
 	//circleCollider->SetUp(transform,transform->GetPosition(), spriteRenderer->GetSprite()->textureWidth / 2);
 	//circleCollider->GetOnCollisionEnterEvent() = std::bind(&Enemy::OnCollisionEnter, this, std::placeholders::_1);
 
-	//collider = new PolygonCollider;
-	//PolygonCollider* polygonCollider = static_cast<PolygonCollider*>(collider);
-	//std::vector<Vector2> points = { Vector2(0,0), Vector2(0, 100), Vector2(100, 100), Vector2(100,0) };
-	//polygonCollider->SetUp((GameObject*)this, transform->GetPosition(), points);
-	//polygonCollider->GetOnCollisionEnterEvent() = std::bind(&Enemy::OnCollisionEnter, this, std::placeholders::_1);
+	collider = new PolygonCollider;
+	PolygonCollider* polygonCollider = static_cast<PolygonCollider*>(collider);
+		std::vector<Vector2> points = { Vector2(50,50), Vector2(-20, 120), Vector2(50, 200), Vector2(200, 200), Vector2(200, 50) };
+	polygonCollider->SetUp((GameObject*)this, transform->GetPosition(), points);
+	polygonCollider->GetOnCollisionEnterEvent() = std::bind(&Enemy::OnCollisionEnter, this, std::placeholders::_1);
 	
 	spawnPoint = transform->GetPosition();
 	
 	currentPatrolPoint = MathUtility::RandomPositionAroundRange(spawnPoint, 300);
+
+	moveSpeed = 100;
+
+	direction = Vector2(1, 0);
 }
 
 Enemy::~Enemy()
@@ -40,32 +44,33 @@ Enemy::~Enemy()
 
 void Enemy::Update(float deltaTime)
 {
-	Character::Update(deltaTime);
-	
-	if (!canMove) return;
-	
+	Character::Update(deltaTime);	
+
 	collider->UpdatePosition(transform->GetPosition());
 
-	PatrolState(deltaTime);
+	if (IsOutSideScreen())
+	{
+		direction * -1;
+	}
+}
+
+void Enemy::LateUpdate(float deltaTime)
+{
+	rigidBody->Update(deltaTime);
+	rigidBody->MoveInDirection(direction, moveSpeed, deltaTime);
+	transform->Translate(rigidBody->GetPosition());
 }
 
 void Enemy::OnCollisionEnter(Collision collision)
 {
-
+	direction = -collision.GetMinimumTranslationVector().Normalized();
 }
 
-
-void Enemy::PatrolState(float deltaTime)
+bool Enemy::IsOutSideScreen()
 {
-	if (MathUtility::DistanceBetweenTwoPoints(transform->GetPosition(), currentPatrolPoint) <= 5)
+	if (transform->GetPosition().x < 0 || transform->GetPosition().x > Engine::SCREEN_WIDTH || transform->GetPosition().y < 0 || transform->GetPosition().y > Engine::SCREEN_HEIGHT)
 	{
-		rigidBody->SetVelocity(Vector2(0, 0));
-		currentPatrolPoint = MathUtility::RandomPositionAroundRange(spawnPoint, 300);
+		return true;
 	}
-	else
-	{
-		transform->SetRotation(MathUtility::GetAngleFromTraget(transform->GetPosition() - collider->GetCenter(), currentPatrolPoint - transform->GetPosition(), spriteRenderer->GetSprite()->textureHeight, spriteRenderer->GetSprite()->textureWidth));
-		rigidBody->MoveToPosition(currentPatrolPoint, 100, deltaTime);
-		transform->SetPosition(rigidBody->GetPosition());
-	}
+	return false;
 }
