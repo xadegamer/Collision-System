@@ -3,7 +3,7 @@
 #include <set>
 
 
-std::function <void(std::vector<Collision> other)> CollisionManager::OnAnyCollisionEvent = nullptr;
+std::function <void(Collider* A, Collider* B)> CollisionManager::OnAnyCollisionEvent = nullptr;
 
 const static int s_buffer = 1;
 
@@ -17,20 +17,20 @@ void CollisionManager::HandleAllCollision()
 			Collider* colliderB = Collider::GetAllColliders()[j];
 			if (colliderA != colliderB && colliderA->GetIsEnabled() && colliderB->GetIsEnabled())
 			{
-				vector<Collision> collision = CollisionManager::CheckCollision(colliderA, colliderB);
 
-				if (collision.size() != 0)
+				if (CollisionManager::CheckCollision(colliderA, colliderB))
 				{
-					if (OnAnyCollisionEvent != nullptr) OnAnyCollisionEvent(collision);
-					colliderA->OnCollision(collision[0]);
-					colliderB->OnCollision(collision[1]);
+					if (OnAnyCollisionEvent != nullptr) OnAnyCollisionEvent(colliderA, colliderB);
+
+					colliderA->OnCollision();
+					colliderB->OnCollision();
 				}
 			}
 		}
 	}
 }
 
-std::vector<Collision> CollisionManager::CheckCollision(Collider* colA, Collider* colB)
+bool CollisionManager::CheckCollision(Collider* colA, Collider* colB)
 {
 	BoxCollider* boxA = dynamic_cast<BoxCollider*>(colA);
 	BoxCollider* boxB = dynamic_cast<BoxCollider*>(colB);
@@ -79,29 +79,27 @@ std::vector<Collision> CollisionManager::CheckCollision(Collider* colA, Collider
 	}
 }
 
-std::vector<Collision> CollisionManager::BoxToBoxCollisionCheck(BoxCollider* A, BoxCollider* B, int buffer)
+bool CollisionManager::BoxToBoxCollisionCheck(BoxCollider* colA, BoxCollider* colB, int buffer)
 {
-	std::vector<Collision> collisions;
-
 	// Get the world points of both polygons
-	std::vector<Vector2> polyAPoints = A->GetWorldPoints();
-	std::vector<Vector2> polyBPoints = B->GetWorldPoints();
+	std::vector<Vector2> polyAPoints = colA->GetWorldPoints();
+	std::vector<Vector2> polyBPoints = colB->GetWorldPoints();
 
 	// Set up unique axes
 	std::set<Vector2> uniqueAxes;
 
 	// Get axes from polygon A
-	for (int i = 0; i < A->GetNumPoints(); i++)
+	for (int i = 0; i < colA->GetNumPoints(); i++)
 	{
-		Vector2 edge = polyAPoints[(i + 1) % A->GetNumPoints()] - polyAPoints[i];
+		Vector2 edge = polyAPoints[(i + 1) % colA->GetNumPoints()] - polyAPoints[i];
 		Vector2 normal = Vector2(-edge.y, edge.x).Normalized();
 		uniqueAxes.insert(normal);
 	}
 
 	// Get axes from polygon B
-	for (int i = 0; i < B->GetNumPoints(); i++)
+	for (int i = 0; i < colB->GetNumPoints(); i++)
 	{
-		Vector2 edge = polyBPoints[(i + 1) % B->GetNumPoints()] - polyBPoints[i];
+		Vector2 edge = polyBPoints[(i + 1) % colB->GetNumPoints()] - polyBPoints[i];
 		Vector2 normal = Vector2(-edge.y, edge.x).Normalized();
 		uniqueAxes.insert(normal);
 	}
@@ -137,7 +135,7 @@ std::vector<Collision> CollisionManager::BoxToBoxCollisionCheck(BoxCollider* A, 
 		if (dist > buffer)
 		{
 			// If no overlap on this axis, exit early
-			return collisions;
+			return false;
 		}
 		else if (std::abs(dist) < std::abs(minOverlap))
 		{
@@ -152,43 +150,33 @@ std::vector<Collision> CollisionManager::BoxToBoxCollisionCheck(BoxCollider* A, 
 	}
 
 	// Create collision objects and add them to the vector
-	Collision collisionA(B, mtv, 1);
-	Collision collisionB(A, -mtv,1);
-	collisions.push_back(collisionA);
-	collisions.push_back(collisionB);
-
-	return collisions;
+	colA->SetCollisionProperty(colB, mtv, 1);
+	colB->SetCollisionProperty(colA, -mtv, 1);
+	return true;
 }
 
-std::vector<Collision> CollisionManager::CircleToCircleCollsionCheck(CircleCollider* A, CircleCollider* B, int buffer)
+bool CollisionManager::CircleToCircleCollsionCheck(CircleCollider* colA, CircleCollider* colB, int buffer)
 {
-	std::vector<Collision> collisions;
-
 	// Get the distance between the two circles
-	float distance = Vector2::Distance(A->GetPosition(), B->GetPosition());
+	float distance = Vector2::Distance(colA->GetPosition(), colB->GetPosition());
 
 	// Check for collision
-	if (distance <= A->GetRadius() + B->GetRadius() + buffer)
+	if (distance <= colA->GetRadius() + colB->GetRadius() + buffer)
 	{
 		// Calculate the minimum translation vector
-		Vector2 mtv = (B->GetPosition() - A->GetPosition()).Normalized() * ((A->GetRadius() + B->GetRadius() + buffer) - distance);
+		Vector2 mtv = (colB->GetPosition() - colA->GetPosition()).Normalized() * ((colA->GetRadius() + colB->GetRadius() + buffer) - distance);
 
 		// Create collision objects
-		Collision collisionA = { B, mtv,1};
-
-		Collision collisionB = { A, -mtv,1};
-
-		collisions.push_back(collisionA);
-		collisions.push_back(collisionB);
+		colA->SetCollisionProperty(colB, mtv, 1);
+		colB->SetCollisionProperty(colA, -mtv, 1);
+		return true;
 	}
 
-	return collisions;
+	return  false;
 }
 
-std::vector<Collision> CollisionManager::BoxToCircleCollsionCheck(BoxCollider* box, CircleCollider* circle, int buffer)
+bool CollisionManager::BoxToCircleCollsionCheck(BoxCollider* box, CircleCollider* circle, int buffer)
 {
-	std::vector<Collision> collisions;
-
 	// Get the world points of the polygon collider
 	std::vector<Vector2> polyPoints = box->GetWorldPoints();
 
@@ -247,7 +235,7 @@ std::vector<Collision> CollisionManager::BoxToCircleCollsionCheck(BoxCollider* b
 		float dist = std::max(circleMin - polyMax, polyMin - circleMax);
 		if (dist > buffer)
 		{
-			return std::vector<Collision>();
+			return  false;
 		}
 		else
 		{
@@ -265,36 +253,32 @@ std::vector<Collision> CollisionManager::BoxToCircleCollsionCheck(BoxCollider* b
 	}
 
 	// If no separating axis found, the polygon and circle overlap
-	Collision collisionA =  { circle, mtv , 1};
-	Collision collisionB =  { box, mtv ,-1};
-	collisions.push_back(collisionA);
-	collisions.push_back(collisionB);
-	return collisions;
+	box->SetCollisionProperty(circle, mtv, 1);
+	circle->SetCollisionProperty(box, mtv, -1);
+	return  true;
 }
 
-std::vector<Collision> CollisionManager::PolygonToPolygonCollisionCheck(PolygonCollider* A, PolygonCollider* B, int buffer)
+bool CollisionManager::PolygonToPolygonCollisionCheck(PolygonCollider* colA, PolygonCollider* colB, int buffer)
 {
-	std::vector<Collision> collisions;
-
 	// Get the world points of both polygons
-	std::vector<Vector2> polyAPoints = A->GetWorldPoints();
-	std::vector<Vector2> polyBPoints = B->GetWorldPoints();
+	std::vector<Vector2> polyAPoints = colA->GetWorldPoints();
+	std::vector<Vector2> polyBPoints = colB->GetWorldPoints();
 
 	// Set up unique axes
 	std::set<Vector2> uniqueAxes;
 
 	// Get axes from polygon A
-	for (int i = 0; i < A->GetNumPoints(); i++)
+	for (int i = 0; i < colA->GetNumPoints(); i++)
 	{
-		Vector2 edge = polyAPoints[(i + 1) % A->GetNumPoints()] - polyAPoints[i];
+		Vector2 edge = polyAPoints[(i + 1) % colA->GetNumPoints()] - polyAPoints[i];
 		Vector2 normal = Vector2(-edge.y, edge.x).Normalized();
 		uniqueAxes.insert(normal);
 	}
 
 	// Get axes from polygon B
-	for (int i = 0; i < B->GetNumPoints(); i++)
+	for (int i = 0; i < colB->GetNumPoints(); i++)
 	{
-		Vector2 edge = polyBPoints[(i + 1) % B->GetNumPoints()] - polyBPoints[i];
+		Vector2 edge = polyBPoints[(i + 1) % colB->GetNumPoints()] - polyBPoints[i];
 		Vector2 normal = Vector2(-edge.y, edge.x).Normalized();
 		uniqueAxes.insert(normal);
 	}
@@ -330,7 +314,7 @@ std::vector<Collision> CollisionManager::PolygonToPolygonCollisionCheck(PolygonC
 		if (dist > buffer)
 		{
 			// If no overlap on this axis, exit early
-			return collisions;
+			return  false;
 		}
 		else if (std::abs(dist) < std::abs(minOverlap))
 		{
@@ -345,18 +329,14 @@ std::vector<Collision> CollisionManager::PolygonToPolygonCollisionCheck(PolygonC
 	}
 
 	// Create collision objects and add them to the vector
-	Collision collisionA(B, mtv, 1);
-	Collision collisionB(A, -mtv,1);
-	collisions.push_back(collisionA);
-	collisions.push_back(collisionB);
+	colA ->SetCollisionProperty(colB, mtv, 1);
+	colB ->SetCollisionProperty(colA, -mtv, 1);
 
-	return collisions;
+	return true;
 }
 
-std::vector<Collision> CollisionManager::PolygonToCircleCollisionCheck(PolygonCollider* poly, CircleCollider* circle, int buffer)
+bool CollisionManager::PolygonToCircleCollisionCheck(PolygonCollider* poly, CircleCollider* circle, int buffer)
 {
-	std::vector<Collision> collisions;
-
 	// Get the world points of the polygon collider
 	std::vector<Vector2> polyPoints = poly->GetWorldPoints();
 
@@ -415,7 +395,7 @@ std::vector<Collision> CollisionManager::PolygonToCircleCollisionCheck(PolygonCo
 		float dist = std::max(circleMin - polyMax, polyMin - circleMax);
 		if (dist > buffer)
 		{
-			return std::vector<Collision>();
+			return  false;
 		}
 		else
 		{
@@ -433,36 +413,35 @@ std::vector<Collision> CollisionManager::PolygonToCircleCollisionCheck(PolygonCo
 	}
 
 	// If no separating axis found, the polygon and circle overlap
-	Collision collisionA = { circle, mtv,1 };
-	Collision collisionB = { poly, mtv ,-1};
-	collisions.push_back(collisionA);
-	collisions.push_back(collisionB);
-	return collisions;
+
+	poly->SetCollisionProperty(circle, mtv, 1);
+	circle->SetCollisionProperty(poly, mtv, -1);
+	return true;
 }
 
-std::vector<Collision> CollisionManager::PolygonToBoxCollisionCheck(PolygonCollider* A, BoxCollider* B, int buffer)
+bool CollisionManager::PolygonToBoxCollisionCheck(PolygonCollider* poly, BoxCollider* box, int buffer)
 {
 	std::vector<Collision> collisions;
 
 	// Get the world points of both polygons
-	std::vector<Vector2> polyAPoints = A->GetWorldPoints();
-	std::vector<Vector2> polyBPoints = B->GetWorldPoints();
+	std::vector<Vector2> polyAPoints = poly->GetWorldPoints();
+	std::vector<Vector2> polyBPoints = box->GetWorldPoints();
 
 	// Set up unique axes
 	std::set<Vector2> uniqueAxes;
 
 	// Get axes from polygon A
-	for (int i = 0; i < A->GetNumPoints(); i++)
+	for (int i = 0; i < poly->GetNumPoints(); i++)
 	{
-		Vector2 edge = polyAPoints[(i + 1) % A->GetNumPoints()] - polyAPoints[i];
+		Vector2 edge = polyAPoints[(i + 1) % poly->GetNumPoints()] - polyAPoints[i];
 		Vector2 normal = Vector2(-edge.y, edge.x).Normalized();
 		uniqueAxes.insert(normal);
 	}
 
 	// Get axes from polygon B
-	for (int i = 0; i < B->GetNumPoints(); i++)
+	for (int i = 0; i < box->GetNumPoints(); i++)
 	{
-		Vector2 edge = polyBPoints[(i + 1) % B->GetNumPoints()] - polyBPoints[i];
+		Vector2 edge = polyBPoints[(i + 1) % box->GetNumPoints()] - polyBPoints[i];
 		Vector2 normal = Vector2(-edge.y, edge.x).Normalized();
 		uniqueAxes.insert(normal);
 	}
@@ -498,7 +477,7 @@ std::vector<Collision> CollisionManager::PolygonToBoxCollisionCheck(PolygonColli
 		if (dist > buffer)
 		{
 			// If no overlap on this axis, exit early
-			return collisions;
+			return  false;
 		}
 		else if (std::abs(dist) < std::abs(minOverlap))
 		{
@@ -513,12 +492,10 @@ std::vector<Collision> CollisionManager::PolygonToBoxCollisionCheck(PolygonColli
 	}
 
 	// Create collision objects and add them to the vector
-	Collision collisionA(B, mtv,1);
-	Collision collisionB(A, -mtv,1);
-	collisions.push_back(collisionA);
-	collisions.push_back(collisionB);
+	Collision collisionB(box, mtv, 1);
+	Collision collisionA(poly, -mtv, 1);
 
-	return collisions;
+	return  true;
 }
 
 double CollisionManager::DistanceSquared(int x1, int y1, int x2, int y2)

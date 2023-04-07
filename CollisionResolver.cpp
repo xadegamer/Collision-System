@@ -4,7 +4,7 @@
 
 void CollisionResolver::Initialize()
 {
-	CollisionManager::OnAnyCollisionEvent = std::bind(&CollisionResolver::ResolveCollision, std::placeholders::_1);
+	CollisionManager::OnAnyCollisionEvent  = ResolveCollision;
 }
 
 void CollisionResolver::Shutdown()
@@ -12,11 +12,11 @@ void CollisionResolver::Shutdown()
 	CollisionManager::OnAnyCollisionEvent = nullptr;
 }
 
-void CollisionResolver::ResolveCollision(std::vector<Collision> collisions)
+void CollisionResolver::ResolveCollision(Collider* colA, Collider* colB)
 {
-	for (size_t i = 0; i < collisions.size(); i++)
-	{
-		GameObject* collided = (GameObject*)collisions[i].GetColliderHit()->GetOwner();
-		collided->GetTransform()->SetPosition(collided->GetTransform()->GetPosition() + (collisions[i].GetMinimumTranslationVector() * collisions[i].GetImpulse()));
-	}
+	GameObject* gameObjectA = (GameObject*)colA->GetOwner();
+	gameObjectA->GetTransform()->SetPosition(gameObjectA->GetTransform()->GetPosition() - (colA->GetCollision().GetMinimumTranslationVector() * colA->GetCollision().GetImpulse()));
+
+	GameObject* gameObjectB = (GameObject*)colB->GetOwner();
+	gameObjectB->GetTransform()->SetPosition(gameObjectB->GetTransform()->GetPosition() - (colB->GetCollision().GetMinimumTranslationVector() * colB->GetCollision().GetImpulse()));
 }

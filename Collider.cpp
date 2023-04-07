@@ -28,9 +28,16 @@ void Collider::SetUp(void* owner, Vector2 nextPosition, bool isStatic)
 	UpdatePosition(nextPosition);
 }
 
-void Collider::OnCollision(Collision other)
+void Collider::OnCollision()
 {
-	if (other.GetColliderHit() == nullptr || !isEnabled) return;
+	if (collision.GetColliderHit() == nullptr || !isEnabled) return;
 	
-	if (OnCollisionEnterEvent != nullptr) OnCollisionEnterEvent(other);
+	if (OnCollisionEnterEvent != nullptr) OnCollisionEnterEvent(collision);
+}
+
+void Collider::SetCollisionProperty(Collider* colliderHit, Vector2 minimumTranslationVector, float impulse)
+{
+	collision.SetColliderHit(colliderHit);
+	collision.SetMinimumTranslationVector(minimumTranslationVector);
+	collision.SetImpulse(impulse);
 }

@@ -18,6 +18,9 @@ class Collider
 protected:
 
 	static std::vector<Collider*> allColliders;
+
+	Collision collision;
+
 	void* owner;
 	Vector2 position;
 	bool isEnabled;
@@ -40,7 +43,11 @@ public:
 
 	virtual Vector2 GetCenter() = 0;
 
-	void OnCollision(Collision other);
+	void OnCollision();
+
+	void SetCollisionProperty(Collider* colliderHit, Vector2 minimumTranslationVector, float impulse);
+
+	inline Collision GetCollision() { return collision; }
 
 	inline Vector2 GetPosition() { return position; }
 

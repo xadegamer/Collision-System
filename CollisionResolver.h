@@ -12,6 +12,6 @@ public:
 
 	static void Shutdown();
 
-	static void ResolveCollision(std::vector<Collision> collisions);
+	static void ResolveCollision(Collider* A, Collider* B);
 };
 
