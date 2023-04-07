@@ -12,7 +12,7 @@ void CircleCollider::UpdatePosition(Vector2 nextPosition)
 	position = currentPosition;
 }
 
-Vector2 CircleCollider::GetCentre()
+Vector2 CircleCollider::GetCenter()
 {
 	return position;
 }

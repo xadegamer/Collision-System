@@ -3,13 +3,15 @@
 #include "Character.h"
 #include "BoxCollider.h"
 #include "CircleCollider.h"
+#include "PolygonCollider.h"
+
 #include <functional>
 
 class Enemy : public Character
 {
 private:
 
-	CircleCollider* circleCollider;
+	Collider* collider;
 
 	Vector2 spawnPoint;
 	Vector2 currentPatrolPoint;
@@ -24,7 +26,7 @@ public:
 
 	void Update(float deltaTime) override;
 
-	void OnCollisionEnter(Collider* other) override;
+	void OnCollisionEnter(Collision collision) override;
 
 	void PatrolState(float deltaTime);
 };

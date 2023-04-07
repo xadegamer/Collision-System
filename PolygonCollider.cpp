@@ -12,7 +12,7 @@ void PolygonCollider::UpdatePosition(Vector2 nextPosition)
 	position = nextPosition;
 }
 
-Vector2 PolygonCollider::GetCentre()
+Vector2 PolygonCollider::GetCenter()
 {
 	return position;
 }

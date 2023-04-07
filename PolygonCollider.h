@@ -17,7 +17,7 @@ public:
 
 	void UpdatePosition(Vector2 nextPosition) override;
 
-	Vector2 GetCentre() override;
+	Vector2 GetCenter() override;
 
 	inline int GetNumPoints() { return num_points; }
 

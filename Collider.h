@@ -9,6 +9,10 @@
 #include <iostream>
 #include <string>
 
+#include "Collider.h"
+
+#include "Collision.h"
+
 class Collider
 {	
 protected:
@@ -20,11 +24,11 @@ protected:
 	bool isTrigger;
 	bool isStatic;
 	Collider* currentCollidedObject;
-	std::function <void(Collider* other)> OnCollisionEnterEvent;
+	std::function <void(Collision other)> OnCollisionEnterEvent;
 	
 public:
 	
-	inline std::function <void(Collider* other)>& GetOnCollisionEnterEvent() { return OnCollisionEnterEvent; }
+	inline std::function <void(Collision other)>& GetOnCollisionEnterEvent() { return OnCollisionEnterEvent; }
 	
 	Collider();
 	
@@ -34,9 +38,9 @@ public:
 
 	virtual void UpdatePosition(Vector2 nextPosition) = 0;
 
-	virtual Vector2 GetCentre() = 0;
+	virtual Vector2 GetCenter() = 0;
 
-	void OnCollision(Collider* other);
+	void OnCollision(Collision other);
 
 	inline Vector2 GetPosition() { return position; }
 

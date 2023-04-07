@@ -29,6 +29,6 @@ public:
 
 	void LateUpdate(float deltaTime) override;
 	
-	void OnCollisionEnter(Collider* other) override;
+	void OnCollisionEnter(Collision collision) override;
 };
 

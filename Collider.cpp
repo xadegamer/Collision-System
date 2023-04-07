@@ -28,9 +28,9 @@ void Collider::SetUp(void* owner, Vector2 nextPosition, bool isStatic)
 	UpdatePosition(nextPosition);
 }
 
-void Collider::OnCollision(Collider* other)
+void Collider::OnCollision(Collision other)
 {
-	if (other == nullptr || !isEnabled) return;
+	if (other.GetColliderHit() == nullptr || !isEnabled) return;
 	
 	if (OnCollisionEnterEvent != nullptr) OnCollisionEnterEvent(other);
 }

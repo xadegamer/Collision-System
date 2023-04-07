@@ -15,6 +15,6 @@ public:
 
 	inline float GetRadius() { return radius; };
 
-	Vector2 GetCentre() override;
+	Vector2 GetCenter() override;
 };
 

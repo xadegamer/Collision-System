@@ -14,11 +14,13 @@ public:
 
 	void UpdatePosition(Vector2 nextPosition) override;
 
-	Vector2 GetCentre() override;
+	Vector2 GetCenter() override;
 
 	inline int GetWidth() { return width; }
 
 	inline int GetHeight() { return height; }
+
+	inline int GetNumPoints() { return GetWorldPoints().size(); }
 
 	std::vector<Vector2> GetWorldPoints();
 };

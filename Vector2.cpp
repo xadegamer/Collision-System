@@ -106,6 +106,11 @@ float Vector2::dist(const Vector2& v) const
 	return static_cast<float>(std::sqrt((v.x - x) * (v.x - x) + (v.y - y) * (v.y - y)));
 }
 
+Vector2 Vector2::Perpendicular()const
+{
+	return Vector2(-y, x);
+}
+
 Vector2 Vector2::normalize()
 {
 	float length = dist(Vector2(0, 0));
@@ -148,6 +153,11 @@ float Vector2::Dot(Vector2 v1, Vector2 v2)
 Vector2 Vector2::Zero()
 {
 	return Vector2(0, 0);
+}
+
+Vector2 Vector2::Clamp(Vector2 v, Vector2 min, Vector2 max)
+{
+	return Vector2(std::min(std::max(v.x, min.x), max.x), std::min(std::max(v.y, min.y), max.y));
 }
 
 float Vector2::Length() const

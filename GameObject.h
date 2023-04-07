@@ -14,7 +14,9 @@
 #include "Vector2.h"
 #include "MathUtility.h"
 
-class Collider;
+#include "Collider.h"
+
+#include "Collision.h"
 
 enum Tag
 {
@@ -112,7 +114,7 @@ public:
 	}
 
 
-	virtual void OnCollisionEnter(Collider* other) {};
+	virtual void OnCollisionEnter(Collision collision) {};
 
 	void CheckComponent(Component* newCom);
 	

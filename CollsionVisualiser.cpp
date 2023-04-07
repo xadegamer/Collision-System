@@ -65,7 +65,7 @@ void CollsionVisualiser::DrawAllColliders()
 		CircleCollider* circleCollider = dynamic_cast<CircleCollider*>(colliderA);
 		if (circleCollider != nullptr)
 		{
-			DrawCircleAtPosition(SDL_Color{ 0, 255, 0, 255 }, circleCollider->GetCentre(), circleCollider->GetRadius());
+			DrawCircleAtPosition(SDL_Color{ 0, 255, 0, 255 }, circleCollider->GetCenter(), circleCollider->GetRadius());
 			continue;
 		}
 
@@ -74,6 +74,7 @@ void CollsionVisualiser::DrawAllColliders()
 		if (boxCollider != nullptr)
 		{
 			DrawBoxAtPosition(SDL_Color{ 0, 255, 0, 255 }, boxCollider->GetPosition(), boxCollider->GetWidth(), boxCollider->GetHeight());
+			DrawPolygon(SDL_Color{ 0, 255, 0, 255 }, boxCollider->GetWorldPoints());
 			continue;
 		}
 

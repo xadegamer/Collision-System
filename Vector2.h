@@ -14,6 +14,8 @@ public:
 	float dist(const Vector2& v) const;
 	bool empty() { return (x == 0 && y == 0) ? true : false; }
 
+	Vector2 Perpendicular()const;
+
 	Vector2 normalize();
 
 	Vector2 Normalized() const;
@@ -27,6 +29,8 @@ public:
 	static float Dot(Vector2 v1, Vector2 v2);
 
 	static Vector2 Zero();
+
+	static Vector2 Clamp (Vector2 v, Vector2 min, Vector2 max);
 
 	float Length() const;
 

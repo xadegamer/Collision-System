@@ -12,9 +12,21 @@ Enemy::Enemy(Vector2 position) : Character(position)
 	
 	rigidBody->SetPosition(transform->GetPosition());
 
-	circleCollider = new CircleCollider;
-	circleCollider->SetUp(transform,transform->GetPosition(), spriteRenderer->GetSprite()->textureWidth / 2, 1);
-	circleCollider->GetOnCollisionEnterEvent() = std::bind(&Character::OnCollisionEnter, this, std::placeholders::_1);
+	collider = new BoxCollider;
+	BoxCollider* boxCollider = static_cast<BoxCollider*>(collider);
+	boxCollider->SetUp(transform, transform->GetPosition(), Vector2(spriteRenderer->GetSprite()->textureWidth, spriteRenderer->GetSprite()->textureHeight));
+	boxCollider->GetOnCollisionEnterEvent() = std::bind(&Enemy::OnCollisionEnter, this, std::placeholders::_1);
+
+	//collider = new CircleCollider;
+	//CircleCollider* circleCollider = static_cast<CircleCollider*>(collider);
+	//circleCollider->SetUp(transform,transform->GetPosition(), spriteRenderer->GetSprite()->textureWidth / 2);
+	//circleCollider->GetOnCollisionEnterEvent() = std::bind(&Enemy::OnCollisionEnter, this, std::placeholders::_1);
+
+	//collider = new PolygonCollider;
+	//PolygonCollider* polygonCollider = static_cast<PolygonCollider*>(collider);
+	//std::vector<Vector2> points = { Vector2(0,0), Vector2(0, 100), Vector2(100, 100), Vector2(100,0) };
+	//polygonCollider->SetUp((GameObject*)this, transform->GetPosition(), points);
+	//polygonCollider->GetOnCollisionEnterEvent() = std::bind(&Enemy::OnCollisionEnter, this, std::placeholders::_1);
 	
 	spawnPoint = transform->GetPosition();
 	
@@ -32,12 +44,12 @@ void Enemy::Update(float deltaTime)
 	
 	if (!canMove) return;
 	
-	circleCollider->UpdatePosition(transform->GetPosition());
+	collider->UpdatePosition(transform->GetPosition());
 
-	PatrolState(deltaTime);
+	//PatrolState(deltaTime);
 }
 
-void Enemy::OnCollisionEnter(Collider* other)
+void Enemy::OnCollisionEnter(Collision collision)
 {
 	//if (other->GetGameObject()->CompareTag(Tag::ENEMY))
 	//{
@@ -45,6 +57,12 @@ void Enemy::OnCollisionEnter(Collider* other)
 	//	direction.normalize();
 	//	transform->SetPosition(transform->GetPosition() += direction * 1.5);
 	//}
+
+	Vector2 mtv = collision.GetMinimumTranslationVector();
+
+	transform->SetPosition(transform->GetPosition() - mtv);
+
+	// in circle to box collision - circle mtv needs to be reversed (+ mtv)
 }
 
 
@@ -57,7 +75,7 @@ void Enemy::PatrolState(float deltaTime)
 	}
 	else
 	{
-		transform->SetRotation(MathUtility::GetAngleFromTraget(transform->GetPosition() - circleCollider->GetCentre(), currentPatrolPoint - transform->GetPosition(), spriteRenderer->GetSprite()->textureHeight, spriteRenderer->GetSprite()->textureWidth));
+		transform->SetRotation(MathUtility::GetAngleFromTraget(transform->GetPosition() - collider->GetCenter(), currentPatrolPoint - transform->GetPosition(), spriteRenderer->GetSprite()->textureHeight, spriteRenderer->GetSprite()->textureWidth));
 		rigidBody->MoveToPosition(currentPatrolPoint, 100, deltaTime);
 		transform->SetPosition(rigidBody->GetPosition());
 	}

@@ -12,7 +12,7 @@ void BoxCollider::UpdatePosition(Vector2 nextPosition)
 	position = nextPosition;
 }
 
-Vector2 BoxCollider::GetCentre()
+Vector2 BoxCollider::GetCenter()
 {
 	return Vector2(position.x + width / 2, position.y + height / 2);
 }
