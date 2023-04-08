@@ -15,8 +15,8 @@ Enemy::Enemy(Vector2 position) : Character(position)
 	//collider = new CircleCollider { (GameObject*)this, transform->GetPosition(), 50 };
 
 	std::vector<Vector2> points = { Vector2(50,50), Vector2(-20, 120), Vector2(50, 200), Vector2(200, 200), Vector2(200, 50) };
-	collider = new PolygonCollider((GameObject*)this, transform->GetPosition(), points);
 
+	collider = new PolygonCollider((GameObject*)this, transform->GetPosition(), points);
 
 	collider->GetOnCollisionEnterEvent() = std::bind(&Enemy::OnCollisionEnter, this, std::placeholders::_1);
 
@@ -48,9 +48,9 @@ void Enemy::Update(float deltaTime)
 
 void Enemy::LateUpdate(float deltaTime)
 {
-	//rigidBody->Update(deltaTime);
-	//rigidBody->MoveInDirection(direction, moveSpeed, deltaTime);
-	//transform->Translate(rigidBody->GetPosition());
+	rigidBody->Update(deltaTime);
+	rigidBody->MoveInDirection(direction, moveSpeed, deltaTime);
+	transform->Translate(rigidBody->GetPosition());
 }
 
 void Enemy::OnCollisionEnter(Collision collision)

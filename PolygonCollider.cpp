@@ -4,6 +4,7 @@ PolygonCollider::PolygonCollider(void* owner, Vector2 nextPosition, std::vector<
 {
 	points = _points;
 	num_points = points.size();
+	UpdatePosition(nextPosition);
 }
 
 void PolygonCollider::UpdatePosition(Vector2 nextPosition)

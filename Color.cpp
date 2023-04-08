@@ -9,7 +9,6 @@ SDL_Color Color::GetColor(ColorType colorType)
 	switch (colorType)
 	{
 		case ColorType::White:	return { 255, 255, 255, 255 };
-		case ColorType::Black:  return { 0, 0, 0, 255 };
 		case ColorType::Red:    return { 255, 0, 0, 255 };
 		case ColorType::Green:  return { 0, 255, 0, 255 };
 		case ColorType::Blue:   return { 0, 0, 255, 255 };
@@ -36,6 +35,7 @@ SDL_Color Color::GetColor(ColorType colorType)
 		case ColorType::DarkPurple:  return { 128, 0, 128, 255 };
 		case ColorType::DarkPink:    return { 255, 20, 147, 255 };
 		case ColorType::DarkBrown:   return { 139, 69, 19, 255 };
+		case ColorType::Black:  return { 0, 0, 0, 255 };
 		case ColorType::Transparent: return { 0, 0, 0, 0 };
 		default: return { 255, 255, 255, 255 };
 	}
@@ -43,5 +43,5 @@ SDL_Color Color::GetColor(ColorType colorType)
 
 SDL_Color Color::GetRandomColor()
 {
-	return GetColor (static_cast<ColorType>(rand() % 27));
+	return GetColor (static_cast<ColorType>(rand() % 26));
 }

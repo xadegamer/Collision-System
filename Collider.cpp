@@ -10,7 +10,6 @@ Collider::Collider(void* owner, Vector2 nextPosition, bool isStatic)
 
 	this->owner = owner;
 	this->isStatic = isStatic;
-	UpdatePosition(nextPosition);
 }
 
 Collider::~Collider()

@@ -35,7 +35,7 @@ public:
 	
 	~Collider();
 
-	virtual void UpdatePosition(Vector2 nextPosition) {};
+	virtual void UpdatePosition(Vector2 nextPosition) = 0;
 
 	virtual Vector2 GetCenter() = 0;
 

@@ -4,6 +4,7 @@ BoxCollider::BoxCollider(void* owner, Vector2 nextPosition, Vector2 size, bool i
 {
 	width = size.x;
 	height = size.y;
+	UpdatePosition(nextPosition);
 }
 
 void BoxCollider::UpdatePosition(Vector2 nextPosition)

@@ -15,7 +15,6 @@ class Game
 private:
 
 	bool isRunning;
-	bool showDebug;
 	int maxLevel;	
 	LayoutTileMap* layoutTileMap;
 	
@@ -39,12 +38,6 @@ public:
 
 	void LoadLevel();
 	
-	void ResetGame();
-	
-	void RetryGame();
-	
 	void Quit();
-	
-	void ToggleDebug(bool toggle);
 };
 
