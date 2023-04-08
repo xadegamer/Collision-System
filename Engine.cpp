@@ -8,7 +8,6 @@ TimeManager Engine::systemTimer;
 TimeManager Engine::deltaTimer;
 int Engine::countedFrames = 0;
 Game* Engine::game = nullptr;
-Sprite* Engine::cursor = nullptr;
 
 void Engine::Start()
 {
@@ -18,14 +17,10 @@ void Engine::Start()
 		return;
 	}
 
-	AssetManager::Init();
-	
 	InputManager::Init();
 
 	CollisionResolver::Initialize();
 
-	cursor = AssetManager::GetSprite("cursor");
-		
 	game = new Game();
 
 	game->SetUp();
@@ -51,8 +46,6 @@ void Engine::Start()
 
 	CollisionResolver::Shutdown();
 
-	AssetManager::Clear();
-
 	delete game;
 	game = nullptr;
 }
@@ -75,8 +68,6 @@ void Engine::Render()
 	game->Render();
 
 	CollsionVisualiser::DrawAllColliders();
-
-	SDLManager::CursorBlit(cursor->texture, InputManager::GetMousePosition().x, InputManager::GetMousePosition().y, true);
 
 	SDL_SetRenderDrawColor(SDLManager::GetRenderer(), 0, 0, 0, 255);
 

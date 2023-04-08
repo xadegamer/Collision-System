@@ -14,7 +14,9 @@ private:
 	Collider* collider;
 
 	Vector2 spawnPoint;
+
 	Vector2 currentPatrolPoint;
+
 	Vector2 direction;
 
 	GameObject* target;
@@ -22,6 +24,7 @@ private:
 public:
 
 	Enemy(Vector2 position);
+
 	~Enemy();
 
 	void Update(float deltaTime) override;

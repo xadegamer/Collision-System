@@ -6,8 +6,6 @@
 #include "LayoutTileMap.h"
 
 #include "SDLManager.h"
-#include "AssetManager.h"
-#include "SpriteRenderer.h"
 #include "InputManager.h"
 
 #include <iostream>

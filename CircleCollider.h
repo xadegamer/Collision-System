@@ -9,7 +9,7 @@ private:
 	
 public:
 
-	void SetUp(void* owner, Vector2 nextPosition, float radius, float radiousMutiplier = 1, bool isStatic = false);
+	CircleCollider(void* owner, Vector2 nextPosition, float radius, float radiousMutiplier = 1, bool isStatic = false);
 
 	void UpdatePosition(Vector2 nextPosition) override;
 

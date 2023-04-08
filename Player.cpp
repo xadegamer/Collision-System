@@ -8,23 +8,14 @@ Player::Player(Vector2 position) : Character(position)
 {
 	tag = Tag::PLAYER;
 
-	spriteRenderer->SetSortingOrder(SortingLayer::PlayerLayer);
+//	collider = new BoxCollider { (GameObject*)this, transform->GetPosition(), Vector2(100, 100) };
 
-	//collider = new BoxCollider;
-	//BoxCollider* boxCollider = static_cast<BoxCollider*>(collider);
-	//boxCollider->SetUp((GameObject*)this, transform->GetPosition(), Vector2(100, 100));
-	//boxCollider->GetOnCollisionEnterEvent() = std::bind(&Player::OnCollisionEnter, this, std::placeholders::_1);
+	collider = new CircleCollider { (GameObject*)this, transform->GetPosition(), 50 };
 
-	collider = new CircleCollider;
-	CircleCollider* circleCollider = static_cast<CircleCollider*>(collider);
-	circleCollider->SetUp((GameObject*)this,transform->GetPosition(), spriteRenderer->GetSprite()->textureWidth / 2);
-	circleCollider->GetOnCollisionEnterEvent() = std::bind(&Player::OnCollisionEnter, this, std::placeholders::_1);
-
-	//collider = new PolygonCollider;
-	//PolygonCollider* polygonCollider = static_cast<PolygonCollider*>(collider);
 	//std::vector<Vector2> points = { Vector2(0,0), Vector2(0, 100), Vector2(100, 100), Vector2(100,0) };
-	//polygonCollider->SetUp((GameObject*)this, transform->GetPosition(), points);
-	//polygonCollider->GetOnCollisionEnterEvent() = std::bind(&Player::OnCollisionEnter, this, std::placeholders::_1);
+	//collider = new PolygonCollider ((GameObject*)this, transform->GetPosition(), points);
+
+	collider->GetOnCollisionEnterEvent() = std::bind(&Player::OnCollisionEnter, this, std::placeholders::_1);
 
 	currentMoveSpeed = moveSpeed;
 
@@ -42,11 +33,9 @@ void Player::Update(float deltaTime)
 
 	rigidBody->ResetForce();
 
-	transform->SetRotation(MathUtility::GetAngleFromMouse(transform->GetPosition(), spriteRenderer->GetSprite()->textureHeight, spriteRenderer->GetSprite()->textureWidth) );
-
 	//clamp player position to level bound with scale
-	transform->SetXPosition(MathUtility::Clamp(transform->GetPosition().x, 0 - (spriteRenderer->GetSprite()->textureWidth / 2), Engine::SCREEN_WIDTH - (spriteRenderer->GetSprite()->textureWidth)) );
-	transform->SetYPosition(MathUtility::Clamp(transform->GetPosition().y, 0 - (spriteRenderer->GetSprite()->textureHeight / 2), Engine::SCREEN_HEIGHT - (spriteRenderer->GetSprite()->textureHeight)) );
+	transform->SetXPosition(MathUtility::Clamp(transform->GetPosition().x, 0 , Engine::SCREEN_WIDTH));
+	transform->SetYPosition(MathUtility::Clamp(transform->GetPosition().y, 0, Engine::SCREEN_HEIGHT));
 
 	if (!canMove) return;
 

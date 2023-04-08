@@ -10,11 +10,11 @@
 class Character : public GameObject
 {
 protected:
-
-	SpriteRenderer* spriteRenderer;
+;
 	RigidBody* rigidBody;
 
 	float moveSpeed;
+
 	float currentMoveSpeed;
 	
 	bool canMove = true;
@@ -22,9 +22,8 @@ protected:
 public:
 
 	Character(Vector2 position);
+
 	~Character();
 
 	virtual void Update(float deltaTime) override;
-
-	void Draw() override;
 };

@@ -4,7 +4,6 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "Prop.h"
-#include "GroundTileMap.h"
 
 #include "MathUtility.h"
 
@@ -38,19 +37,19 @@ void LayoutTileMap::PopulateLevel(std::string id, Vector2 position)
 	else if (id == "B")
 	{
 		int barrelType = MathUtility::RandomRange(1, 3);
-		GameObject::Instantiate(new Prop(position, "Barrel_" + std::to_string(barrelType), ColliderType::CIRCLE, SortingLayer::PropsLayer, true, false));
+		GameObject::Instantiate(new Prop(position, ColliderType::CIRCLE, 1, true, false));
 	}
 	else if (id == "T")
 	{
 		// random treee 1 - 6
 		int treeType = MathUtility::RandomRange(1, 6);
-		GameObject::Instantiate(new Prop(position, "Tree_" + std::to_string(treeType), ColliderType::BOX, SortingLayer::TreesLayer, true, false));
+		GameObject::Instantiate(new Prop(position, ColliderType::BOX, 1, true, false));
 	}
 	else if (id == "C")
 	{
 		// random car 1 - 2
 		int carType = MathUtility::RandomRange(1, 3);
-		GameObject::Instantiate(new Prop(position, "Car_" + std::to_string(carType), ColliderType::POLYGON, SortingLayer::PropsLayer, true, false));
+		GameObject::Instantiate(new Prop(position, ColliderType::POLYGON, 1, true, false));
 	}
 	else if (id == "P")
 	{

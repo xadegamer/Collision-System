@@ -7,27 +7,19 @@
 Enemy::Enemy(Vector2 position) : Character(position)
 {
 	tag = Tag::ENEMY;
-
-	spriteRenderer->SetSortingOrder(SortingLayer::EnemyLayer);
 	
 	rigidBody->SetPosition(transform->GetPosition());
 
-	//collider = new BoxCollider;
-	//BoxCollider* boxCollider = static_cast<BoxCollider*>(collider);
-	//boxCollider->SetUp((GameObject*)this, transform->GetPosition(), Vector2(spriteRenderer->GetSprite()->textureWidth, spriteRenderer->GetSprite()->textureHeight));
-	//boxCollider->GetOnCollisionEnterEvent() = std::bind(&Enemy::OnCollisionEnter, this, std::placeholders::_1);
+	//collider = new BoxCollider { (GameObject*)this, transform->GetPosition(), Vector2(100, 100) };
 
-	//collider = new CircleCollider;
-	//CircleCollider* circleCollider = static_cast<CircleCollider*>(collider);
-	//circleCollider->SetUp(transform,transform->GetPosition(), spriteRenderer->GetSprite()->textureWidth / 2);
-	//circleCollider->GetOnCollisionEnterEvent() = std::bind(&Enemy::OnCollisionEnter, this, std::placeholders::_1);
+	//collider = new CircleCollider { (GameObject*)this, transform->GetPosition(), 50 };
 
-	collider = new PolygonCollider;
-	PolygonCollider* polygonCollider = static_cast<PolygonCollider*>(collider);
-		std::vector<Vector2> points = { Vector2(50,50), Vector2(-20, 120), Vector2(50, 200), Vector2(200, 200), Vector2(200, 50) };
-	polygonCollider->SetUp((GameObject*)this, transform->GetPosition(), points);
-	polygonCollider->GetOnCollisionEnterEvent() = std::bind(&Enemy::OnCollisionEnter, this, std::placeholders::_1);
-	
+	std::vector<Vector2> points = { Vector2(50,50), Vector2(-20, 120), Vector2(50, 200), Vector2(200, 200), Vector2(200, 50) };
+	collider = new PolygonCollider((GameObject*)this, transform->GetPosition(), points);
+
+
+	collider->GetOnCollisionEnterEvent() = std::bind(&Enemy::OnCollisionEnter, this, std::placeholders::_1);
+
 	spawnPoint = transform->GetPosition();
 	
 	currentPatrolPoint = MathUtility::RandomPositionAroundRange(spawnPoint, 300);
@@ -56,14 +48,19 @@ void Enemy::Update(float deltaTime)
 
 void Enemy::LateUpdate(float deltaTime)
 {
-	rigidBody->Update(deltaTime);
-	rigidBody->MoveInDirection(direction, moveSpeed, deltaTime);
-	transform->Translate(rigidBody->GetPosition());
+	//rigidBody->Update(deltaTime);
+	//rigidBody->MoveInDirection(direction, moveSpeed, deltaTime);
+	//transform->Translate(rigidBody->GetPosition());
 }
 
 void Enemy::OnCollisionEnter(Collision collision)
 {
 	direction = -collision.GetMinimumTranslationVector().Normalized();
+	GameObject* other = (GameObject*)collision.GetColliderHit()->GetOwner();
+	if (other->CompareTag(Tag::PLAYER))
+	{
+		color = other->GetColor();
+	}
 }
 
 bool Enemy::IsOutSideScreen()

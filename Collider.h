@@ -1,17 +1,15 @@
 #pragma once
 
-#include "SDLManager.h"
-#include "GameObject.h"
-#include "AssetManager.h"
 #include <stdio.h>
 #include <functional>
-#include <any>
 #include <iostream>
 #include <string>
 
 #include "Collider.h"
 
 #include "Collision.h"
+
+#include "Vector2.h"
 
 class Collider
 {	
@@ -33,13 +31,11 @@ public:
 	
 	inline std::function <void(Collision other)>& GetOnCollisionEnterEvent() { return OnCollisionEnterEvent; }
 	
-	Collider();
+	Collider(void* owner, Vector2 nextPosition, bool isStatic = false);
 	
 	~Collider();
 
-	virtual void SetUp(void* owner, Vector2 nextPosition, bool isStatic = false);
-
-	virtual void UpdatePosition(Vector2 nextPosition) = 0;
+	virtual void UpdatePosition(Vector2 nextPosition) {};
 
 	virtual Vector2 GetCenter() = 0;
 

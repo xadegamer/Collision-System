@@ -1,28 +1,17 @@
 #include "Prop.h"
 
-Prop::Prop(Vector2 position, std::string spriteName, ColliderType colliderType, int sortingOrder, bool isStatic, bool isTrigger) : GameObject(position)
+Prop::Prop(Vector2 position, ColliderType colliderType, int sortingOrder, bool isStatic, bool isTrigger) : GameObject(position)
 {
-	spriteRenderer = AddComponent<SpriteRenderer>(new SpriteRenderer);
-	spriteRenderer->SetSortingOrder(sortingOrder);
-	spriteRenderer->SetSprite(AssetManager::GetSprite(spriteName));
-
 	if (colliderType == ColliderType::BOX)
 	{
-		collider = new BoxCollider;
-		BoxCollider* boxCollider = static_cast<BoxCollider*>(collider);
-		boxCollider->SetUp((GameObject*)this, transform->GetPosition(), Vector2(100, 100));
-
+		collider = new BoxCollider { (GameObject*)this, transform->GetPosition(), Vector2(100, 100) };
 	}
 	else if (colliderType == ColliderType::CIRCLE)
 	{
-		collider = new CircleCollider;
-		CircleCollider* circleCollider = static_cast<CircleCollider*>(collider);
-		circleCollider->SetUp((GameObject*)this,transform->GetPosition(), 50);
+		collider = new CircleCollider { (GameObject*)this, transform->GetPosition(), 50 };
 	}
 	else
 	{
-		collider = new PolygonCollider;
-		PolygonCollider* polygonCollider = static_cast<PolygonCollider*>(collider);
 
 		// Default
 		//std::vector<Vector2> points = { Vector2(50,50), Vector2(-20, 120), Vector2(50, 200), Vector2(200, 200), Vector2(200, 50) };
@@ -49,7 +38,7 @@ Prop::Prop(Vector2 position, std::string spriteName, ColliderType colliderType, 
 			points.push_back(Vector2(x, y));
 		}
 
-		polygonCollider->SetUp(this, transform->GetPosition(), points);
+		collider = new PolygonCollider { (GameObject*)this, transform->GetPosition(), points };
 	}
 
 	if (collider != nullptr)
@@ -68,9 +57,4 @@ void Prop::Update(float deltaTime)
 {
 	if (collider) collider->UpdatePosition(transform->GetPosition());
 	GameObject::Update(deltaTime);
-}
-
-void Prop::Draw()
-{
-	spriteRenderer->Draw(transform->GetPosition());
 }

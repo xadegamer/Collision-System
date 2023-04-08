@@ -23,6 +23,7 @@ private:
 public:
 
 	Player(Vector2 position);
+
 	~Player();
 	
 	void Update(float deltaTime) override;

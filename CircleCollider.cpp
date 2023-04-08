@@ -1,8 +1,7 @@
 #include "CircleCollider.h"
 
-void CircleCollider::SetUp(void* owner, Vector2 nextPosition, float _radius, float radiousMutiplier , bool isStatic)
+CircleCollider::CircleCollider(void* owner, Vector2 nextPosition, float _radius, float radiousMutiplier, bool isStatic) : Collider(owner, nextPosition, isStatic)
 {
-	Collider::SetUp(owner, nextPosition, isStatic);
 	radius = _radius * radiousMutiplier;
 }
 

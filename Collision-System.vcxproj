@@ -134,7 +134,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AssetManager.cpp" />
     <ClCompile Include="BoxCollider.cpp" />
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="CircleCollider.cpp" />
@@ -142,6 +141,7 @@
     <ClCompile Include="CollisionManager.cpp" />
     <ClCompile Include="CollisionResolver.cpp" />
     <ClCompile Include="CollsionVisualiser.cpp" />
+    <ClCompile Include="Color.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Engine.cpp" />
@@ -155,14 +155,13 @@
     <ClCompile Include="Prop.cpp" />
     <ClCompile Include="RigidBody.cpp" />
     <ClCompile Include="SDLManager.cpp" />
-    <ClCompile Include="SpriteRenderer.cpp" />
     <ClCompile Include="TileMap.cpp" />
     <ClCompile Include="TimeManager.cpp" />
     <ClCompile Include="Transform.cpp" />
     <ClCompile Include="Vector2.cpp" />
+    <ClCompile Include="Wall.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AssetManager.h" />
     <ClInclude Include="BoxCollider.h" />
     <ClInclude Include="Character.h" />
     <ClInclude Include="CircleCollider.h" />
@@ -171,6 +170,7 @@
     <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="CollisionResolver.h" />
     <ClInclude Include="CollsionVisualiser.h" />
+    <ClInclude Include="Color.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Engine.h" />
@@ -185,11 +185,11 @@
     <ClInclude Include="Prop.h" />
     <ClInclude Include="RigidBody.h" />
     <ClInclude Include="SDLManager.h" />
-    <ClInclude Include="SpriteRenderer.h" />
     <ClInclude Include="TileMap.h" />
     <ClInclude Include="TimeManager.h" />
     <ClInclude Include="Transform.h" />
     <ClInclude Include="Vector2.h" />
+    <ClInclude Include="Wall.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

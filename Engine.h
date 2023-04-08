@@ -19,7 +19,6 @@ private:
 	static int countedFrames;
 	static TimeManager systemTimer;
 	static TimeManager deltaTimer;
-	static Sprite* cursor;
 	
 public:
 	static const int SCREEN_WIDTH = 1280;

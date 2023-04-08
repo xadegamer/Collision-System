@@ -2,6 +2,8 @@
 
 #include "CollisionManager.h"
 
+#include "GameObject.h"
+
 void CollisionResolver::Initialize()
 {
 	CollisionManager::OnAnyCollisionEvent = ResolveCollision;
@@ -14,9 +16,15 @@ void CollisionResolver::Shutdown()
 
 void CollisionResolver::ResolveCollision(Collider* colA, Collider* colB)
 {
-	GameObject* gameObjectA = (GameObject*)colA->GetOwner();
-	gameObjectA->GetTransform()->SetPosition(gameObjectA->GetTransform()->GetPosition() - (colA->GetCollision().GetMinimumTranslationVector() * colA->GetCollision().GetImpulse()));
+	if (!colA->IsStatic())
+	{
+		GameObject* gameObjectA = (GameObject*)colA->GetOwner();
+		gameObjectA->GetTransform()->SetPosition(gameObjectA->GetTransform()->GetPosition() - (colA->GetCollision().GetMinimumTranslationVector() * colA->GetCollision().GetImpulse()));
+	}
 
-	GameObject* gameObjectB = (GameObject*)colB->GetOwner();
-	gameObjectB->GetTransform()->SetPosition(gameObjectB->GetTransform()->GetPosition() - (colB->GetCollision().GetMinimumTranslationVector() * colB->GetCollision().GetImpulse()));
+	if (!colB->IsStatic())
+	{
+		GameObject* gameObjectB = (GameObject*)colB->GetOwner();
+		gameObjectB->GetTransform()->SetPosition(gameObjectB->GetTransform()->GetPosition() - (colB->GetCollision().GetMinimumTranslationVector() * colB->GetCollision().GetImpulse()));
+	}
 }

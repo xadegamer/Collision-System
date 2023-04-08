@@ -4,6 +4,7 @@
 #include "CircleCollider.h"
 #include "BoxCollider.h"
 #include "PolygonCollider.h"
+#include "GameObject.h"
 
 void CollsionVisualiser::DrawBoxAtPosition(SDL_Color sdlColor, Vector2 position, int width, int height)
 {
@@ -46,7 +47,7 @@ void CollsionVisualiser::DrawPolygon(SDL_Color sdlColor, std::vector<Vector2> _p
 	DrawCircleAtPosition(SDL_Color{ 255, 255, 255, 255 }, Vector2(sdlPoints[num_points - 1].x, sdlPoints[num_points - 1].y), 5);
 
 	// i want the rest of the points to be green
-	SDL_SetRenderDrawColor(SDLManager::GetRenderer(), 0, 255, 0, 255);
+	SDL_SetRenderDrawColor(SDLManager::GetRenderer(), sdlColor.r, sdlColor.g, sdlColor.b, sdlColor.a);
 	SDL_RenderDrawLines(SDLManager::GetRenderer(), sdlPoints, num_points);
 
 	// draw a line form the last point to the first point
@@ -61,11 +62,13 @@ void CollsionVisualiser::DrawAllColliders()
 
 		if (!colliderA->GetIsEnabled()) continue;
 
+		SDL_Color colliderColour = ((GameObject*)colliderA->GetOwner())->GetColor();
+
 		// try to cast to a circle collider
 		CircleCollider* circleCollider = dynamic_cast<CircleCollider*>(colliderA);
 		if (circleCollider != nullptr)
 		{
-			DrawCircleAtPosition(SDL_Color{ 0, 255, 0, 255 }, circleCollider->GetCenter(), circleCollider->GetRadius());
+			DrawCircleAtPosition(colliderColour, circleCollider->GetCenter(), circleCollider->GetRadius());
 			continue;
 		}
 
@@ -73,8 +76,7 @@ void CollsionVisualiser::DrawAllColliders()
 		BoxCollider* boxCollider = dynamic_cast<BoxCollider*>(colliderA);
 		if (boxCollider != nullptr)
 		{
-			DrawBoxAtPosition(SDL_Color{ 0, 255, 0, 255 }, boxCollider->GetPosition(), boxCollider->GetWidth(), boxCollider->GetHeight());
-		//	DrawPolygon(SDL_Color{ 0, 255, 0, 255 }, boxCollider->GetWorldPoints());
+			DrawBoxAtPosition(colliderColour, boxCollider->GetPosition(), boxCollider->GetWidth(), boxCollider->GetHeight());
 			continue;
 		}
 
@@ -82,7 +84,7 @@ void CollsionVisualiser::DrawAllColliders()
 		PolygonCollider* polygonCollider = dynamic_cast<PolygonCollider*>(colliderA);
 		if (polygonCollider != nullptr)
 		{
-			DrawPolygon(SDL_Color{ 0, 255, 0, 255 }, polygonCollider->GetWorldPoints());
+			DrawPolygon(colliderColour, polygonCollider->GetWorldPoints());
 			continue;
 		}
 	}

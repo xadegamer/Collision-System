@@ -13,7 +13,8 @@ private:
 	std::vector<Vector2> points;
 
 public:
-	void SetUp(void* owner, Vector2 nextPosition, std::vector<Vector2> points, bool isStatic = false);
+
+	PolygonCollider(void* owner, Vector2 nextPosition, std::vector<Vector2> points, bool isStatic = false);
 
 	void UpdatePosition(Vector2 nextPosition) override;
 
@@ -23,9 +24,6 @@ public:
 
 	inline std::vector<Vector2> GetPoints() { return points; }
 
-
 	std::vector<Vector2> GetWorldPoints();
-
-	void DrawCircleAtPosition(SDL_Color sdlColor, Vector2 position, int radius);
 };
 

@@ -1,22 +1,24 @@
 #pragma once
 
 #include <iostream>
+
 #include <vector>
 
 #include "Component.h"
 
-#include "SpriteRenderer.h"
 #include "Transform.h"
+
 #include "RigidBody.h"
 
-#include "AssetManager.h"
-
 #include "Vector2.h"
+
 #include "MathUtility.h"
 
 #include "Collider.h"
 
 #include "Collision.h"
+
+#include "Color.h"
 
 enum Tag
 {
@@ -33,13 +35,11 @@ class GameObject
 
 private:
 	
-	static const int minLayer = static_cast<int>(SortingLayer::CharacterBloodLayer);
-	static const int maxlayer = static_cast<int>(SortingLayer::VfxLayer);
-	
 	bool toBeDestroyed = false;
 	float destoryDelay = 1.0f;
-	float currentDestoryTime;
-	
+	float currentDestoryTime = 0.0f;
+
+
 protected:
 
 	static std::vector<GameObject*> activeGameobjects;
@@ -47,18 +47,15 @@ protected:
 	std::vector<Component*> components;
 	Tag tag = Tag::DEFAULT;
 	Transform* transform;
+	SDL_Color color = { 255, 255, 255, 255 };
 
 	virtual void Update(float deltaTime);
+
 	virtual void LateUpdate(float deltaTime) {};
-	virtual void Draw() {};
 	
 public:
 	GameObject(Vector2 position = Vector2(0, 0));
 	virtual ~GameObject();
-	
-	inline Transform* GetTransform() { return transform; }
-	inline Tag GetTag() { return tag; }
-	inline void SetTag(Tag tag) { this->tag = tag; }
 
 	template<class T>
 	T* AddComponent(T* newCom)
@@ -113,12 +110,21 @@ public:
 		return newObject;
 	}
 
+	inline Transform* GetTransform() { return transform; }
+
+	inline Tag GetTag() { return tag; }
+
+	inline void SetTag(Tag tag) { this->tag = tag; }
+
+	inline bool CompareTag(Tag tag) { return this->tag == tag; }
 
 	virtual void OnCollisionEnter(Collision collision) {};
 
 	void CheckComponent(Component* newCom);
-	
-	inline bool CompareTag(Tag tag) { return this->tag == tag; }
+
+	inline void SetColor(SDL_Color sdlColor) { color = sdlColor; }
+
+	inline SDL_Color GetColor() { return color; }
 
 	bool CheckIfComponentExits(Component* newComponent);	
 	
@@ -131,10 +137,6 @@ public:
 	static void UpdateAllActive(float deltaTime);
 
 	static void LateUpdateAllActive(float deltaTime);
-	
-	static void DrawAllActive();
-	
-	static void ShowAllDebugVisuals();
 	
 	static void Destroy(GameObject* gameObject);
 

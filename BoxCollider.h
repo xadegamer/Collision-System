@@ -10,7 +10,7 @@ private:
 
 public:
 
-	void SetUp(void* owner, Vector2 nextPosition, Vector2 size, bool isStatic = false);
+	BoxCollider(void* owner, Vector2 nextPosition, Vector2 size, bool isStatic = false);
 
 	void UpdatePosition(Vector2 nextPosition) override;
 

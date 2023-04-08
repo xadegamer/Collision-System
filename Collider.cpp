@@ -2,11 +2,15 @@
 
 std::vector<Collider*> Collider::allColliders = std::vector<Collider*>();
 
-Collider::Collider()
+Collider::Collider(void* owner, Vector2 nextPosition, bool isStatic)
 {
 	currentCollidedObject = nullptr;
 	allColliders.push_back(this);
 	isEnabled = true;
+
+	this->owner = owner;
+	this->isStatic = isStatic;
+	UpdatePosition(nextPosition);
 }
 
 Collider::~Collider()
@@ -19,13 +23,6 @@ Collider::~Collider()
 			break;
 		}
 	}
-}
-
-void Collider::SetUp(void* owner, Vector2 nextPosition, bool isStatic)
-{
-	this->owner = owner;
-	this->isStatic = isStatic;
-	UpdatePosition(nextPosition);
 }
 
 void Collider::OnCollision()

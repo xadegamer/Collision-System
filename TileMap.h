@@ -1,10 +1,7 @@
 #pragma once
 
 #include "Vector2.h"
-#include "SpriteRenderer.h"
-#include "AssetManager.h"
 #include <map>
-
 #include <fstream>
 #include <iostream>
 #include <string>

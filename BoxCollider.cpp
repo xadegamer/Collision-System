@@ -1,8 +1,7 @@
 #include "BoxCollider.h"
 
-void BoxCollider::SetUp(void* owner, Vector2 nextPosition, Vector2 size, bool isStatic)
+BoxCollider::BoxCollider(void* owner, Vector2 nextPosition, Vector2 size, bool isStatic) : Collider(owner, nextPosition, isStatic)
 {
-	Collider::SetUp(owner, nextPosition, isStatic);
 	width = size.x;
 	height = size.y;
 }

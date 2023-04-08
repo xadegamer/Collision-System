@@ -9,6 +9,7 @@ GameObject::GameObject(Vector2 position)
 	activeGameobjects.push_back(this);
 	transform = AddComponent<Transform>(new Transform);
 	transform->SetPosition(position);
+	color = Color::GetRandomColor();
 }
 
 GameObject::~GameObject()
@@ -25,35 +26,10 @@ bool GameObject::CheckIfComponentExits(Component* newComponent)
 {
 	for (size_t i = 0; i < components.size(); i++)
 	{
-		if (typeid(*newComponent).name() == typeid(*components[i]).name()) return true;
+		if (typeid(*newComponent).name() == typeid(*components[i]).name())
+			return true;
 	}
 	return false;
-}
-
-void GameObject::DrawAllActive()
-{
-	// Loop through all game objects and draw them acoording to layer and increment layer from min and max
-	for (int layer = minLayer; layer <= maxlayer; layer++)
-	{
-		for (int i = 0; i < GameObject::GetActiveGameobjects().size(); i++)
-		{
-			SpriteRenderer* spriteRenderer = nullptr;
-			if (GameObject::GetActiveGameobjects()[i]->TryGetComponent<SpriteRenderer>(spriteRenderer) && spriteRenderer->GetSortingOrder() == layer)
-			{
-				if (!GameObject::GetActiveGameobjects()[i]->IsToBeDestroyed()) GameObject::GetActiveGameobjects()[i]->Draw();
-			}
-		}
-	}
-}
-
-void GameObject::ShowAllDebugVisuals()
-{
-	// draw only object with colliders
-	for (int i = 0; i < activeGameobjects.size(); i++)
-	{
-		SpriteRenderer* spriteRen = activeGameobjects[i]->GetComponent<SpriteRenderer>();
-		if (spriteRen) activeGameobjects[i]->GetComponent<SpriteRenderer>()->DebugRect();
-	}
 }
 
 void GameObject::Destroy(GameObject* gameObject)
@@ -79,7 +55,8 @@ GameObject* GameObject::FindGameObjectWithTag(Tag tag)
 {
 	for (auto& gameObject : activeGameobjects)
 	{
-		if (gameObject->tag == tag) return gameObject;
+		if (gameObject->tag == tag)
+			return gameObject;
 	}
 	return nullptr;
 }
@@ -115,7 +92,8 @@ void GameObject::LateUpdateAllActive(float deltaTime)
 {
 	for (int i = 0; i < activeGameobjects.size(); i++)
 	{
-		if (!activeGameobjects[i]->IsToBeDestroyed()) activeGameobjects[i]->LateUpdate(deltaTime);
+		if (!activeGameobjects[i]->IsToBeDestroyed()) 
+			activeGameobjects[i]->LateUpdate(deltaTime);
 	}
 }
 
