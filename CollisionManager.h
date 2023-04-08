@@ -35,6 +35,10 @@ public:
 	
 	static bool PolygonToBoxCollisionCheck(PolygonCollider* poly, BoxCollider* box, int buffer);
 
+	static bool SATPolyToPolyCalculation (std::vector<Vector2> A, std::vector<Vector2> B, int buffer , Vector2* mtv);
+
+	static bool SATPolyToCircleCalculation (std::vector<Vector2> polyPoints, Vector2 circlePos, float circleRadious, int buffer, Vector2* mtv);
+
 	static double DistanceSquared(int x1, int y1, int x2, int y2);
 
 	static bool PolygonContainsPoint(const std::vector<Vector2>& polyPoints, const Vector2& point);

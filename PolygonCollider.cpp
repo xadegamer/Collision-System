@@ -14,7 +14,13 @@ void PolygonCollider::UpdatePosition(Vector2 nextPosition)
 
 Vector2 PolygonCollider::GetCenter()
 {
-	return position;
+	Vector2 center = Vector2(0, 0);
+	for (int i = 0; i < num_points; i++)
+	{
+		center += points[i];
+	}
+	center /= num_points;
+	return center + position;
 }
 
 std::vector<Vector2> PolygonCollider::GetWorldPoints()
