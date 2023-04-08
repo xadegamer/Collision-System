@@ -17,7 +17,6 @@ Vector2 PolygonCollider::GetCenter()
 	return position;
 }
 
-
 std::vector<Vector2> PolygonCollider::GetWorldPoints()
 {
 	std::vector<Vector2> worldPoints;

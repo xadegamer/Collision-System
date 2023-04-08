@@ -1,7 +1,10 @@
 #pragma once
-#include "Character.h"
+#include "GameObject.h"
+
 #include "BoxCollider.h"
+
 #include "CircleCollider.h"
+
 #include "PolygonCollider.h"
 
 #include "TimeManager.h"
@@ -10,21 +13,23 @@
 
 extern TimeManager systemTimer;
 
-class Game;
-
-class Player : public Character
+class Player : public GameObject
 {
 private:
 
-	Collider* collider;
+	RigidBody* rigidBody = nullptr;
+
+	Collider* collider = nullptr;
+
+	float moveSpeed = 0;
 	
-	float runSpeed;
+	float runSpeed = 0;
+
+	float currentMoveSpeed = 0;
 	
 public:
 
 	Player(Vector2 position);
-
-	~Player();
 	
 	void Update(float deltaTime) override;
 

@@ -10,23 +10,27 @@
 
 #include "Direction.h"
 
-Enemy::Enemy(Vector2 position) : Character(position)
+Enemy::Enemy(Vector2 position) : GameObject(position)
 {
 	tag = Tag::ENEMY;
 	
+	rigidBody = AddComponent<RigidBody>(new RigidBody);
+
+	rigidBody->SetGravity(0);
+
 	rigidBody->SetPosition(transform->GetPosition());
 
-	// random collider type
+	// Random collider type
 	int random = rand() % 3;
 
 	switch (random)
 	{
 		case 0:
 			collider = new BoxCollider{ (GameObject*)this, transform->GetPosition(), Vector2(100, 100) };
-		break;
+			break;
 		case 1:
 			collider = new CircleCollider{ (GameObject*)this, transform->GetPosition(), 50 };
-		break;
+			break;
 		case 2:
 			collider = new PolygonCollider((GameObject*)this, transform->GetPosition(), PolygonShape::GetRandomPolygon(50));
 			break;
@@ -35,24 +39,14 @@ Enemy::Enemy(Vector2 position) : Character(position)
 
 	collider->GetOnCollisionEnterEvent() = std::bind(&Enemy::OnCollisionEnter, this, std::placeholders::_1);
 
-	spawnPoint = transform->GetPosition();
-	
-	currentPatrolPoint = MathUtility::RandomPositionAroundRange(spawnPoint, 300);
-
 	moveSpeed = 100;
 
 	direction = Direction::GetRandomDirection();
 }
 
-Enemy::~Enemy()
-{
-
-}
-
 void Enemy::Update(float deltaTime)
 {
-	Character::Update(deltaTime);	
-
+	GameObject::Update(deltaTime);	
 	collider->UpdatePosition(transform->GetPosition());
 }
 

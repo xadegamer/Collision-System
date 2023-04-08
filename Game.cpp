@@ -12,7 +12,7 @@ Game::Game()
 
 Game::~Game()
 {
-	std::cout << "cleaning game\n";
+	// Delete all game objects and tile maps
 	TileMap::Clear();
 	GameObject::DestroyAllGameObjects();
 	SDLManager::Clean();

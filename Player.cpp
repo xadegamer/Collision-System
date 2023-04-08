@@ -6,37 +6,34 @@
 
 #include "PolygonShape.h"
 
-Player::Player(Vector2 position) : Character(position)
+Player::Player(Vector2 position) : GameObject(position)
 {
 	color = Color::GetColor(ColorType::Yellow);
 
 	tag = Tag::PLAYER;
 
+	rigidBody = AddComponent<RigidBody>(new RigidBody);
+
+	rigidBody->SetGravity(0);
+
+	rigidBody->SetPosition(transform->GetPosition());
+
 	collider = new CircleCollider { (GameObject*)this, transform->GetPosition(), 50 };
 
 	collider->GetOnCollisionEnterEvent() = std::bind(&Player::OnCollisionEnter, this, std::placeholders::_1);
 
-	currentMoveSpeed = moveSpeed;
+	moveSpeed = 100;
 
 	runSpeed = 200;
-}
 
-Player::~Player()
-{
-
+	currentMoveSpeed = moveSpeed;
 }
 
 void Player::Update(float deltaTime)
 {
-	Character::Update(deltaTime);
+	GameObject::Update(deltaTime);
 
 	rigidBody->ResetForce();
-
-	//clamp player position to level bound with scale
-	transform->SetXPosition(MathUtility::Clamp(transform->GetPosition().x, 0 , Engine::SCREEN_WIDTH));
-	transform->SetYPosition(MathUtility::Clamp(transform->GetPosition().y, 0, Engine::SCREEN_HEIGHT));
-
-	if (!canMove) return;
 
 	if (InputManager::GetKey(SDL_SCANCODE_W))
 	{

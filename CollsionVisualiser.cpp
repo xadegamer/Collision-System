@@ -35,18 +35,7 @@ void CollsionVisualiser::DrawPolygon(SDL_Color sdlColor, std::vector<Vector2> _p
 		sdlPoints[i].y = _points[i].y;
 	}
 
-	//for (int i = 0; i < num_points; i++)
-	//{
-	//	DrawCircleAtPosition(SDL_Color{ 255, 0, 0, 255 }, Vector2(sdlPoints[i].x, sdlPoints[i].y), 5);
-	//}
-
-	//// first point - yellow
-	//DrawCircleAtPosition(SDL_Color{ 255, 255, 0, 255 }, Vector2(sdlPoints[0].x, sdlPoints[0].y), 5);
-
-	//// last point - white
-	//DrawCircleAtPosition(SDL_Color{ 255, 255, 255, 255 }, Vector2(sdlPoints[num_points - 1].x, sdlPoints[num_points - 1].y), 5);
-
-	// i want the rest of the points to be green
+	// draw the lines
 	SDL_SetRenderDrawColor(SDLManager::GetRenderer(), sdlColor.r, sdlColor.g, sdlColor.b, sdlColor.a);
 	SDL_RenderDrawLines(SDLManager::GetRenderer(), sdlPoints, num_points);
 

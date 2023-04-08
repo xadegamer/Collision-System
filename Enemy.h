@@ -1,31 +1,32 @@
 #pragma once
 
-#include "Character.h"
+#include "GameObject.h"
+
 #include "BoxCollider.h"
+
 #include "CircleCollider.h"
+
 #include "PolygonCollider.h"
 
 #include <functional>
 
-class Enemy : public Character
+class Enemy : public GameObject
 {
 private:
 
-	Collider* collider;
+	RigidBody* rigidBody = nullptr;
 
-	Vector2 spawnPoint;
+	Collider* collider = nullptr;
 
-	Vector2 currentPatrolPoint;
+	Vector2 direction = Vector2(0, 0);
 
-	Vector2 direction;
+	GameObject* target = nullptr;
 
-	GameObject* target;
+	float moveSpeed = 0;
 	
 public:
 
 	Enemy(Vector2 position);
-
-	~Enemy();
 
 	void Update(float deltaTime) override;
 

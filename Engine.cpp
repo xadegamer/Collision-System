@@ -13,7 +13,6 @@ void Engine::Start()
 {
 	if (!SDLManager::Init("Collision System", P0S_X, P0S_Y, SCREEN_WIDTH, SCREEN_HEIGHT, false))
 	{
-		std::cout << "SDLManager::Init() failed\n";
 		return;
 	}
 
