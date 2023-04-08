@@ -2,7 +2,7 @@
 
 Wall::Wall(Vector2 position, Vector2 size) : GameObject(position)
 {
-	transform = AddComponent<Transform>(new Transform);
-	transform->SetPosition(position);
+	tag = Tag::WALL;
+	color = Color::GetColor(ColorType::Red);
 	boxCollider = new BoxCollider { (GameObject*)this, position, size , true};
 }

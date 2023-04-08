@@ -123,6 +123,12 @@
     <ClCompile Include="Wall.cpp">
       <Filter>Source Files\GameObject</Filter>
     </ClCompile>
+    <ClCompile Include="PolygonShape.cpp">
+      <Filter>Source Files\Statics</Filter>
+    </ClCompile>
+    <ClCompile Include="Direction.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Vector2.h">
@@ -167,9 +173,6 @@
     <ClInclude Include="Prop.h">
       <Filter>Header Files\GameObject</Filter>
     </ClInclude>
-    <ClInclude Include="GroundTileMap.h">
-      <Filter>Header Files\TileMaps</Filter>
-    </ClInclude>
     <ClInclude Include="TileMap.h">
       <Filter>Header Files\TileMaps</Filter>
     </ClInclude>
@@ -208,6 +211,12 @@
     </ClInclude>
     <ClInclude Include="Wall.h">
       <Filter>Header Files\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="PolygonShape.h">
+      <Filter>Header Files\Statics</Filter>
+    </ClInclude>
+    <ClInclude Include="Direction.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -4,13 +4,9 @@
 #include "CircleCollider.h"
 #include "PolygonCollider.h"
 
-enum class ColliderType {BOX,CIRCLE, POLYGON};
-
 class Prop : public GameObject
 {
 protected:
-
-	ColliderType colliderType;
 
 	RigidBody* rigidBody;
 
@@ -18,7 +14,7 @@ protected:
 	
 public:
 
-	Prop(Vector2 position, ColliderType colliderType, int sortingOrder, bool isStatic, bool isTrigger);
+	Prop(Vector2 position, int sortingOrder, bool isStatic);
 
 	~Prop();
 

@@ -4,16 +4,15 @@
 
 #include "Engine.h"
 
+#include "PolygonShape.h"
+
 Player::Player(Vector2 position) : Character(position)
 {
+	color = Color::GetColor(ColorType::Yellow);
+
 	tag = Tag::PLAYER;
 
-//	collider = new BoxCollider { (GameObject*)this, transform->GetPosition(), Vector2(100, 100) };
-
 	collider = new CircleCollider { (GameObject*)this, transform->GetPosition(), 50 };
-
-	//std::vector<Vector2> points = { Vector2(0,0), Vector2(0, 100), Vector2(100, 100), Vector2(100,0) };
-	//collider = new PolygonCollider ((GameObject*)this, transform->GetPosition(), points);
 
 	collider->GetOnCollisionEnterEvent() = std::bind(&Player::OnCollisionEnter, this, std::placeholders::_1);
 

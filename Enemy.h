@@ -32,7 +32,5 @@ public:
 	void LateUpdate(float deltaTime) override;
 
 	void OnCollisionEnter(Collision collision) override;
-
-	bool IsOutSideScreen();
 };
 

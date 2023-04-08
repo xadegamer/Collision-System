@@ -25,9 +25,7 @@ enum Tag
 	DEFAULT,
 	PLAYER,
 	ENEMY,
-	BULLET,
-	GAS_CYLINDER,
-	COLLECTABLE
+	WALL,
 };
 
 class GameObject

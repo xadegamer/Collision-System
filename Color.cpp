@@ -1,6 +1,4 @@
 #include "Color.h"
-
-// rand include
 #include <stdlib.h>
 
 
