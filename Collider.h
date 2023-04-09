@@ -29,8 +29,6 @@ protected:
 	
 public:
 	
-	inline std::function <void(Collision other)>& GetOnCollisionEnterEvent() { return OnCollisionEnterEvent; }
-	
 	Collider(void* owner, Vector2 nextPosition, bool isStatic = false);
 	
 	~Collider();
@@ -42,6 +40,8 @@ public:
 	void OnCollision();
 
 	void SetCollisionProperty(Collider* colliderHit, Vector2 minimumTranslationVector, float impulse);
+
+	void AddListener(std::function <void(Collision other)> OnCollisionEnterEvent);
 
 	inline Collision GetCollision() { return collision; }
 

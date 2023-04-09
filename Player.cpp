@@ -20,7 +20,7 @@ Player::Player(Vector2 position) : GameObject(position)
 
 	collider = new CircleCollider { (GameObject*)this, transform->GetPosition(), 50 };
 
-	collider->GetOnCollisionEnterEvent() = std::bind(&Player::OnCollisionEnter, this, std::placeholders::_1);
+	collider->AddListener(std::bind(&Player::OnCollisionEnter, this, std::placeholders::_1));
 
 	moveSpeed = 100;
 

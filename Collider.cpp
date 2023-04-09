@@ -33,7 +33,10 @@ void Collider::OnCollision()
 
 void Collider::SetCollisionProperty(Collider* colliderHit, Vector2 minimumTranslationVector, float impulse)
 {
-	collision.SetColliderHit(colliderHit);
-	collision.SetMinimumTranslationVector(minimumTranslationVector);
-	collision.SetImpulse(impulse);
+	collision = { colliderHit , minimumTranslationVector , impulse };
+}
+
+void Collider::AddListener(std::function<void(Collision other)> OnCollisionEnterEvent)
+{
+	this->OnCollisionEnterEvent = OnCollisionEnterEvent;
 }

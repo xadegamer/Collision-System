@@ -37,7 +37,7 @@ Enemy::Enemy(Vector2 position) : GameObject(position)
 		default:break;
 	}
 
-	collider->GetOnCollisionEnterEvent() = std::bind(&Enemy::OnCollisionEnter, this, std::placeholders::_1);
+	collider->AddListener(std::bind(&Enemy::OnCollisionEnter, this, std::placeholders::_1));
 
 	moveSpeed = 100;
 
