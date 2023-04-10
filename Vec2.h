@@ -6,14 +6,20 @@ namespace CollisionSystem
 {
 	class Vec2
 	{
+
 	private:
+
 		float x{ 0 }, y{ 0 };
 
 	public:
 
 		Vec2();
+
 		Vec2(float x, float y);
-		Vec2(const Vec2& v);
+
+		inline float GetX() const { return x; }
+
+		inline float GetY() const { return y; }
 
 		float Dist(const Vec2& v) const;
 
@@ -25,8 +31,6 @@ namespace CollisionSystem
 
 		float Magnitude() const;
 
-		static Vec2 Lerp(Vec2 v1, Vec2 v2, float t);
-
 		static Vec2 Normalize(Vec2 v);
 
 		static float Distance(Vec2 v1, Vec2 v2);
@@ -34,19 +38,6 @@ namespace CollisionSystem
 		static float Dot(Vec2 v1, Vec2 v2);
 
 		static Vec2 Zero();
-
-		static Vec2 Clamp(Vec2 v, Vec2 min, Vec2 max);
-
-		inline float GetX() const { return x; }
-
-		inline float GetY() const { return y; }
-
-		// operators
-		Vec2 operator*(float f) const;
-
-		Vec2& operator*=(float f);
-
-		Vec2 operator/(float f) const;
 
 		Vec2& operator/=(float f);
 

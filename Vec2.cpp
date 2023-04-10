@@ -12,15 +12,6 @@ namespace CollisionSystem
 	{
 	}
 
-	Vec2::Vec2(const Vec2& v) : x(v.x), y(v.y)
-	{
-	}
-
-	Vec2 Vec2::operator/(float f) const
-	{
-		return Vec2(x / f, y / f);
-	}
-
 	Vec2& Vec2::operator/=(float f)
 	{
 		x /= f;
@@ -122,11 +113,6 @@ namespace CollisionSystem
 		return Vec2(0.0f, 0.0f);
 	}
 
-	Vec2 Vec2::Lerp(Vec2 v1, Vec2 v2, float t)
-	{
-		return Vec2(v1.x + (v2.x - v1.x) * t, v1.y + (v2.y - v1.y) * t);
-	}
-
 	Vec2 Vec2::Normalize(Vec2 v)
 	{
 		float length = v.Dist(Vec2(0, 0));
@@ -148,11 +134,6 @@ namespace CollisionSystem
 		return Vec2(0, 0);
 	}
 
-	Vec2 Vec2::Clamp(Vec2 v, Vec2 min, Vec2 max)
-	{
-		return Vec2(std::min(std::max(v.x, min.x), max.x), std::min(std::max(v.y, min.y), max.y));
-	}
-
 	float Vec2::Length() const
 	{
 		return static_cast<float>(std::sqrt(x * x + y * y));
@@ -161,18 +142,6 @@ namespace CollisionSystem
 	float Vec2::Magnitude() const
 	{
 		return static_cast<float>(std::sqrt(x * x + y * y));
-	}
-
-	Vec2 Vec2::operator*(float f) const
-	{
-		return Vec2(x * f, y * f);
-	}
-
-	Vec2& Vec2::operator*=(float f)
-	{
-		x *= f;
-		y *= f;
-		return *this;
 	}
 
 	Vec2 operator*(float f, const Vec2& v)

@@ -55,7 +55,6 @@ void Player::Update(float deltaTime)
 		rigidBody->ApplyForceX(currentMoveSpeed);
 	}
 
-	// if hold shift, increase move speed
 	currentMoveSpeed = InputManager::GetKey(SDL_SCANCODE_LSHIFT) ? runSpeed : moveSpeed;
 	
 	collider->UpdatePosition(Vec2(transform->GetPosition().x, transform->GetPosition().y));
