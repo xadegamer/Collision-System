@@ -2,7 +2,7 @@
 
 std::vector<Collider*> Collider::allColliders = std::vector<Collider*>();
 
-Collider::Collider(void* owner, Vector2 nextPosition, bool isStatic)
+Collider::Collider(void* owner, Vec2 nextPosition, bool isStatic)
 {
 	currentCollidedObject = nullptr;
 	allColliders.push_back(this);
@@ -31,7 +31,7 @@ void Collider::OnCollision()
 	if (OnCollisionEnterEvent != nullptr) OnCollisionEnterEvent(collision);
 }
 
-void Collider::SetCollisionProperty(Collider* colliderHit, Vector2 minimumTranslationVector, float impulse)
+void Collider::SetCollisionProperty(Collider* colliderHit, Vec2 minimumTranslationVector, float impulse)
 {
 	collision = { colliderHit , minimumTranslationVector , impulse };
 }

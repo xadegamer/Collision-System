@@ -6,7 +6,7 @@
 #include <string>
 
 #include "Collision.h"
-#include "Vector2.h"
+#include "Vec2.h"
 
 class Collider
 {	
@@ -17,7 +17,7 @@ protected:
 	void* owner;
 	float xPos;
 	float yPos;
-	Vector2 position;
+	Vec2 position;
 	bool isEnabled;
 	bool isTrigger;
 	bool isStatic;
@@ -26,23 +26,23 @@ protected:
 	
 public:
 	
-	Collider(void* owner, Vector2 position, bool isStatic = false);
+	Collider(void* owner, Vec2 position, bool isStatic = false);
 	
 	~Collider();
 
-	virtual void UpdatePosition(Vector2 position) = 0;
+	virtual void UpdatePosition(Vec2 position) = 0;
 
-	virtual Vector2 GetCenter() = 0;
+	virtual Vec2 GetCenter() = 0;
 
 	void OnCollision();
 
-	void SetCollisionProperty(Collider* colliderHit, Vector2 minimumTranslationVector, float impulse);
+	void SetCollisionProperty(Collider* colliderHit, Vec2 minimumTranslationVector, float impulse);
 
 	void AddListener(std::function <void(Collision other)> OnCollisionEnterEvent);
 
 	inline Collision GetCollision() { return collision; }
 
-	inline Vector2 GetPosition() { return position; }
+	inline Vec2 GetPosition() { return position; }
 
 	inline void* GetOwner() { return owner; }
 	

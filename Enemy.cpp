@@ -26,13 +26,13 @@ Enemy::Enemy(Vector2 position) : GameObject(position)
 	switch (random)
 	{
 		case 0:
-			collider = new BoxCollider{ (GameObject*)this, transform->GetPosition(), Vector2(100, 100) };
+			collider = new BoxCollider{ (GameObject*)this, Vec2(transform->GetPosition().x, transform->GetPosition().y), Vec2(100, 100) };
 			break;
 		case 1:
-			collider = new CircleCollider{ (GameObject*)this, transform->GetPosition(), 50 };
+			collider = new CircleCollider{ (GameObject*)this, Vec2(transform->GetPosition().x, transform->GetPosition().y), 50 };
 			break;
 		case 2:
-			collider = new PolygonCollider((GameObject*)this, transform->GetPosition(), PolygonShape::GetRandomPolygon(50));
+			collider = new PolygonCollider((GameObject*)this, Vec2(transform->GetPosition().x, transform->GetPosition().y), PolygonShape::GetRandomPolygon(50));
 			break;
 		default:break;
 	}
@@ -47,7 +47,7 @@ Enemy::Enemy(Vector2 position) : GameObject(position)
 void Enemy::Update(float deltaTime)
 {
 	GameObject::Update(deltaTime);	
-	collider->UpdatePosition(transform->GetPosition());
+	collider->UpdatePosition(Vec2(transform->GetPosition().x, transform->GetPosition().y));
 }
 
 void Enemy::LateUpdate(float deltaTime)
@@ -66,5 +66,6 @@ void Enemy::OnCollisionEnter(Collision collision)
 		color = other->GetColor();
 	}
 
-	direction = -collision.GetMinimumTranslationVector().Normalized() * collision.GetImpulse();
+	Vector2 newDirection = Vector2 { collision.GetMinimumTranslationVector().x, collision.GetMinimumTranslationVector().y };
+	direction = -newDirection.Normalized() * collision.GetImpulse();
 }

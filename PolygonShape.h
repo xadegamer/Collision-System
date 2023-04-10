@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Vector2.h"
+#include "Vec2.h"
 
 #include <vector>
 
@@ -17,9 +17,9 @@ class PolygonShape
 {
 	public:
 
-		static std::vector<Vector2> GetPolygon( PolygonShapeType polygonShapeType, float radius);
+		static std::vector<Vec2> GetPolygon( PolygonShapeType polygonShapeType, float radius);
 
-		static std::vector<Vector2> GetRandomPolygon(float radius);
+		static std::vector<Vec2> GetRandomPolygon(float radius);
 
 };
 

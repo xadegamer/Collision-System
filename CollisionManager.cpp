@@ -86,7 +86,7 @@ bool CollisionManager::CheckCollision(Collider* colA, Collider* colB)
 
 bool CollisionManager::BoxToBoxCollisionCheck(BoxCollider* colA, BoxCollider* colB, int buffer)
 {
-	Vector2 mtv;
+	Vec2 mtv;
 
 	// Get the world points of both polygons
 	if (SATPolyToPolyCalculation(colA->GetWorldPoints(), colB->GetWorldPoints(), buffer, &mtv))
@@ -101,13 +101,13 @@ bool CollisionManager::BoxToBoxCollisionCheck(BoxCollider* colA, BoxCollider* co
 bool CollisionManager::CircleToCircleCollsionCheck(CircleCollider* colA, CircleCollider* colB, int buffer)
 {
 	// Get the distance between the two circles
-	float distance = Vector2::Distance(colA->GetPosition(), colB->GetPosition());
+	float distance = Vec2::Distance(colA->GetPosition(), colB->GetPosition());
 
 	// Check for collision
 	if (distance <= colA->GetRadius() + colB->GetRadius() + buffer)
 	{
 		// Calculate the minimum translation vector
-		Vector2 mtv = (colB->GetPosition() - colA->GetPosition()).Normalized() * ((colA->GetRadius() + colB->GetRadius() + buffer) - distance);
+		Vec2 mtv = (colB->GetPosition() - colA->GetPosition()).Normalized() * ((colA->GetRadius() + colB->GetRadius() + buffer) - distance);
 
 		// Create collision objects
 		colA->SetCollisionProperty(colB, mtv, 1);
@@ -120,7 +120,7 @@ bool CollisionManager::CircleToCircleCollsionCheck(CircleCollider* colA, CircleC
 
 bool CollisionManager::BoxToCircleCollsionCheck(BoxCollider* box, CircleCollider* circle, int buffer)
 {
-	Vector2 mtv;
+	Vec2 mtv;
 
 	if (SATPolyToCircleCalculation(box->GetWorldPoints(), circle->GetPosition(), circle->GetRadius(), buffer, &mtv))
 	{
@@ -134,7 +134,7 @@ bool CollisionManager::BoxToCircleCollsionCheck(BoxCollider* box, CircleCollider
 
 bool CollisionManager::PolygonToPolygonCollisionCheck(PolygonCollider* colA, PolygonCollider* colB, int buffer)
 {
-	Vector2 mtv;
+	Vec2 mtv;
 
 	// Get the world points of both polygons
 	if (SATPolyToPolyCalculation(colA->GetWorldPoints(), colB->GetWorldPoints(), buffer, &mtv))
@@ -149,7 +149,7 @@ bool CollisionManager::PolygonToPolygonCollisionCheck(PolygonCollider* colA, Pol
 
 bool CollisionManager::PolygonToCircleCollisionCheck(PolygonCollider* poly, CircleCollider* circle, int buffer)
 {
-	Vector2 mtv;
+	Vec2 mtv;
 
 	if (SATPolyToCircleCalculation(poly->GetWorldPoints(), circle->GetPosition(), circle->GetRadius(), buffer, &mtv))
 	{
@@ -163,7 +163,7 @@ bool CollisionManager::PolygonToCircleCollisionCheck(PolygonCollider* poly, Circ
 
 bool CollisionManager::PolygonToBoxCollisionCheck(PolygonCollider* poly, BoxCollider* box, int buffer)
 {
-	Vector2 mtv;
+	Vec2 mtv;
 
 	// Get the world points of both polygons
 	if (SATPolyToPolyCalculation(poly->GetWorldPoints(), box->GetWorldPoints(), buffer, &mtv))
@@ -176,26 +176,26 @@ bool CollisionManager::PolygonToBoxCollisionCheck(PolygonCollider* poly, BoxColl
 	return  false;
 }
 
-bool CollisionManager::SATPolyToPolyCalculation(std::vector<Vector2> polyAPoints, std::vector<Vector2> polyBPoints, int buffer, Vector2* mtv)
+bool CollisionManager::SATPolyToPolyCalculation(std::vector<Vec2> polyAPoints, std::vector<Vec2> polyBPoints, int buffer, Vec2* mtv)
 {
 	// Get the world points of both polygons
 
 	// Set up unique axes
-	std::set<Vector2> uniqueAxes;
+	std::set<Vec2> uniqueAxes;
 
 	// Get axes from polygon A
 	for (int i = 0; i < polyAPoints.size(); i++)
 	{
-		Vector2 edge = polyAPoints[(i + 1) % polyAPoints.size()] - polyAPoints[i];
-		Vector2 normal = Vector2(-edge.y, edge.x).Normalized();
+		Vec2 edge = polyAPoints[(i + 1) % polyAPoints.size()] - polyAPoints[i];
+		Vec2 normal = Vec2(-edge.y, edge.x).Normalized();
 		uniqueAxes.insert(normal);
 	}
 
 	// Get axes from polygon B
 	for (int i = 0; i < polyBPoints.size(); i++)
 	{
-		Vector2 edge = polyBPoints[(i + 1) % polyBPoints.size()] - polyBPoints[i];
-		Vector2 normal = Vector2(-edge.y, edge.x).Normalized();
+		Vec2 edge = polyBPoints[(i + 1) % polyBPoints.size()] - polyBPoints[i];
+		Vec2 normal = Vec2(-edge.y, edge.x).Normalized();
 		uniqueAxes.insert(normal);
 	}
 
@@ -210,7 +210,7 @@ bool CollisionManager::SATPolyToPolyCalculation(std::vector<Vector2> polyAPoints
 		// Project polygon A onto axis
 		for (auto point : polyAPoints)
 		{
-			float proj = Vector2::Dot(point, axis);
+			float proj = Vec2::Dot(point, axis);
 			polyAMin = std::min(polyAMin, proj);
 			polyAMax = std::max(polyAMax, proj);
 		}
@@ -218,7 +218,7 @@ bool CollisionManager::SATPolyToPolyCalculation(std::vector<Vector2> polyAPoints
 		// Project polygon B onto axis
 		for (auto point : polyBPoints)
 		{
-			float proj = Vector2::Dot(point, axis);
+			float proj = Vec2::Dot(point, axis);
 			polyBMin = std::min(polyBMin, proj);
 			polyBMax = std::max(polyBMax, proj);
 		}
@@ -235,7 +235,7 @@ bool CollisionManager::SATPolyToPolyCalculation(std::vector<Vector2> polyAPoints
 			// If this axis has the smallest overlap, store the overlap and mtv
 			minOverlap = dist;
 			*mtv = axis * dist;
-			if (Vector2::Dot(*mtv, polyBPoints[0] - polyAPoints[0]) < 0)
+			if (Vec2::Dot(*mtv, polyBPoints[0] - polyAPoints[0]) < 0)
 			{
 				*mtv = - *mtv;
 			}
@@ -244,22 +244,22 @@ bool CollisionManager::SATPolyToPolyCalculation(std::vector<Vector2> polyAPoints
 	return  true;
 }
 
-bool CollisionManager::SATPolyToCircleCalculation(std::vector<Vector2> polyPoints, Vector2 circlePos, float circleRadious, int buffer, Vector2* mtv)
+bool CollisionManager::SATPolyToCircleCalculation(std::vector<Vec2> polyPoints, Vec2 circlePos, float circleRadious, int buffer, Vec2* mtv)
 {
 	// Create axes to test against (only need axes perpendicular to the edges of the polygon)
-	std::vector<Vector2> axes;
+	std::vector<Vec2> axes;
 	for (int i = 0; i < polyPoints.size(); i++)
 	{
-		Vector2 edge = polyPoints[(i + 1) % polyPoints.size()] - polyPoints[i];
-		axes.push_back(Vector2(-edge.y, edge.x).Normalized());
+		Vec2 edge = polyPoints[(i + 1) % polyPoints.size()] - polyPoints[i];
+		axes.push_back(Vec2(-edge.y, edge.x).Normalized());
 	}
 
 	// Add the axis perpendicular to the line segment connecting the circle center and the closest point on the polygon to the circle center
 	float minDist = INFINITY;
-	Vector2 closestPointOnPoly = Vector2::Zero();
+	Vec2 closestPointOnPoly = Vec2::Zero();
 	for (auto point : polyPoints)
 	{
-		Vector2 toCircle = circlePos - point;
+		Vec2 toCircle = circlePos - point;
 		float dist = toCircle.Length();
 		if (dist < minDist)
 		{
@@ -282,13 +282,13 @@ bool CollisionManager::SATPolyToCircleCalculation(std::vector<Vector2> polyPoint
 		// Project the polygon onto the axis
 		for (auto point : polyPoints)
 		{
-			float proj = Vector2::Dot(point, axis);
+			float proj = Vec2::Dot(point, axis);
 			polyMin = std::min(polyMin, proj);
 			polyMax = std::max(polyMax, proj);
 		}
 
 		// Project the circle onto the axis
-		float circleCentreProj = Vector2::Dot(circlePos, axis);
+		float circleCentreProj = Vec2::Dot(circlePos, axis);
 		circleMin = circleCentreProj - circleRadious;
 		circleMax = circleCentreProj + circleRadious;
 
@@ -305,7 +305,7 @@ bool CollisionManager::SATPolyToCircleCalculation(std::vector<Vector2> polyPoint
 			{
 				minOverlap = overlap;
 				*mtv = axis * overlap;
-				if (Vector2::Dot(*mtv, circlePos - closestPointOnPoly) < 0)
+				if (Vec2::Dot(*mtv, circlePos - closestPointOnPoly) < 0)
 				{
 					*mtv = - *mtv;
 				}
@@ -322,7 +322,7 @@ double CollisionManager::DistanceSquared(int x1, int y1, int x2, int y2)
 	return deltaX * deltaX + deltaY * deltaY;
 }
 
-bool CollisionManager::PolygonContainsPoint(const std::vector<Vector2>& polyPoints, const Vector2& point)
+bool CollisionManager::PolygonContainsPoint(const std::vector<Vec2>& polyPoints, const Vec2& point)
 {
 	bool contains = false;
 	int i, j = polyPoints.size() - 1;

@@ -9,11 +9,11 @@ private:
 	
 public:
 
-	CircleCollider(void* owner, Vector2 nextPosition, float radius, float radiousMutiplier = 1, bool isStatic = false);
+	CircleCollider(void* owner, Vec2 nextPosition, float radius, float radiousMutiplier = 1, bool isStatic = false);
 
-	void UpdatePosition(Vector2 nextPosition) override;
+	void UpdatePosition(Vec2 nextPosition) override;
 
-	Vector2 GetCenter() override;
+	Vec2 GetCenter() override;
 
 	inline float GetRadius() { return radius; };
 };

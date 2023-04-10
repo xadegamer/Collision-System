@@ -6,14 +6,14 @@
 #include "PolygonCollider.h"
 #include "GameObject.h"
 
-void CollsionVisualiser::DrawBoxAtPosition(SDL_Color sdlColor, Vector2 position, int width, int height)
+void CollsionVisualiser::DrawBoxAtPosition(SDL_Color sdlColor, Vec2 position, int width, int height)
 {
 	SDL_SetRenderDrawColor(SDLManager::GetRenderer(), sdlColor.r, sdlColor.g, sdlColor.b, sdlColor.a);
 	SDL_Rect visualRect = { position.x, position.y, width, height };
 	SDL_RenderDrawRect(SDLManager::GetRenderer(), &visualRect);
 }
 
-void CollsionVisualiser::DrawCircleAtPosition(SDL_Color sdlColor, Vector2 position, int radius)
+void CollsionVisualiser::DrawCircleAtPosition(SDL_Color sdlColor, Vec2 position, int radius)
 {
 	SDL_SetRenderDrawColor(SDLManager::GetRenderer(), sdlColor.r, sdlColor.g, sdlColor.b, sdlColor.a);
 	for (int i = 0; i < 360; i++)
@@ -24,7 +24,7 @@ void CollsionVisualiser::DrawCircleAtPosition(SDL_Color sdlColor, Vector2 positi
 	}
 }
 
-void CollsionVisualiser::DrawPolygon(SDL_Color sdlColor, std::vector<Vector2> _points)
+void CollsionVisualiser::DrawPolygon(SDL_Color sdlColor, std::vector<Vec2> _points)
 {
 	int num_points = _points.size();
 

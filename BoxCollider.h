@@ -10,11 +10,11 @@ private:
 
 public:
 
-	BoxCollider(void* owner, Vector2 nextPosition, Vector2 size, bool isStatic = false);
+	BoxCollider(void* owner, Vec2 nextPosition, Vec2 size, bool isStatic = false);
 
-	void UpdatePosition(Vector2 nextPosition) override;
+	void UpdatePosition(Vec2 nextPosition) override;
 
-	Vector2 GetCenter() override;
+	Vec2 GetCenter() override;
 
 	inline int GetWidth() { return width; }
 
@@ -22,6 +22,6 @@ public:
 
 	inline int GetNumPoints() { return GetWorldPoints().size(); }
 
-	std::vector<Vector2> GetWorldPoints();
+	std::vector<Vec2> GetWorldPoints();
 };
 
