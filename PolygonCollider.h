@@ -4,26 +4,29 @@
 #include <iostream>
 #include <vector>
 
-class PolygonCollider : public Collider
+namespace CollisionSystem
 {
-private:
+	class PolygonCollider : public Collider
+	{
+	private:
 
-	Vec2 position;
-    int num_points;
-	std::vector<Vec2> points;
+		Vec2 position;
+		int num_points;
+		std::vector<Vec2> points;
 
-public:
+	public:
 
-	PolygonCollider(void* owner, Vec2 nextPosition, std::vector<Vec2> points, bool isStatic = false);
+		PolygonCollider(void* owner, Vec2 nextPosition, std::vector<Vec2> points, bool isStatic = false);
 
-	void UpdatePosition(Vec2 nextPosition) override;
+		void UpdatePosition(Vec2 nextPosition) override;
 
-	Vec2 GetCenter() override;
+		Vec2 GetCenter() override;
 
-	inline int GetNumPoints() { return num_points; }
+		inline int GetNumPoints() { return num_points; }
 
-	inline std::vector<Vec2> GetPoints() { return points; }
+		inline std::vector<Vec2> GetPoints() { return points; }
 
-	std::vector<Vec2> GetWorldPoints();
-};
+		std::vector<Vec2> GetWorldPoints();
+	};
+}
 

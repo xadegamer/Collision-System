@@ -1,20 +1,22 @@
 #pragma once
 #include "Collider.h"
 
-class CircleCollider : public Collider
+namespace CollisionSystem
 {
-private:
+	class CircleCollider : public Collider
+	{
+	private:
 
-	float radius;
-	
-public:
+		float radius;
 
-	CircleCollider(void* owner, Vec2 nextPosition, float radius, float radiousMutiplier = 1, bool isStatic = false);
+	public:
 
-	void UpdatePosition(Vec2 nextPosition) override;
+		CircleCollider(void* owner, Vec2 nextPosition, float radius, float radiousMutiplier = 1, bool isStatic = false);
 
-	Vec2 GetCenter() override;
+		void UpdatePosition(Vec2 nextPosition) override;
 
-	inline float GetRadius() { return radius; };
-};
+		Vec2 GetCenter() override;
 
+		inline float GetRadius() { return radius; };
+	};
+}

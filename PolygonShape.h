@@ -4,6 +4,8 @@
 
 #include <vector>
 
+using namespace CollisionSystem;
+
 enum class PolygonShapeType
 {
 	TRIANGLE,

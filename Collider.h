@@ -8,55 +8,59 @@
 #include "Collision.h"
 #include "Vec2.h"
 
-class Collider
-{	
-protected:
+namespace CollisionSystem
+{
 
-	static std::vector<Collider*> allColliders;
-	Collision collision;
-	void* owner;
-	float xPos;
-	float yPos;
-	Vec2 position;
-	bool isEnabled;
-	bool isTrigger;
-	bool isStatic;
-	Collider* currentCollidedObject;
-	std::function <void(Collision other)> OnCollisionEnterEvent;
-	
-public:
-	
-	Collider(void* owner, Vec2 position, bool isStatic = false);
-	
-	~Collider();
+	class Collider
+	{
+	protected:
 
-	virtual void UpdatePosition(Vec2 position) = 0;
+		static std::vector<Collider*> allColliders;
+		Collision collision;
+		void* owner;
+		float xPos;
+		float yPos;
+		Vec2 position;
+		bool isEnabled;
+		bool isTrigger;
+		bool isStatic;
+		Collider* currentCollidedObject;
+		std::function <void(Collision other)> OnCollisionEnterEvent;
 
-	virtual Vec2 GetCenter() = 0;
+	public:
 
-	void OnCollision();
+		Collider(void* owner, Vec2 position, bool isStatic = false);
 
-	void SetCollisionProperty(Collider* colliderHit, Vec2 minimumTranslationVector, float impulse);
+		~Collider();
 
-	void AddListener(std::function <void(Collision other)> OnCollisionEnterEvent);
+		virtual void UpdatePosition(Vec2 position) = 0;
 
-	inline Collision GetCollision() { return collision; }
+		virtual Vec2 GetCenter() = 0;
 
-	inline Vec2 GetPosition() { return position; }
+		void OnCollision();
 
-	inline void* GetOwner() { return owner; }
-	
-	inline bool IsTrigger() { return isTrigger; }
-	
-	inline void SetTrigger(bool isTrigger) { this->isTrigger = isTrigger; }
+		void SetCollisionProperty(Collider* colliderHit, Vec2 minimumTranslationVector, float impulse);
 
-	inline bool IsStatic() { return isStatic; }
-	
-	inline void SetStatic(bool isStatic) { this->isStatic = isStatic; }
+		void AddListener(std::function <void(Collision other)> OnCollisionEnterEvent);
 
-	inline bool GetIsEnabled() { return isEnabled; }
+		inline Collision GetCollision() { return collision; }
 
-	inline void SetIsEnabled(bool isEnabled) { this->isEnabled = isEnabled; }
+		inline Vec2 GetPosition() { return position; }
 
-	inline static std::vector<Collider*> GetAllColliders() { return allColliders; }
-};
+		inline void* GetOwner() { return owner; }
+
+		inline bool IsTrigger() { return isTrigger; }
+
+		inline void SetTrigger(bool isTrigger) { this->isTrigger = isTrigger; }
+
+		inline bool IsStatic() { return isStatic; }
+
+		inline void SetStatic(bool isStatic) { this->isStatic = isStatic; }
+
+		inline bool GetIsEnabled() { return isEnabled; }
+
+		inline void SetIsEnabled(bool isEnabled) { this->isEnabled = isEnabled; }
+
+		inline static std::vector<Collider*> GetAllColliders() { return allColliders; }
+	};
+}

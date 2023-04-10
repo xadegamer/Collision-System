@@ -4,6 +4,8 @@
 
 #include "Collision.h"
 
+using namespace CollisionSystem;
+
 class CollisionResolver
 {
 public:

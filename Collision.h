@@ -2,27 +2,29 @@
 
 #include "Vec2.h"
 
-class Collider;
-
-class Collision
+namespace CollisionSystem
 {
-private:
+	class Collider;
 
-	Collider* colliderHit = nullptr;
-	Vec2 minimumTranslationVector = Vec2(0,0);
-	float impulse = 0 ;
-
-public:
-
-	Collision() = default;
-
-	Collision(Collider* colliderHit, Vec2 minimumTranslationVector, float impulse) : colliderHit(colliderHit), minimumTranslationVector(minimumTranslationVector), impulse(impulse) 
+	class Collision
 	{
+	private:
 
-	}
+		Collider* colliderHit = nullptr;
+		Vec2 minimumTranslationVector = Vec2(0, 0);
+		float impulse = 0;
 
-	inline Collider* GetColliderHit() { return colliderHit; }
-	inline Vec2 GetMinimumTranslationVector() { return minimumTranslationVector; }
-	inline float GetImpulse() { return impulse; }
-};
+	public:
 
+		Collision() = default;
+
+		Collision(Collider* colliderHit, Vec2 minimumTranslationVector, float impulse) : colliderHit(colliderHit), minimumTranslationVector(minimumTranslationVector), impulse(impulse)
+		{
+
+		}
+
+		inline Collider* GetColliderHit() { return colliderHit; }
+		inline Vec2 GetMinimumTranslationVector() { return minimumTranslationVector; }
+		inline float GetImpulse() { return impulse; }
+	};
+}

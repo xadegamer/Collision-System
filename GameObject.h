@@ -20,6 +20,8 @@
 
 #include "Color.h"
 
+using namespace CollisionSystem;
+
 enum Tag
 {
 	DEFAULT,

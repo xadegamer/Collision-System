@@ -1,27 +1,29 @@
 #pragma once
 #include "Collider.h"
 
-class BoxCollider : public Collider
+namespace CollisionSystem
 {
-private:
+	class BoxCollider : public Collider
+	{
+	private:
 
-	int width;
-	int height;
+		int width;
+		int height;
 
-public:
+	public:
 
-	BoxCollider(void* owner, Vec2 nextPosition, Vec2 size, bool isStatic = false);
+		BoxCollider(void* owner, Vec2 nextPosition, Vec2 size, bool isStatic = false);
 
-	void UpdatePosition(Vec2 nextPosition) override;
+		void UpdatePosition(Vec2 nextPosition) override;
 
-	Vec2 GetCenter() override;
+		Vec2 GetCenter() override;
 
-	inline int GetWidth() { return width; }
+		inline int GetWidth() { return width; }
 
-	inline int GetHeight() { return height; }
+		inline int GetHeight() { return height; }
 
-	inline int GetNumPoints() { return GetWorldPoints().size(); }
+		inline int GetNumPoints() { return GetWorldPoints().size(); }
 
-	std::vector<Vec2> GetWorldPoints();
-};
-
+		std::vector<Vec2> GetWorldPoints();
+	};
+}
