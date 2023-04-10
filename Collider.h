@@ -5,10 +5,7 @@
 #include <iostream>
 #include <string>
 
-#include "Collider.h"
-
 #include "Collision.h"
-
 #include "Vector2.h"
 
 class Collider
@@ -20,7 +17,12 @@ protected:
 	Collision collision;
 
 	void* owner;
+
+	float xPos;
+	float yPos;
+
 	Vector2 position;
+
 	bool isEnabled;
 	bool isTrigger;
 	bool isStatic;
@@ -29,11 +31,11 @@ protected:
 	
 public:
 	
-	Collider(void* owner, Vector2 nextPosition, bool isStatic = false);
+	Collider(void* owner, Vector2 position, bool isStatic = false);
 	
 	~Collider();
 
-	virtual void UpdatePosition(Vector2 nextPosition) = 0;
+	virtual void UpdatePosition(Vector2 position) = 0;
 
 	virtual Vector2 GetCenter() = 0;
 

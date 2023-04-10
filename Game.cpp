@@ -8,6 +8,8 @@ Game::Game()
 {
 	isRunning = false;
 	layoutTileMap = nullptr;
+
+	SetUp();
 }
 
 Game::~Game()

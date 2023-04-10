@@ -13,8 +13,8 @@ public:
 
 	void UpdatePosition(Vector2 nextPosition) override;
 
-	inline float GetRadius() { return radius; };
-
 	Vector2 GetCenter() override;
+
+	inline float GetRadius() { return radius; };
 };
 

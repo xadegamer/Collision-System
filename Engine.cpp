@@ -22,37 +22,35 @@ void Engine::Start()
 
 	game = new Game();
 
-	game->SetUp();
-
 	systemTimer.tick();
 
 	deltaTimer.tick();
 
+	Loop();
+}
+
+void Engine::Loop()
+{
 	while (game->IsRunning())
 	{
 		deltaTimer.tick();
-		
+
 		InputManager::Update();
 
 		Update();
-		
+
 		Render();
-		
+
 		InputManager::UpdatePreviousInput();
 
 		FrameCap();
 	}
 
-	CollisionResolver::Shutdown();
-
-	delete game;
-	game = nullptr;
+	ShutDown();
 }
 
 void Engine::Update()
 {
-	game->HandleEvents();
-
 	game->Update(deltaTimer.getDeltaTime());
 
 	CollisionManager::HandleAllCollision();
@@ -71,7 +69,16 @@ void Engine::Render()
 	SDL_SetRenderDrawColor(SDLManager::GetRenderer(), 0, 0, 0, 255);
 
 	SDL_RenderPresent(SDLManager::GetRenderer());
+}
 
+void Engine::ShutDown()
+{
+	CollisionManager::CleanUp();
+
+	delete game;
+	game = nullptr;
+
+	SDLManager::Clean();
 }
 
 void Engine::FrameCap()

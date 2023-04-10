@@ -28,8 +28,10 @@ public:
 	static const int P0S_Y = 100;
 	
 	static void Start();
+	static void Loop();
 	static void Update();
 	static void Render();
+	static void ShutDown();
 	static void FrameCap();
 	static Game* GetGame() { return game; }
 	inline static TimeManager& GetSystemTimer() { return systemTimer; }

@@ -6,12 +6,7 @@
 
 void CollisionResolver::Initialize()
 {
-	CollisionManager::OnAnyCollisionEvent = ResolveCollision;
-}
-
-void CollisionResolver::Shutdown()
-{
-	CollisionManager::OnAnyCollisionEvent = nullptr;
+	CollisionManager::AddListener(CollisionResolver::ResolveCollision);
 }
 
 void CollisionResolver::ResolveCollision(Collider* colA, Collider* colB)

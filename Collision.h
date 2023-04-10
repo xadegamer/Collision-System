@@ -8,19 +8,17 @@ class Collision
 {
 private:
 
-	Collider* colliderHit;
-	Vector2 minimumTranslationVector;
-	float impulse;
+	Collider* colliderHit = nullptr;
+	Vector2 minimumTranslationVector = Vector2(0,0);
+	float impulse = 0 ;
 
 public:
 
 	Collision() = default;
 
-	Collision(Collider* colliderHit, Vector2 minimumTranslationVector, float impulse)
+	Collision(Collider* colliderHit, Vector2 minimumTranslationVector, float impulse) : colliderHit(colliderHit), minimumTranslationVector(minimumTranslationVector), impulse(impulse) 
 	{
-		this->colliderHit = colliderHit;
-		this->minimumTranslationVector = minimumTranslationVector;
-		this->impulse = impulse;
+
 	}
 
 	inline Collider* GetColliderHit() { return colliderHit; }

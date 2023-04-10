@@ -7,6 +7,11 @@ std::function <void(Collider* A, Collider* B)> CollisionManager::OnAnyCollisionE
 
 const static int s_buffer = 1;
 
+void CollisionManager::AddListener(std::function<void(Collider* colA, Collider* colB)> func)
+{
+	OnAnyCollisionEvent = func;
+}
+
 void CollisionManager::HandleAllCollision()
 {
 	for (int i = 0; i < Collider::GetAllColliders().size(); i++)
@@ -331,4 +336,41 @@ bool CollisionManager::PolygonContainsPoint(const std::vector<Vector2>& polyPoin
 		j = i;
 	}
 	return contains;
+}
+
+float CollisionManager::Distance(float x1, float y1, float x2, float y2)
+{
+	float deltaX = x2 - x1;
+	float deltaY = y2 - y1;
+	return sqrt(deltaX * deltaX + deltaY * deltaY);
+}
+
+float CollisionManager::Difference(float x1, float y1, float x2, float y2)
+{
+	float deltaX = x2 - x1;
+	float deltaY = y2 - y1;
+	return deltaX * deltaX + deltaY * deltaY;
+}
+
+float CollisionManager::Normalise(float x, float y)
+{
+	float length = sqrt(x * x + y * y);
+	if (length != 0)
+	{
+		x /= length;
+		y /= length;
+	}
+	return length;
+}
+
+void CollisionManager::CleanUp()
+{
+	OnAnyCollisionEvent = nullptr;
+
+	for (int i = 0; i < Collider::GetAllColliders().size(); i++)
+	{
+		delete Collider::GetAllColliders()[i];
+	}
+
+	Collider::GetAllColliders().clear();
 }

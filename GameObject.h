@@ -45,13 +45,14 @@ protected:
 	std::vector<Component*> components;
 	Tag tag = Tag::DEFAULT;
 	Transform* transform;
-	SDL_Color color = { 255, 255, 255, 255 };
+	SDL_Color color = Color::GetRandomColor();
 
 	virtual void Update(float deltaTime);
 
 	virtual void LateUpdate(float deltaTime) {};
 	
 public:
+
 	GameObject(Vector2 position = Vector2(0, 0));
 	virtual ~GameObject();
 
