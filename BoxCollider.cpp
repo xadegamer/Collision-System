@@ -4,28 +4,27 @@ namespace CollisionSystem
 {
 	BoxCollider::BoxCollider(void* owner, Vec2 nextPosition, Vec2 size, bool isStatic) : Collider(owner, nextPosition, isStatic)
 	{
-		width = size.GetX();
-		height = size.GetY();
+		_size = size;
 		UpdatePosition(nextPosition);
 	}
 
 	void BoxCollider::UpdatePosition(Vec2 nextPosition)
 	{
-		position = nextPosition;
+		_position = nextPosition;
 	}
 
 	Vec2 BoxCollider::GetCenter()
 	{
-		return Vec2(position.GetX() + width / 2, position.GetY() + height / 2);
+		return Vec2(_position.GetX() + GetWidth() / 2, _position.GetY() + GetHeight() / 2);
 	}
 
 	std::vector<Vec2> BoxCollider::GetWorldPoints()
 	{
 		std::vector<Vec2> points;
-		points.push_back(Vec2(position.GetX(), position.GetY()));
-		points.push_back(Vec2(position.GetX() + width, position.GetY()));
-		points.push_back(Vec2(position.GetX() + width, position.GetY() + height));
-		points.push_back(Vec2(position.GetX(), position.GetY() + height));
+		points.push_back(Vec2(_position.GetX(), _position.GetY()));
+		points.push_back(Vec2(_position.GetX() + GetWidth(), _position.GetY()));
+		points.push_back(Vec2(_position.GetX() + GetWidth(), _position.GetY() + GetHeight()));
+		points.push_back(Vec2(_position.GetX(), _position.GetY() + GetHeight()));
 		return points;
 	}
 }

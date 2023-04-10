@@ -10,21 +10,21 @@ namespace CollisionSystem
 	{
 	private:
 
-		Collider* colliderHit = nullptr;
-		Vec2 minimumTranslationVector = Vec2(0, 0);
-		float impulse = 0;
+		Collider* _colliderHit = nullptr;
+		Vec2 _minimumTranslationVector = Vec2(0, 0);
+		float _impulse = 0;
 
 	public:
 
 		Collision() = default;
 
-		Collision(Collider* colliderHit, Vec2 minimumTranslationVector, float impulse) : colliderHit(colliderHit), minimumTranslationVector(minimumTranslationVector), impulse(impulse)
+		Collision(Collider* colliderHit, Vec2 minimumTranslationVector, float impulse) : _colliderHit(colliderHit), _minimumTranslationVector(minimumTranslationVector), _impulse(impulse)
 		{
 
 		}
 
-		inline Collider* GetColliderHit() { return colliderHit; }
-		inline Vec2 GetMinimumTranslationVector() { return minimumTranslationVector; }
-		inline float GetImpulse() { return impulse; }
+		inline Collider* GetColliderHit() { return _colliderHit; }
+		inline Vec2 GetMinimumTranslationVector() { return _minimumTranslationVector; }
+		inline float GetImpulse() { return _impulse; }
 	};
 }

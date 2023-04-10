@@ -7,7 +7,7 @@ namespace CollisionSystem
 	{
 	private:
 
-		float radius;
+		float _radius;
 
 	public:
 
@@ -17,6 +17,6 @@ namespace CollisionSystem
 
 		Vec2 GetCenter() override;
 
-		inline float GetRadius() { return radius; };
+		inline float GetRadius() { return _radius; };
 	};
 }

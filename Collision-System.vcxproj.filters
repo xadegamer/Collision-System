@@ -111,9 +111,6 @@
     <ClCompile Include="Wall.cpp">
       <Filter>Source Files\GameObject</Filter>
     </ClCompile>
-    <ClCompile Include="PolygonShape.cpp">
-      <Filter>Source Files\Statics</Filter>
-    </ClCompile>
     <ClCompile Include="Direction.cpp">
       <Filter>Source Files\Statics</Filter>
     </ClCompile>
@@ -131,6 +128,12 @@
     </ClCompile>
     <ClCompile Include="CollisionManager.cpp">
       <Filter>Source Files\Collision Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Vec2.cpp">
+      <Filter>Source Files\Collision Core</Filter>
+    </ClCompile>
+    <ClCompile Include="PolygonShape.cpp">
+      <Filter>Source Files\Collision Assit</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -194,9 +197,6 @@
     <ClInclude Include="Wall.h">
       <Filter>Header Files\GameObject</Filter>
     </ClInclude>
-    <ClInclude Include="PolygonShape.h">
-      <Filter>Header Files\Statics</Filter>
-    </ClInclude>
     <ClInclude Include="Direction.h">
       <Filter>Header Files\Statics</Filter>
     </ClInclude>
@@ -217,6 +217,12 @@
     </ClInclude>
     <ClInclude Include="PolygonCollider.h">
       <Filter>Header Files\Collision Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Vec2.h">
+      <Filter>Header Files\Collision Core</Filter>
+    </ClInclude>
+    <ClInclude Include="PolygonShape.h">
+      <Filter>Header Files\Collision Assit</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

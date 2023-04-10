@@ -2,25 +2,25 @@
 
 namespace CollisionSystem
 {
-	std::vector<Collider*> Collider::allColliders = std::vector<Collider*>();
+	std::vector<Collider*> Collider::_allColliders = std::vector<Collider*>();
 
 	Collider::Collider(void* owner, Vec2 nextPosition, bool isStatic)
 	{
-		currentCollidedObject = nullptr;
-		allColliders.push_back(this);
-		isEnabled = true;
+		_currentCollidedObject = nullptr;
+		_allColliders.push_back(this);
+		_isEnabled = true;
 
-		this->owner = owner;
-		this->isStatic = isStatic;
+		this->_owner = owner;
+		this->_isStatic = isStatic;
 	}
 
 	Collider::~Collider()
 	{
-		for (int i = 0; i < allColliders.size(); i++)
+		for (int i = 0; i < _allColliders.size(); i++)
 		{
-			if (allColliders[i] == this)
+			if (_allColliders[i] == this)
 			{
-				allColliders.erase(allColliders.begin() + i);
+				_allColliders.erase(_allColliders.begin() + i);
 				break;
 			}
 		}
@@ -28,18 +28,18 @@ namespace CollisionSystem
 
 	void Collider::OnCollision()
 	{
-		if (collision.GetColliderHit() == nullptr || !isEnabled) return;
+		if (_collision.GetColliderHit() == nullptr || !_isEnabled) return;
 
-		if (OnCollisionEnterEvent != nullptr) OnCollisionEnterEvent(collision);
+		if (_OnCollisionEnterEvent != nullptr) _OnCollisionEnterEvent(_collision);
 	}
 
 	void Collider::SetCollisionProperty(Collider* colliderHit, Vec2 minimumTranslationVector, float impulse)
 	{
-		collision = { colliderHit , minimumTranslationVector , impulse };
+		_collision = { colliderHit , minimumTranslationVector , impulse };
 	}
 
 	void Collider::AddListener(std::function<void(Collision other)> OnCollisionEnterEvent)
 	{
-		this->OnCollisionEnterEvent = OnCollisionEnterEvent;
+		this->_OnCollisionEnterEvent = OnCollisionEnterEvent;
 	}
 }

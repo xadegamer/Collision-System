@@ -4,14 +4,13 @@
 
 namespace CollisionSystem
 {
-
-	std::function <void(Collider* A, Collider* B)> CollisionManager::OnAnyCollisionEvent = nullptr;
+	std::function <void(Collider* A, Collider* B)> CollisionManager::_onAnyCollisionEvent = nullptr;
 
 	const static int s_buffer = 1;
 
 	void CollisionManager::AddListener(std::function<void(Collider* colA, Collider* colB)> func)
 	{
-		OnAnyCollisionEvent = func;
+		_onAnyCollisionEvent = func;
 	}
 
 	void CollisionManager::HandleAllCollision()
@@ -24,10 +23,9 @@ namespace CollisionSystem
 				Collider* colliderB = Collider::GetAllColliders()[j];
 				if (colliderA != colliderB && colliderA->GetIsEnabled() && colliderB->GetIsEnabled())
 				{
-
 					if (CollisionManager::CheckCollision(colliderA, colliderB))
 					{
-						if (OnAnyCollisionEvent != nullptr) OnAnyCollisionEvent(colliderA, colliderB);
+						if (_onAnyCollisionEvent != nullptr) _onAnyCollisionEvent(colliderA, colliderB);
 
 						colliderA->OnCollision();
 						colliderB->OnCollision();
@@ -37,16 +35,16 @@ namespace CollisionSystem
 		}
 	}
 
-	bool CollisionManager::CheckCollision(Collider* colA, Collider* colB)
+	bool CollisionManager::CheckCollision(Collider* _colA, Collider* _colB)
 	{
-		BoxCollider* boxA = dynamic_cast<BoxCollider*>(colA);
-		BoxCollider* boxB = dynamic_cast<BoxCollider*>(colB);
+		BoxCollider* boxA = dynamic_cast<BoxCollider*>(_colA);
+		BoxCollider* boxB = dynamic_cast<BoxCollider*>(_colB);
 
-		CircleCollider* circleA = dynamic_cast<CircleCollider*>(colA);
-		CircleCollider* circleB = dynamic_cast<CircleCollider*>(colB);
+		CircleCollider* circleA = dynamic_cast<CircleCollider*>(_colA);
+		CircleCollider* circleB = dynamic_cast<CircleCollider*>(_colB);
 
-		PolygonCollider* polyA = dynamic_cast<PolygonCollider*>(colA);
-		PolygonCollider* polyB = dynamic_cast<PolygonCollider*>(colB);
+		PolygonCollider* polyA = dynamic_cast<PolygonCollider*>(_colA);
+		PolygonCollider* polyB = dynamic_cast<PolygonCollider*>(_colB);
 
 		if (boxA != nullptr && boxB != nullptr)
 		{
@@ -343,7 +341,7 @@ namespace CollisionSystem
 
 	void CollisionManager::CleanUp()
 	{
-		OnAnyCollisionEvent = nullptr;
+		_onAnyCollisionEvent = nullptr;
 
 		for (int i = 0; i < Collider::GetAllColliders().size(); i++)
 		{
@@ -352,5 +350,4 @@ namespace CollisionSystem
 
 		Collider::GetAllColliders().clear();
 	}
-
 }

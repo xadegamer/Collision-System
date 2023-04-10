@@ -2,20 +2,20 @@
 
 namespace CollisionSystem
 {
-	CircleCollider::CircleCollider(void* owner, Vec2 nextPosition, float _radius, float radiousMutiplier, bool isStatic) : Collider(owner, nextPosition, isStatic)
+	CircleCollider::CircleCollider(void* owner, Vec2 position, float radius, float radiousMutiplier, bool isStatic) : Collider(owner, position, isStatic)
 	{
-		radius = _radius * radiousMutiplier;
-		UpdatePosition(nextPosition);
+		_radius = radius * radiousMutiplier;
+		UpdatePosition(position);
 	}
 
 	void CircleCollider::UpdatePosition(Vec2 nextPosition)
 	{
-		Vec2 currentPosition = Vec2(nextPosition.GetX() + radius, nextPosition.GetY() + radius);
-		position = currentPosition;
+		Vec2 currentPosition = Vec2(nextPosition.GetX() + _radius, nextPosition.GetY() + _radius);
+		_position = currentPosition;
 	}
 
 	Vec2 CircleCollider::GetCenter()
 	{
-		return position;
+		return _position;
 	}
 }

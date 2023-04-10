@@ -11,12 +11,12 @@ namespace CollisionSystem
 {
 	class CollisionManager
 	{
-	public:
-		static std::function <void(Collider* colA, Collider* colB)> OnAnyCollisionEvent;
-
 	private:
+
 		CollisionManager() = delete;
 		~CollisionManager() = delete;
+
+		static std::function <void(Collider* colA, Collider* colB)> _onAnyCollisionEvent;
 
 		static bool CheckCollision(Collider* colA, Collider* colB);
 

@@ -7,8 +7,7 @@ namespace CollisionSystem
 	{
 	private:
 
-		int width;
-		int height;
+		Vec2 _size;
 
 	public:
 
@@ -18,9 +17,9 @@ namespace CollisionSystem
 
 		Vec2 GetCenter() override;
 
-		inline int GetWidth() { return width; }
+		inline int GetWidth() { return _size.GetX(); }
 
-		inline int GetHeight() { return height; }
+		inline int GetHeight() { return _size.GetY(); }
 
 		inline int GetNumPoints() { return GetWorldPoints().size(); }
 
