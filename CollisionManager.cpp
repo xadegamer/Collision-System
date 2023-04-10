@@ -338,31 +338,6 @@ bool CollisionManager::PolygonContainsPoint(const std::vector<Vector2>& polyPoin
 	return contains;
 }
 
-float CollisionManager::Distance(float x1, float y1, float x2, float y2)
-{
-	float deltaX = x2 - x1;
-	float deltaY = y2 - y1;
-	return sqrt(deltaX * deltaX + deltaY * deltaY);
-}
-
-float CollisionManager::Difference(float x1, float y1, float x2, float y2)
-{
-	float deltaX = x2 - x1;
-	float deltaY = y2 - y1;
-	return deltaX * deltaX + deltaY * deltaY;
-}
-
-float CollisionManager::Normalise(float x, float y)
-{
-	float length = sqrt(x * x + y * y);
-	if (length != 0)
-	{
-		x /= length;
-		y /= length;
-	}
-	return length;
-}
-
 void CollisionManager::CleanUp()
 {
 	OnAnyCollisionEvent = nullptr;

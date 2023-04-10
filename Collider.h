@@ -13,16 +13,11 @@ class Collider
 protected:
 
 	static std::vector<Collider*> allColliders;
-
 	Collision collision;
-
 	void* owner;
-
 	float xPos;
 	float yPos;
-
 	Vector2 position;
-
 	bool isEnabled;
 	bool isTrigger;
 	bool isStatic;

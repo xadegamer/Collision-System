@@ -9,7 +9,7 @@ class PolygonCollider : public Collider
 private:
 
 	Vector2 position;
-    int num_points; // Number of points in polygon
+    int num_points;
 	std::vector<Vector2> points;
 
 public:

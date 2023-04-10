@@ -38,12 +38,6 @@ private:
 	static double DistanceSquared(int x1, int y1, int x2, int y2);
 
 	static bool PolygonContainsPoint(const std::vector<Vector2>& polyPoints, const Vector2& point);
-
-	static float Distance(float x1, float y1, float x2, float y2);
-
-	static float Difference(float x1, float y1, float x2, float y2);
-
-	static float Normalise (float x, float y);
 	
 public:
 
