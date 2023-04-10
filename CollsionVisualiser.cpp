@@ -9,7 +9,7 @@
 void CollsionVisualiser::DrawBoxAtPosition(SDL_Color sdlColor, Vec2 position, int width, int height)
 {
 	SDL_SetRenderDrawColor(SDLManager::GetRenderer(), sdlColor.r, sdlColor.g, sdlColor.b, sdlColor.a);
-	SDL_Rect visualRect = { position.x, position.y, width, height };
+	SDL_Rect visualRect = { position.GetX(), position.GetY(), width, height };
 	SDL_RenderDrawRect(SDLManager::GetRenderer(), &visualRect);
 }
 
@@ -20,7 +20,7 @@ void CollsionVisualiser::DrawCircleAtPosition(SDL_Color sdlColor, Vec2 position,
 	{
 		float x = radius * cos(i * 3.14 / 180);
 		float y = radius * sin(i * 3.14 / 180);
-		SDL_RenderDrawPoint(SDLManager::GetRenderer(), (position.x + x), (position.y + y));
+		SDL_RenderDrawPoint(SDLManager::GetRenderer(), (position.GetX() + x), (position.GetY() + y));
 	}
 }
 
@@ -31,8 +31,8 @@ void CollsionVisualiser::DrawPolygon(SDL_Color sdlColor, std::vector<Vec2> _poin
 	SDL_Point* sdlPoints = new SDL_Point[num_points];
 	for (int i = 0; i < num_points; i++)
 	{
-		sdlPoints[i].x = _points[i].x;
-		sdlPoints[i].y = _points[i].y;
+		sdlPoints[i].x = _points[i].GetX();
+		sdlPoints[i].y = _points[i].GetY();
 	}
 
 	// draw the lines

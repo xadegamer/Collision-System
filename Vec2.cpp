@@ -102,7 +102,7 @@ namespace CollisionSystem
 		}
 	}
 
-	float Vec2::dist(const Vec2& v) const
+	float Vec2::Dist(const Vec2& v) const
 	{
 		return static_cast<float>(std::sqrt((v.x - x) * (v.x - x) + (v.y - y) * (v.y - y)));
 	}
@@ -110,14 +110,6 @@ namespace CollisionSystem
 	Vec2 Vec2::Perpendicular()const
 	{
 		return Vec2(-y, x);
-	}
-
-	Vec2 Vec2::normalize()
-	{
-		float length = dist(Vec2(0, 0));
-		x /= length;
-		y /= length;
-		return *this;
 	}
 
 	Vec2 Vec2::Normalized() const
@@ -137,7 +129,7 @@ namespace CollisionSystem
 
 	Vec2 Vec2::Normalize(Vec2 v)
 	{
-		float length = v.dist(Vec2(0, 0));
+		float length = v.Dist(Vec2(0, 0));
 		return Vec2(v.x / length, v.y / length);
 	}
 
@@ -185,7 +177,7 @@ namespace CollisionSystem
 
 	Vec2 operator*(float f, const Vec2& v)
 	{
-		return Vec2(v.x * f, v.y * f);
+		return Vec2(v.GetX() * f, v.GetY() * f);
 	}
 
 	Vec2 operator+(const Vec2& lv, const Vec2& rv)
@@ -204,7 +196,7 @@ namespace CollisionSystem
 
 	std::ostream& operator<<(std::ostream& out, const Vec2& v)
 	{
-		out << "(" << v.x << ", " << v.y << ")";
+		out << "(" << v.GetX() << ", " << v.GetY() << ")";
 		return out;
 	}
 }

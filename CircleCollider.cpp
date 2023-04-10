@@ -10,7 +10,7 @@ namespace CollisionSystem
 
 	void CircleCollider::UpdatePosition(Vec2 nextPosition)
 	{
-		Vec2 currentPosition = Vec2(nextPosition.x + radius, nextPosition.y + radius);
+		Vec2 currentPosition = Vec2(nextPosition.GetX() + radius, nextPosition.GetY() + radius);
 		position = currentPosition;
 	}
 

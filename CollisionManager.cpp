@@ -189,7 +189,7 @@ namespace CollisionSystem
 		for (int i = 0; i < polyAPoints.size(); i++)
 		{
 			Vec2 edge = polyAPoints[(i + 1) % polyAPoints.size()] - polyAPoints[i];
-			Vec2 normal = Vec2(-edge.y, edge.x).Normalized();
+			Vec2 normal = Vec2(-edge.GetY(), edge.GetX()).Normalized();
 			uniqueAxes.insert(normal);
 		}
 
@@ -197,7 +197,7 @@ namespace CollisionSystem
 		for (int i = 0; i < polyBPoints.size(); i++)
 		{
 			Vec2 edge = polyBPoints[(i + 1) % polyBPoints.size()] - polyBPoints[i];
-			Vec2 normal = Vec2(-edge.y, edge.x).Normalized();
+			Vec2 normal = Vec2(-edge.GetY(), edge.GetX()).Normalized();
 			uniqueAxes.insert(normal);
 		}
 
@@ -253,7 +253,7 @@ namespace CollisionSystem
 		for (int i = 0; i < polyPoints.size(); i++)
 		{
 			Vec2 edge = polyPoints[(i + 1) % polyPoints.size()] - polyPoints[i];
-			axes.push_back(Vec2(-edge.y, edge.x).Normalized());
+			axes.push_back(Vec2(-edge.GetY(), edge.GetX()).Normalized());
 		}
 
 		// Add the axis perpendicular to the line segment connecting the circle center and the closest point on the polygon to the circle center
@@ -330,8 +330,9 @@ namespace CollisionSystem
 		int i, j = polyPoints.size() - 1;
 		for (i = 0; i < polyPoints.size(); i++)
 		{
-			if ((polyPoints[i].y < point.y && polyPoints[j].y >= point.y || polyPoints[j].y < point.y && polyPoints[i].y >= point.y) &&
-				(polyPoints[i].x + (point.y - polyPoints[i].y) / (polyPoints[j].y - polyPoints[i].y) * (polyPoints[j].x - polyPoints[i].x) < point.x))
+			if ( 
+				((polyPoints[i].GetY() > point.GetY()) != (polyPoints[j].GetY() > point.GetY())) &&
+				(point.GetX() < (polyPoints[j].GetX() - polyPoints[i].GetX()) * (point.GetY() - polyPoints[i].GetY()) / (polyPoints[j].GetY() - polyPoints[i].GetY()) + polyPoints[i].GetX()) )
 			{
 				contains = !contains;
 			}

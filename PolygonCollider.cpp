@@ -30,7 +30,7 @@ namespace CollisionSystem
 		std::vector<Vec2> worldPoints;
 		for (int i = 0; i < num_points; i++)
 		{
-			worldPoints.push_back(Vec2(points[i].x + position.x, points[i].y + position.y));
+			worldPoints.push_back(Vec2(points[i].GetX() + position.GetX(), points[i].GetY() + position.GetY()));
 		}
 		return worldPoints;
 	}

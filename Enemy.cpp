@@ -66,6 +66,6 @@ void Enemy::OnCollisionEnter(Collision collision)
 		color = other->GetColor();
 	}
 
-	Vector2 newDirection = Vector2 { collision.GetMinimumTranslationVector().x, collision.GetMinimumTranslationVector().y };
+	Vector2 newDirection = Vector2 { collision.GetMinimumTranslationVector().GetX(), collision.GetMinimumTranslationVector().GetY() };
 	direction = -newDirection.Normalized() * collision.GetImpulse();
 }
