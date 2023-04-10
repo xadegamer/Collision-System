@@ -10,7 +10,6 @@
 
 namespace CollisionSystem
 {
-
 	class Collider
 	{
 	protected:
