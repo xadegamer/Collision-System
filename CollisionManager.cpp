@@ -44,52 +44,6 @@ namespace CollisionSystem
 			return collisionFunc->second(_colA, _colB, s_buffer);
 		}
 		else return false;
-
-		/*BoxCollider* boxA = dynamic_cast<BoxCollider*>(_colA);
-		BoxCollider* boxB = dynamic_cast<BoxCollider*>(_colB);
-
-		CircleCollider* circleA = dynamic_cast<CircleCollider*>(_colA);
-		CircleCollider* circleB = dynamic_cast<CircleCollider*>(_colB);
-
-		PolygonCollider* polyA = dynamic_cast<PolygonCollider*>(_colA);
-		PolygonCollider* polyB = dynamic_cast<PolygonCollider*>(_colB);
-
-		if (boxA != nullptr && boxB != nullptr)
-		{
-			return BoxToBoxCollisionCheck(boxA, boxB, s_buffer);
-		}
-		else if (circleA != nullptr && circleB != nullptr)
-		{
-			return CircleToCircleCollsionCheck(circleA, circleB, s_buffer);
-		}
-		else if (boxA != nullptr && circleB != nullptr)
-		{
-			return BoxToCircleCollsionCheck(boxA, circleB, s_buffer);
-		}
-		else if (circleA != nullptr && boxB != nullptr)
-		{
-			return BoxToCircleCollsionCheck(boxB, circleA, s_buffer);
-		}
-		else if (polyA != nullptr && polyB != nullptr)
-		{
-			return PolygonToPolygonCollisionCheck(polyA, polyB, s_buffer);
-		}
-		else if (polyA != nullptr && circleB != nullptr)
-		{
-			return PolygonToCircleCollisionCheck(polyA, circleB, s_buffer);
-		}
-		else if (circleA != nullptr && polyB != nullptr)
-		{
-			return PolygonToCircleCollisionCheck(polyB, circleA, s_buffer);
-		}
-		else if (polyA != nullptr && boxB != nullptr)
-		{
-			return PolygonToBoxCollisionCheck(polyA, boxB, s_buffer);
-		}
-		else if (boxA != nullptr && polyB != nullptr)
-		{
-			return PolygonToBoxCollisionCheck(polyB, boxA, s_buffer);
-		}*/
 	}
 
 	bool CollisionManager::BoxToBoxCollisionCheck(Collider* boxA, Collider* boxB, float buffer)

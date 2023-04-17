@@ -9,9 +9,6 @@ namespace CollisionSystem
 	class PolygonCollider : public Collider
 	{
 	private:
-
-		Vec2 _position;
-		int _num_points;
 		std::vector<Vec2> _points;
 
 	public:
@@ -41,7 +38,7 @@ namespace CollisionSystem
 		/// Returns the number of points that define the polygon collider
 		/// </summary>
 		/// <returns>An int representing the number of points</returns>
-		inline int GetNumPoints() { return _num_points; }
+		inline int GetNumPoints() { return  _points.size(); }
 
 		/// <summary>
 		/// Returns a vector containing the points that define the polygon's shape
