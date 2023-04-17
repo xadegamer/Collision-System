@@ -1,13 +1,11 @@
 #pragma once
 #include "GameObject.h"
 
-#include "BoxCollider.h"
-
-#include "CircleCollider.h"
-
-#include "PolygonCollider.h"
-
 #include "TimeManager.h"
+
+#include "BoxCollider.h"
+#include "CircleCollider.h"
+#include "PolygonCollider.h"
 
 #include <iostream>
 
