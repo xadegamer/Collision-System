@@ -40,6 +40,9 @@ private:
 
 public:
 
+	/// <summary>
+	/// Draws all the colliders in the scene.
+	/// </summary>
 	static void DrawAllColliders();
 };
 

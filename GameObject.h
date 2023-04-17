@@ -14,11 +14,11 @@
 
 #include "MathUtility.h"
 
-#include "Collider.h"
-
-#include "Collision.h"
-
 #include "Color.h"
+
+#include "BoxCollider.h"
+#include "CircleCollider.h"
+#include "PolygonCollider.h"
 
 using namespace CollisionSystem;
 
@@ -39,7 +39,6 @@ private:
 	float destoryDelay = 1.0f;
 	float currentDestoryTime = 0.0f;
 
-
 protected:
 
 	static std::vector<GameObject*> activeGameobjects;
@@ -48,6 +47,8 @@ protected:
 	Tag tag = Tag::DEFAULT;
 	Transform* transform;
 	SDL_Color color = Color::GetRandomColor();
+
+	Collider* collider = nullptr;
 
 	virtual void Update(float deltaTime);
 

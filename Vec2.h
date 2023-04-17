@@ -9,7 +9,8 @@ namespace CollisionSystem
 
 	private:
 
-		float x{ 0 }, y{ 0 };
+		float x{ 0 };
+		float y{ 0 };
 
 	public:
 

@@ -1,14 +1,9 @@
 #pragma once
 
-#include "GameObject.h"`
-#include "BoxCollider.h"
+#include "GameObject.h"
 
 class Wall : public GameObject
 {
-protected:
-
-	BoxCollider* boxCollider;
-
 public:
 
 	Wall(Vector2 position, Vector2 size);

@@ -4,9 +4,11 @@
 
 namespace CollisionSystem
 {
+	std::map<std::pair<const char*, const char*>, bool(*)(Collider*, Collider*, float)> CollisionManager::_collisionMap;
+
 	std::function <void(Collider* A, Collider* B)> CollisionManager::_onAnyCollisionEvent = nullptr;
 
-	const static int s_buffer = 1;
+	const static float s_buffer = 1;
 
 	void CollisionManager::AddListener(std::function<void(Collider* colA, Collider* colB)> func)
 	{
@@ -37,7 +39,13 @@ namespace CollisionSystem
 
 	bool CollisionManager::CheckCollision(Collider* _colA, Collider* _colB)
 	{
-		BoxCollider* boxA = dynamic_cast<BoxCollider*>(_colA);
+		auto collisionFunc = _collisionMap.find({ typeid(*_colA).name(), typeid(*_colB).name() });
+		if (collisionFunc != _collisionMap.end()) {
+			return collisionFunc->second(_colA, _colB, s_buffer);
+		}
+		else return false;
+
+		/*BoxCollider* boxA = dynamic_cast<BoxCollider*>(_colA);
 		BoxCollider* boxB = dynamic_cast<BoxCollider*>(_colB);
 
 		CircleCollider* circleA = dynamic_cast<CircleCollider*>(_colA);
@@ -81,48 +89,48 @@ namespace CollisionSystem
 		else if (boxA != nullptr && polyB != nullptr)
 		{
 			return PolygonToBoxCollisionCheck(polyB, boxA, s_buffer);
-		}
+		}*/
 	}
 
-	bool CollisionManager::BoxToBoxCollisionCheck(BoxCollider* colA, BoxCollider* colB, int buffer)
+	bool CollisionManager::BoxToBoxCollisionCheck(Collider* boxA, Collider* boxB, float buffer)
 	{
 		Vec2 mtv;
 
-		// Get the world points of both polygons
-		if (SATPolyToPolyCalculation(colA->GetWorldPoints(), colB->GetWorldPoints(), buffer, &mtv))
+		if (SATPolyToPolyCalculation(((BoxCollider*)boxA)->GetWorldPoints(), ((BoxCollider*)boxB)->GetWorldPoints(), buffer, &mtv))
 		{
-			colA->SetCollisionProperty(colB, mtv, 1);
-			colB->SetCollisionProperty(colA, -mtv, 1);
+			boxA->SetCollisionProperty(boxB, mtv, 1);
+			boxB->SetCollisionProperty(boxA, -mtv, 1);
 			return true;
 		}
 		return false;
 	}
 
-	bool CollisionManager::CircleToCircleCollsionCheck(CircleCollider* colA, CircleCollider* colB, int buffer)
+	bool CollisionManager::CircleToCircleCollisionCheck(Collider* circleA, Collider* circleB, float buffer)
 	{
 		// Get the distance between the two circles
-		float distance = Vec2::Distance(colA->GetPosition(), colB->GetPosition());
+		float distance = Vec2::Distance(circleA->GetPosition(), circleB->GetPosition());
 
 		// Check for collision
-		if (distance <= colA->GetRadius() + colB->GetRadius() + buffer)
+		if (distance <= ((CircleCollider*)circleA)->GetRadius() + ((CircleCollider*)circleB)->GetRadius() + buffer)
 		{
 			// Calculate the minimum translation vector
-			Vec2 mtv = (colB->GetPosition() - colA->GetPosition()).Normalized() * ((colA->GetRadius() + colB->GetRadius() + buffer) - distance);
+
+			Vec2 mtv = (circleB->GetPosition() - circleA->GetPosition()).Normalized() * (((CircleCollider*)circleA)->GetRadius() + ((CircleCollider*)circleB)->GetRadius() + buffer - distance);
 
 			// Create collision objects
-			colA->SetCollisionProperty(colB, mtv, 1);
-			colB->SetCollisionProperty(colA, -mtv, 1);
+			circleA->SetCollisionProperty(circleB, mtv, 1);
+			circleB->SetCollisionProperty(circleA, -mtv, 1);
 			return true;
 		}
 
 		return  false;
 	}
 
-	bool CollisionManager::BoxToCircleCollsionCheck(BoxCollider* box, CircleCollider* circle, int buffer)
+	bool CollisionManager::BoxToCircleCollisionCheck(Collider* box, Collider* circle, float buffer)
 	{
 		Vec2 mtv;
 
-		if (SATPolyToCircleCalculation(box->GetWorldPoints(), circle->GetPosition(), circle->GetRadius(), buffer, &mtv))
+		if (SATPolyToCircleCalculation(((BoxCollider*)box)->GetWorldPoints(), ((CircleCollider*)circle)->GetPosition(), ((CircleCollider*)circle)->GetRadius(), buffer, &mtv))
 		{
 			box->SetCollisionProperty(circle, mtv, 1);
 			circle->SetCollisionProperty(box, mtv, -1);
@@ -132,26 +140,26 @@ namespace CollisionSystem
 		return  false;
 	}
 
-	bool CollisionManager::PolygonToPolygonCollisionCheck(PolygonCollider* colA, PolygonCollider* colB, int buffer)
+	bool CollisionManager::PolygonToPolygonCollisionCheck(Collider* polyA, Collider* polyB, float buffer)
 	{
 		Vec2 mtv;
 
 		// Get the world points of both polygons
-		if (SATPolyToPolyCalculation(colA->GetWorldPoints(), colB->GetWorldPoints(), buffer, &mtv))
+		if (SATPolyToPolyCalculation(((PolygonCollider*)polyA)->GetWorldPoints(), ((PolygonCollider*)polyB)->GetWorldPoints(), buffer, &mtv))
 		{
-			colA->SetCollisionProperty(colB, mtv, 1);
-			colB->SetCollisionProperty(colA, -mtv, 1);
+			polyA->SetCollisionProperty(polyB, mtv, 1);
+			polyB->SetCollisionProperty(polyA, -mtv, 1);
 			return  true;
 		}
 
 		return false;
 	}
 
-	bool CollisionManager::PolygonToCircleCollisionCheck(PolygonCollider* poly, CircleCollider* circle, int buffer)
+	bool CollisionManager::PolygonToCircleCollisionCheck(Collider* poly, Collider* circle, float buffer)
 	{
 		Vec2 mtv;
 
-		if (SATPolyToCircleCalculation(poly->GetWorldPoints(), circle->GetPosition(), circle->GetRadius(), buffer, &mtv))
+		if (SATPolyToCircleCalculation(((PolygonCollider*)poly)->GetWorldPoints(), circle->GetPosition(), ((CircleCollider*)circle)->GetRadius(), buffer, &mtv))
 		{
 			poly->SetCollisionProperty(circle, mtv, 1);
 			circle->SetCollisionProperty(poly, mtv, -1);
@@ -161,12 +169,12 @@ namespace CollisionSystem
 		return false;
 	}
 
-	bool CollisionManager::PolygonToBoxCollisionCheck(PolygonCollider* poly, BoxCollider* box, int buffer)
+	bool CollisionManager::PolygonToBoxCollisionCheck(Collider* poly, Collider* box, float buffer)
 	{
 		Vec2 mtv;
 
 		// Get the world points of both polygons
-		if (SATPolyToPolyCalculation(poly->GetWorldPoints(), box->GetWorldPoints(), buffer, &mtv))
+		if (SATPolyToPolyCalculation(((PolygonCollider*)poly)->GetWorldPoints(), ((BoxCollider*)box)->GetWorldPoints(), buffer, &mtv))
 		{
 			poly->SetCollisionProperty(box, mtv, 1);
 			box->SetCollisionProperty(poly, -mtv, 1);
@@ -176,7 +184,7 @@ namespace CollisionSystem
 		return  false;
 	}
 
-	bool CollisionManager::SATPolyToPolyCalculation(std::vector<Vec2> polyAPoints, std::vector<Vec2> polyBPoints, int buffer, Vec2* mtv)
+	bool CollisionManager::SATPolyToPolyCalculation(std::vector<Vec2> polyAPoints, std::vector<Vec2> polyBPoints, float buffer, Vec2* mtv)
 	{
 		// Get the world points of both polygons
 
@@ -244,7 +252,7 @@ namespace CollisionSystem
 		return  true;
 	}
 
-	bool CollisionManager::SATPolyToCircleCalculation(std::vector<Vec2> polyPoints, Vec2 circlePos, float circleRadious, int buffer, Vec2* mtv)
+	bool CollisionManager::SATPolyToCircleCalculation(std::vector<Vec2> polyPoints, Vec2 circlePos, float circleRadious, float buffer, Vec2* mtv)
 	{
 		// Create axes to test against (only need axes perpendicular to the edges of the polygon)
 		std::vector<Vec2> axes;
@@ -337,6 +345,18 @@ namespace CollisionSystem
 			j = i;
 		}
 		return contains;
+	}
+
+	void CollisionManager::Init()
+	{
+		_collisionMap = {
+			{ { typeid(BoxCollider).name(), typeid(BoxCollider).name()}, BoxToBoxCollisionCheck},
+			{ { typeid(CircleCollider).name(), typeid(CircleCollider).name()}, CircleToCircleCollisionCheck },
+			{ { typeid(BoxCollider).name(), typeid(CircleCollider).name()}, BoxToCircleCollisionCheck },
+			{ { typeid(PolygonCollider).name(), typeid(PolygonCollider).name() }, PolygonToPolygonCollisionCheck },
+			{ { typeid(PolygonCollider).name(), typeid(CircleCollider).name() }, PolygonToCircleCollisionCheck },
+			{ { typeid(PolygonCollider).name(), typeid(BoxCollider).name() }, PolygonToBoxCollisionCheck }
+		};
 	}
 
 	void CollisionManager::CleanUp()

@@ -20,6 +20,8 @@ void Engine::Start()
 
 	CollisionResolver::Initialize();
 
+	CollisionManager::Init();
+
 	game = new Game();
 
 	systemTimer.tick();

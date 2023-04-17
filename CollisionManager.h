@@ -6,15 +6,21 @@
 
 #include <stdio.h>
 #include <functional>
+#include <typeinfo>
+#include <map>
+#include <typeindex>
 
 namespace CollisionSystem
 {
+
 	class CollisionManager
 	{
 	private:
 
 		CollisionManager() = delete;
 		~CollisionManager() = delete;
+
+		static std::map<std::pair<const char*, const char*>, bool(*)(Collider*, Collider*, float)> _collisionMap;
 
 		static std::function <void(Collider* colA, Collider* colB)> _onAnyCollisionEvent;
 
@@ -33,7 +39,7 @@ namespace CollisionSystem
 		/// <param name="boxB">The second box collider.</param>
 		/// <param name="buffer">The buffer size for the collision detection.</param>
 		/// <returns>A boolean indicating whether a collision has occurred.</returns>
-		static bool BoxToBoxCollisionCheck(BoxCollider* boxA, BoxCollider* boxB, int buffer);
+		static bool BoxToBoxCollisionCheck(Collider* boxA, Collider* boxB, float buffer);
 
 		/// <summary>
 		/// Checks for collision between two circle colliders.
@@ -42,7 +48,7 @@ namespace CollisionSystem
 		/// <param name="circleB">The second circle collider.</param>
 		/// <param name="buffer">The buffer size for the collision detection.</param>
 		/// <returns>A boolean indicating whether a collision has occurred.</returns>
-		static bool CircleToCircleCollsionCheck(CircleCollider* circleA, CircleCollider* circleB, int buffer);
+		static bool CircleToCircleCollisionCheck(Collider* circleA, Collider* circleB, float buffer);
 
 		/// <summary>
 		/// Checks for collision between a box collider and a circle collider.
@@ -51,7 +57,7 @@ namespace CollisionSystem
 		/// <param name="circle">The circle collider.</param>
 		/// <param name="buffer">The buffer size for the collision detection.</param>
 		/// <returns>A boolean indicating whether a collision has occurred.</returns>
-		static bool BoxToCircleCollsionCheck(BoxCollider* box, CircleCollider* circle, int buffer);
+		static bool BoxToCircleCollisionCheck(Collider* box, Collider* circle, float buffer);
 
 		/// <summary>
 		/// Checks for collision between two polygon colliders.
@@ -60,7 +66,7 @@ namespace CollisionSystem
 		/// <param name="polyB">The second polygon collider.</param>
 		/// <param name="buffer">The buffer size for the collision detection.</param>
 		/// <returns>A boolean indicating whether a collision has occurred.</returns>
-		static bool PolygonToPolygonCollisionCheck(PolygonCollider* polyA, PolygonCollider* polyB, int buffer);
+		static bool PolygonToPolygonCollisionCheck(Collider* polyA, Collider* polyB, float buffer);
 
 		/// <summary>
 		/// Checks for collision between a polygon collider and a circle collider.
@@ -69,7 +75,7 @@ namespace CollisionSystem
 		/// <param name="circle">The circle collider.</param>
 		/// <param name="buffer">The buffer size for the collision detection.</param>
 		/// <returns>A boolean indicating whether a collision has occurred.</returns>
-		static bool PolygonToCircleCollisionCheck(PolygonCollider* poly, CircleCollider* circle, int buffer);
+		static bool PolygonToCircleCollisionCheck(Collider* poly, Collider* circle, float buffer);
 
 		/// <summary>
 		/// Checks for collision between a polygon collider and a box collider.
@@ -78,7 +84,7 @@ namespace CollisionSystem
 		/// <param name="box">The box collider.</param>
 		/// <param name="buffer">The buffer size for the collision detection.</param>
 		/// <returns>A boolean indicating whether a collision has occurred.</returns>
-		static bool PolygonToBoxCollisionCheck(PolygonCollider* poly, BoxCollider* box, int buffer);
+		static bool PolygonToBoxCollisionCheck(Collider* poly, Collider* box, float buffer);
 
 		/// <summary>
 		/// Separating Axis Theorem (SAT) algorithm to check collision between two convex polygons.
@@ -88,7 +94,7 @@ namespace CollisionSystem
 		/// <param name="buffer">The buffer for detecting overlap.</param>
 		/// <param name="mtv">The minimum translation vector, representing the direction and magnitude of minimum overlap.</param>
 		/// <returns>True if collision is detected, false otherwise.</returns>
-		static bool SATPolyToPolyCalculation(std::vector<Vec2> polyAPoints, std::vector<Vec2> polyBPoints, int buffer, Vec2* mtv);
+		static bool SATPolyToPolyCalculation(std::vector<Vec2> polyAPoints, std::vector<Vec2> polyBPoints, float buffer, Vec2* mtv);
 
 		/// <summary>
 		/// Separating Axis Theorem (SAT) algorithm to check collision between a convex polygon and a circle.
@@ -99,7 +105,7 @@ namespace CollisionSystem
 		/// <param name="buffer">The buffer for detecting overlap.</param>
 		/// <param name="mtv">The minimum translation vector, representing the direction and magnitude of minimum overlap.</param>
 		/// <returns>True if collision is detected, false otherwise.</returns>
-		static bool SATPolyToCircleCalculation(std::vector<Vec2> polyPoints, Vec2 circlePos, float circleRadious, int buffer, Vec2* mtv);
+		static bool SATPolyToCircleCalculation(std::vector<Vec2> polyPoints, Vec2 circlePos, float circleRadious, float buffer, Vec2* mtv);
 
 		/// <summary>
 		/// Calculates the squared distance between two points.
@@ -119,6 +125,8 @@ namespace CollisionSystem
 		static bool PolygonContainsPoint(const std::vector<Vec2>& polyPoints, const Vec2& point);
 
 	public:
+
+		static void Init();
 
 		/// <summary>
 		/// Add a function to be called when any collision is detected.
