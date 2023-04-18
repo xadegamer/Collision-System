@@ -17,11 +17,6 @@ namespace CollisionSystem
 		this->_isStatic = isStatic;
 	}
 
-	Collider::~Collider()
-	{
-		CollisionManager::RemoveCollider(this);
-	}
-
 	void Collider::OnCollision()
 	{
 		if (_collision.GetColliderHit() == nullptr || !_isEnabled) return;

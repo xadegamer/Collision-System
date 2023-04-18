@@ -36,11 +36,6 @@ namespace CollisionSystem
 		Collider(void* owner, Vec2 position, bool isStatic = false);
 
 		/// <summary>
-		/// This is the destructor for the Collider class.
-		/// </summary>
-		~Collider();
-
-		/// <summary>
 		/// This pure virtual function is used to update the position of the Collider in the game world.
 		/// </summary>
 		/// <param name="position">The new position of the Collider.</param>
