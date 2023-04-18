@@ -4,6 +4,8 @@
 
 namespace CollisionSystem
 {
+	std::vector<Collider*> CollisionManager::_allColliders = std::vector<Collider*>();
+
 	std::map<std::pair<const char*, const char*>, bool(*)(Collider*, Collider*, float)> CollisionManager::_collisionMap;
 
 	std::function <void(Collider* A, Collider* B)> CollisionManager::_onAnyCollisionEvent = nullptr;
@@ -17,12 +19,12 @@ namespace CollisionSystem
 
 	void CollisionManager::HandleAllCollision()
 	{
-		for (int i = 0; i < Collider::GetAllColliders().size(); i++)
+		for (int i = 0; i < _allColliders.size(); i++)
 		{
-			Collider* colliderA = Collider::GetAllColliders()[i];
-			for (int j = 0; j < Collider::GetAllColliders().size(); j++)
+			Collider* colliderA = _allColliders[i];
+			for (int j = 0; j < _allColliders.size(); j++)
 			{
-				Collider* colliderB = Collider::GetAllColliders()[j];
+				Collider* colliderB = _allColliders[j];
 				if (colliderA != colliderB && colliderA->GetIsEnabled() && colliderB->GetIsEnabled())
 				{
 					if (CollisionManager::CheckCollision(colliderA, colliderB))
@@ -313,15 +315,26 @@ namespace CollisionSystem
 		};
 	}
 
+	void CollisionManager::AddCollider(Collider* col)
+	{
+		_allColliders.push_back(col);
+	}
+
+	void CollisionManager::RemoveCollider(Collider* col)
+	{
+		_allColliders.push_back(col);
+		_allColliders.erase(find(_allColliders.begin(), _allColliders.end(), col));
+		delete col;
+		col = nullptr;
+	}
+
 	void CollisionManager::CleanUp()
 	{
 		_onAnyCollisionEvent = nullptr;
-
-		for (int i = 0; i < Collider::GetAllColliders().size(); i++)
+		for (int i = 0; i < _allColliders.size(); i++)
 		{
-			delete Collider::GetAllColliders()[i];
+			delete _allColliders[i];
 		}
-
-		Collider::GetAllColliders().clear();
+		_allColliders.clear();
 	}
 }

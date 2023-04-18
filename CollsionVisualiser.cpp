@@ -1,9 +1,6 @@
 #include "CollsionVisualiser.h"
 
-#include "Collider.h"
-#include "CircleCollider.h"
-#include "BoxCollider.h"
-#include "PolygonCollider.h"
+#include "CollisionManager.h"
 #include "GameObject.h"
 
 void CollsionVisualiser::DrawBoxAtPosition(SDL_Color sdlColor, Vec2 position, int width, int height)
@@ -45,9 +42,9 @@ void CollsionVisualiser::DrawPolygon(SDL_Color sdlColor, std::vector<Vec2> _poin
 
 void CollsionVisualiser::DrawAllColliders()
 {
-	for (int i = 0; i < Collider::GetAllColliders().size(); i++)
+	for (int i = 0; i < CollisionManager::GetAllColliders().size(); i++)
 	{
-		Collider* colliderA = Collider::GetAllColliders()[i];
+		Collider* colliderA = CollisionManager::GetAllColliders()[i];
 
 		if (!colliderA->GetIsEnabled()) continue;
 

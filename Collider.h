@@ -12,6 +12,7 @@ namespace CollisionSystem
 {
 	class Collider
 	{
+
 	protected:
 
 		static std::vector<Collider*> _allColliders;
@@ -123,11 +124,5 @@ namespace CollisionSystem
 		/// </summary>
 		/// <param name="isEnabled">A boolean indicating whether this collider should be enabled or not.</param>
 		inline void SetIsEnabled(bool isEnabled) { _isEnabled = isEnabled; }
-
-		/// <summary>
-		/// Gets a vector of all the colliders in the scene.
-		/// </summary>
-		/// <returns>A vector of all the colliders in the scene.</returns>
-		inline static std::vector<Collider*> GetAllColliders() { return _allColliders; }
 	};
 }

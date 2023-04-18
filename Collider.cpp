@@ -1,5 +1,7 @@
 #include "Collider.h"
 
+#include "CollisionManager.h"
+
 namespace CollisionSystem
 {
 	std::vector<Collider*> Collider::_allColliders = std::vector<Collider*>();
@@ -7,8 +9,9 @@ namespace CollisionSystem
 	Collider::Collider(void* owner, Vec2 nextPosition, bool isStatic)
 	{
 		_currentCollidedObject = nullptr;
-		_allColliders.push_back(this);
 		_isEnabled = true;
+
+		CollisionManager::AddCollider(this);
 
 		this->_owner = owner;
 		this->_isStatic = isStatic;
@@ -16,14 +19,7 @@ namespace CollisionSystem
 
 	Collider::~Collider()
 	{
-		for (int i = 0; i < _allColliders.size(); i++)
-		{
-			if (_allColliders[i] == this)
-			{
-				_allColliders.erase(_allColliders.begin() + i);
-				break;
-			}
-		}
+		CollisionManager::RemoveCollider(this);
 	}
 
 	void Collider::OnCollision()

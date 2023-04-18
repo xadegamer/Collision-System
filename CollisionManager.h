@@ -20,6 +20,8 @@ namespace CollisionSystem
 		CollisionManager() = delete;
 		~CollisionManager() = delete;
 
+		static std::vector<Collider*> _allColliders;
+
 		static std::map<std::pair<const char*, const char*>, bool(*)(Collider*, Collider*, float)> _collisionMap;
 
 		static std::function <void(Collider* colA, Collider* colB)> _onAnyCollisionEvent;
@@ -128,11 +130,21 @@ namespace CollisionSystem
 
 		static void Init();
 
+		static void AddCollider(Collider* col);
+
+		static void RemoveCollider(Collider* col);
+
 		/// <summary>
 		/// Add a function to be called when any collision is detected.
 		/// </summary>
 		/// <param name="func">The function to be called. Takes in two colliders that have collided.</param>
 		static void AddListener(std::function <void(Collider* colA, Collider* colB)> func);
+
+		/// <summary>
+		/// Gets a vector of all the colliders in the scene.
+		/// </summary>
+		/// <returns>A vector of all the colliders in the scene.</returns>
+		inline static std::vector<Collider*> GetAllColliders() { return _allColliders; }
 
 		/// <summary>
 		/// This funtion handles all the collision in the game and trigger the collision event
