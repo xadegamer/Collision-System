@@ -3,7 +3,7 @@
 namespace CollisionSystem
 {
 	template<class T>
-	PolygonCollider<T>::PolygonCollider(T* owner, Vec2 position, std::vector<Vec2> points, bool isStatic) : Collider(owner, position, isStatic)
+	PolygonCollider<T>::PolygonCollider(T* owner, Vec2 position, std::vector<Vec2> points, bool isStatic) : Collider<T>(owner, position, isStatic)
 	{
 		_points = points;
 		UpdatePosition(position);

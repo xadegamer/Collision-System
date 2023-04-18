@@ -3,7 +3,7 @@
 namespace CollisionSystem
 {
 	template<class T>
-	CircleCollider<T>::CircleCollider(T* owner, Vec2 nextPosition, float radius, float radiousMutiplier, bool isStatic) : Collider(owner, nextPosition, isStatic)
+	CircleCollider<T>::CircleCollider(T* owner, Vec2 nextPosition, float radius, float radiousMutiplier, bool isStatic) : Collider<T>(owner, nextPosition, isStatic)
 	{
 		_radius = radius * radiousMutiplier;
 		UpdatePosition(position);

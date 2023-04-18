@@ -3,7 +3,7 @@
 namespace CollisionSystem
 {
 	template<class T>
-	BoxCollider<T>::BoxCollider(T* owner, Vec2 nextPosition, Vec2 size, bool isStatic) : Collider(owner, nextPosition, isStatic)
+	BoxCollider<T>::BoxCollider(T* owner, Vec2 nextPosition, Vec2 size, bool isStatic) : Collider<T>(owner, nextPosition, isStatic)
 	{
 		_size = size;
 		UpdatePosition(nextPosition);
