@@ -6,6 +6,7 @@
 
 using namespace CollisionSystem;
 
+template<class T>
 class CollisionResolver
 {
 public:
@@ -17,5 +18,5 @@ public:
 	/// </summary>
 	/// <param name="A">The first collider involved in the collision</param>
 	/// <param name="B">The second collider involved in the collision</param>
-	static void ResolveCollision(Collider* A, Collider* B);
+	static void ResolveCollision(Collider<T>* A, Collider<T>* B);
 };

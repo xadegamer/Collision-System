@@ -4,13 +4,13 @@
 
 namespace CollisionSystem
 {
-	class Collider;
 
+	template<class T>
 	class Collision
 	{
 	private:
 
-		Collider* _colliderHit = nullptr;
+		Collider<T>* _colliderHit = nullptr;
 		Vec2 _minimumTranslationVector = Vec2(0, 0);
 		float _impulse = 0;
 
@@ -24,7 +24,7 @@ namespace CollisionSystem
 		/// <param name="colliderHit">The collider that was hit.</param>
 		/// <param name="minimumTranslationVector">The minimum translation vector required to separate the two colliders.</param>
 		/// <param name="impulse">The impulse of the collision.</param>
-		Collision(Collider* colliderHit, Vec2 minimumTranslationVector, float impulse) : _colliderHit(colliderHit), _minimumTranslationVector(minimumTranslationVector), _impulse(impulse)
+		Collision(Collider<T>* colliderHit, Vec2 minimumTranslationVector, float impulse) : _colliderHit(colliderHit), _minimumTranslationVector(minimumTranslationVector), _impulse(impulse)
 		{}
 
 		/// <summary>

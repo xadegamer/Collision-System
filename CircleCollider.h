@@ -3,7 +3,8 @@
 
 namespace CollisionSystem
 {
-	class CircleCollider : public Collider
+	template<class T>
+	class CircleCollider : public Collider<T>
 	{
 	private:
 
@@ -19,7 +20,7 @@ namespace CollisionSystem
 		/// <param name="radius">The radius of the circle collider</param>
 		/// <param name="radiousMutiplier">A multiplier for the radius of the circle collider</param>
 		/// <param name="isStatic">A bool indicating if the collider is static or not</param>
-		CircleCollider(void* owner, Vec2 nextPosition, float radius, float radiousMutiplier = 1, bool isStatic = false);
+		CircleCollider(T* owner, Vec2 nextPosition, float radius, float radiousMutiplier = 1, bool isStatic = false);
 
 		/// <summary>
 		/// Update the position of the circle collider.

@@ -10,20 +10,21 @@
 
 namespace CollisionSystem
 {
+	// template 
+	template<class T>
 	class Collider
 	{
 
 	protected:
 
-		static std::vector<Collider*> _allColliders;
-		Collision _collision;
-		void* _owner;
+		Collision<T> _collision;
+		T* _owner;
 		Vec2 _position;
 		bool _isEnabled;
 		bool _isTrigger;
 		bool _isStatic;
-		Collider* _currentCollidedObject;
-		std::function <void(Collision other)> _OnCollisionEnterEvent;
+		Collider<T>* _currentCollidedObject;
+		std::function <void(Collision<T> other)> _OnCollisionEnterEvent;
 
 	public:
 
@@ -33,7 +34,7 @@ namespace CollisionSystem
 		/// <param name="owner">A void pointer to the object that owns this Collider.</param>
 		/// <param name="position">The position of the Collider.</param>
 		/// <param name="isStatic">Whether the Collider is static or not. Defaults to false.</param>
-		Collider(void* owner, Vec2 position, bool isStatic = false);
+		Collider(T* owner, Vec2 position, bool isStatic = false);
 
 		/// <summary>
 		/// This is the destructor for the Collider class.
@@ -63,19 +64,20 @@ namespace CollisionSystem
 		/// <param name="colliderHit">The collider that was hit.</param>
 		/// <param name="minimumTranslationVector">The minimum translation vector needed to resolve the collision.</param>
 		/// <param name="impulse">The impulse of the collision.</param>
-		void SetCollisionProperty(Collider* colliderHit, Vec2 minimumTranslationVector, float impulse);
+		void SetCollisionProperty(Collider<T>* colliderHit, Vec2 minimumTranslationVector, float impulse);
 
 		/// <summary>
 		/// This function adds a listener to the Collider that will be called when a collision occurs.
 		/// </summary>
 		/// <param name="OnCollisionEnterEvent">The function to call when a collision occurs.</param>
-		void AddListener(std::function <void(Collision other)> OnCollisionEnterEvent);
+			
+		void AddListener(std::function <void(Collision<T> other)> OnCollisionEnterEvent);
 
 		/// <summary>
 		/// This function returns the Collision object associated with the Collider.
 		/// </summary>
 		/// <returns>The Collision object associated with the Collider.</returns>
-		inline Collision GetCollision() { return _collision; }
+		inline Collision<T> GetCollision() { return _collision; }
 
 		/// <summary>
 		/// This function returns the position of the Collider.

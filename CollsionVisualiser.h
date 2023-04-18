@@ -43,6 +43,8 @@ public:
 	/// <summary>
 	/// Draws all the colliders in the scene.
 	/// </summary>
+	
+	template<class T>
 	static void DrawAllColliders();
 };
 

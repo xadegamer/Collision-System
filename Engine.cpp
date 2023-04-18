@@ -4,6 +4,8 @@
 #include "CollsionVisualiser.h"
 #include "CollisionResolver.h"
 
+#include "GameObject.h"
+
 TimeManager Engine::systemTimer;
 TimeManager Engine::deltaTimer;
 int Engine::countedFrames = 0;
@@ -18,9 +20,9 @@ void Engine::Start()
 
 	InputManager::Init();
 
-	CollisionResolver::Initialize();
+	CollisionResolver<GameObject>::Initialize();
 
-	CollisionManager::Init();
+	CollisionManager<GameObject>::Init();
 
 	game = new Game();
 
@@ -55,7 +57,7 @@ void Engine::Update()
 {
 	game->Update(deltaTimer.getDeltaTime());
 
-	CollisionManager::HandleAllCollision();
+	CollisionManager<GameObject>::HandleAllCollision();
 
 	game->LateUpdate(deltaTimer.getDeltaTime());
 }
@@ -66,7 +68,7 @@ void Engine::Render()
 
 	game->Render();
 
-	CollsionVisualiser::DrawAllColliders();
+	CollsionVisualiser::DrawAllColliders<GameObject>();
 
 	SDL_SetRenderDrawColor(SDLManager::GetRenderer(), 0, 0, 0, 255);
 
@@ -75,7 +77,7 @@ void Engine::Render()
 
 void Engine::ShutDown()
 {
-	CollisionManager::CleanUp();
+	CollisionManager<GameObject>::CleanUp();
 
 	delete game;
 	game = nullptr;

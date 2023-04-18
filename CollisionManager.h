@@ -12,7 +12,7 @@
 
 namespace CollisionSystem
 {
-
+	template<class T>
 	class CollisionManager
 	{
 	private:
@@ -20,11 +20,11 @@ namespace CollisionSystem
 		CollisionManager() = delete;
 		~CollisionManager() = delete;
 
-		static std::vector<Collider*> _allColliders;
+		static std::vector<Collider<T>*> _allColliders;
 
-		static std::map<std::pair<const char*, const char*>, bool(*)(Collider*, Collider*, float)> _collisionMap;
+		static std::map<std::pair<const char*, const char*>, bool(*)(Collider<T>*, Collider<T>*, float)> _collisionMap;
 
-		static std::function <void(Collider* colA, Collider* colB)> _onAnyCollisionEvent;
+		static std::function <void(Collider<T>* colA, Collider<T>* colB)> _onAnyCollisionEvent;
 
 		/// <summary>
 		/// Checks if there is a collision between two colliders.
@@ -32,7 +32,7 @@ namespace CollisionSystem
 		/// <param name="colA">The first collider.</param>
 		/// <param name="colB">The second collider.</param>
 		/// <returns>A boolean indicating whether a collision has occurred.</returns>
-		static bool CheckCollision(Collider* colA, Collider* colB);
+		static bool CheckCollision(Collider<T>* colA, Collider<T>* colB);
 
 		// <summary>
 		/// Checks for collision between two box colliders.
@@ -41,7 +41,7 @@ namespace CollisionSystem
 		/// <param name="boxB">The second box collider.</param>
 		/// <param name="buffer">The buffer size for the collision detection.</param>
 		/// <returns>A boolean indicating whether a collision has occurred.</returns>
-		static bool BoxToBoxCollisionCheck(Collider* boxA, Collider* boxB, float buffer);
+		static bool BoxToBoxCollisionCheck(Collider<T>* boxA, Collider<T>* boxB, float buffer);
 
 		/// <summary>
 		/// Checks for collision between two circle colliders.
@@ -50,7 +50,7 @@ namespace CollisionSystem
 		/// <param name="circleB">The second circle collider.</param>
 		/// <param name="buffer">The buffer size for the collision detection.</param>
 		/// <returns>A boolean indicating whether a collision has occurred.</returns>
-		static bool CircleToCircleCollisionCheck(Collider* circleA, Collider* circleB, float buffer);
+		static bool CircleToCircleCollisionCheck(Collider<T>* circleA, Collider<T>* circleB, float buffer);
 
 		/// <summary>
 		/// Checks for collision between a box collider and a circle collider.
@@ -59,7 +59,7 @@ namespace CollisionSystem
 		/// <param name="circle">The circle collider.</param>
 		/// <param name="buffer">The buffer size for the collision detection.</param>
 		/// <returns>A boolean indicating whether a collision has occurred.</returns>
-		static bool BoxToCircleCollisionCheck(Collider* box, Collider* circle, float buffer);
+		static bool BoxToCircleCollisionCheck(Collider<T>* box, Collider<T>* circle, float buffer);
 
 		/// <summary>
 		/// Checks for collision between two polygon colliders.
@@ -68,7 +68,7 @@ namespace CollisionSystem
 		/// <param name="polyB">The second polygon collider.</param>
 		/// <param name="buffer">The buffer size for the collision detection.</param>
 		/// <returns>A boolean indicating whether a collision has occurred.</returns>
-		static bool PolygonToPolygonCollisionCheck(Collider* polyA, Collider* polyB, float buffer);
+		static bool PolygonToPolygonCollisionCheck(Collider<T>* polyA, Collider<T>* polyB, float buffer);
 
 		/// <summary>
 		/// Checks for collision between a polygon collider and a circle collider.
@@ -77,7 +77,7 @@ namespace CollisionSystem
 		/// <param name="circle">The circle collider.</param>
 		/// <param name="buffer">The buffer size for the collision detection.</param>
 		/// <returns>A boolean indicating whether a collision has occurred.</returns>
-		static bool PolygonToCircleCollisionCheck(Collider* poly, Collider* circle, float buffer);
+		static bool PolygonToCircleCollisionCheck(Collider<T>* poly, Collider<T>* circle, float buffer);
 
 		/// <summary>
 		/// Checks for collision between a polygon collider and a box collider.
@@ -86,7 +86,7 @@ namespace CollisionSystem
 		/// <param name="box">The box collider.</param>
 		/// <param name="buffer">The buffer size for the collision detection.</param>
 		/// <returns>A boolean indicating whether a collision has occurred.</returns>
-		static bool PolygonToBoxCollisionCheck(Collider* poly, Collider* box, float buffer);
+		static bool PolygonToBoxCollisionCheck(Collider<T>* poly, Collider<T>* box, float buffer);
 
 		/// <summary>
 		/// Separating Axis Theorem (SAT) algorithm to check collision between two convex polygons.
@@ -130,21 +130,21 @@ namespace CollisionSystem
 
 		static void Init();
 
-		static void AddCollider(Collider* col);
+		static void AddCollider(Collider<T>* col);
 
-		static void RemoveCollider(Collider* col);
+		static void RemoveCollider(Collider<T>* col);
 
 		/// <summary>
 		/// Add a function to be called when any collision is detected.
 		/// </summary>
 		/// <param name="func">The function to be called. Takes in two colliders that have collided.</param>
-		static void AddListener(std::function <void(Collider* colA, Collider* colB)> func);
+		static void AddListener(std::function <void(Collider<T>* colA, Collider<T>* colB)> func);
 
 		/// <summary>
 		/// Gets a vector of all the colliders in the scene.
 		/// </summary>
 		/// <returns>A vector of all the colliders in the scene.</returns>
-		inline static std::vector<Collider*> GetAllColliders() { return _allColliders; }
+		inline static std::vector<Collider<T>*> GetAllColliders() { return _allColliders; }
 
 		/// <summary>
 		/// This funtion handles all the collision in the game and trigger the collision event

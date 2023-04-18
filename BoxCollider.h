@@ -3,7 +3,8 @@
 
 namespace CollisionSystem
 {
-	class BoxCollider : public Collider
+	template<class T>
+	class BoxCollider : public Collider<T>
 	{
 	private:
 
@@ -18,7 +19,7 @@ namespace CollisionSystem
 		/// <param name="nextPosition">The position of the collider</param>
 		/// <param name="size">The size of the box</param>
 		/// <param name="isStatic">Whether the collider is static or not (default is false)</param>
-		BoxCollider(void* owner, Vec2 nextPosition, Vec2 size, bool isStatic = false);
+		BoxCollider(T* owner, Vec2 nextPosition, Vec2 size, bool isStatic = false);
 
 		/// <summary>
 		/// Updates the position of the collider to the given position.

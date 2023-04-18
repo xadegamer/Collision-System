@@ -40,9 +40,10 @@ void CollsionVisualiser::DrawPolygon(SDL_Color sdlColor, std::vector<Vec2> _poin
 	SDL_RenderDrawLine(SDLManager::GetRenderer(), sdlPoints[0].x, sdlPoints[0].y, sdlPoints[num_points - 1].x, sdlPoints[num_points - 1].y);
 }
 
+template<class T>
 void CollsionVisualiser::DrawAllColliders()
 {
-	for (int i = 0; i < CollisionManager::GetAllColliders().size(); i++)
+	for (int i = 0; i < CollisionManager<T>::GetAllColliders().size(); i++)
 	{
 		Collider* colliderA = CollisionManager::GetAllColliders()[i];
 

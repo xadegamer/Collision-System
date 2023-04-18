@@ -4,9 +4,8 @@
 
 namespace CollisionSystem
 {
-	std::vector<Collider*> Collider::_allColliders = std::vector<Collider*>();
-
-	Collider::Collider(void* owner, Vec2 nextPosition, bool isStatic)
+	template<class T>
+	Collider<T>::Collider(T* owner, Vec2 position, bool isStatic)
 	{
 		_currentCollidedObject = nullptr;
 		_isEnabled = true;
@@ -17,25 +16,36 @@ namespace CollisionSystem
 		this->_isStatic = isStatic;
 	}
 
-	Collider::~Collider()
+	template<class T>
+	Collider<T>::~Collider()
 	{
 		CollisionManager::RemoveCollider(this);
 	}
 
-	void Collider::OnCollision()
+	template<class T>
+	void Collider<T>::OnCollision()
 	{
 		if (_collision.GetColliderHit() == nullptr || !_isEnabled) return;
 
 		if (_OnCollisionEnterEvent != nullptr) _OnCollisionEnterEvent(_collision);
 	}
 
-	void Collider::SetCollisionProperty(Collider* colliderHit, Vec2 minimumTranslationVector, float impulse)
+	template<class T>
+	void Collider<T>::SetCollisionProperty(Collider* colliderHit, Vec2 minimumTranslationVector, float impulse)
 	{
 		_collision = { colliderHit , minimumTranslationVector , impulse };
 	}
 
-	void Collider::AddListener(std::function<void(Collision other)> OnCollisionEnterEvent)
+	template<class T>
+	void Collider<T>::AddListener(std::function<void(Collision<T> other)> OnCollisionEnterEvent)
 	{
 		this->_OnCollisionEnterEvent = OnCollisionEnterEvent;
+	}
+
+	// No need to call this TemporaryFunction() function,
+// it's just to avoid link error.
+	void TemporaryFunction()
+	{
+		Collider<int> TempObj ();
 	}
 }

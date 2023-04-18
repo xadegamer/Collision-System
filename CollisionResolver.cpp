@@ -4,12 +4,14 @@
 
 #include "GameObject.h"
 
-void CollisionResolver::Initialize()
+template<class T>
+void CollisionResolver<T>::Initialize()
 {
-	CollisionManager::AddListener(CollisionResolver::ResolveCollision);
+	CollisionManager<>::AddListener(CollisionResolver::ResolveCollision);
 }
 
-void CollisionResolver::ResolveCollision(Collider* colA, Collider* colB)
+template<class T>
+void CollisionResolver<T>::ResolveCollision(Collider<T>* colA, Collider<T>* colB)
 {
 	if (!colA->IsStatic())
 	{

@@ -6,7 +6,8 @@
 
 namespace CollisionSystem
 {
-	class PolygonCollider : public Collider
+	template<class T>
+	class PolygonCollider : public Collider<T>
 	{
 	private:
 		std::vector<Vec2> _points;
@@ -20,7 +21,7 @@ namespace CollisionSystem
 		/// <param name="position">The initial position of the collider</param>
 		/// <param name="points">A vector containing the points that define the polygon's shape</param>
 		/// <param name="isStatic">A bool to determine if the collider is static or dynamic</param>
-		PolygonCollider(void* owner, Vec2 position, std::vector<Vec2> points, bool isStatic = false);
+		PolygonCollider(T* owner, Vec2 position, std::vector<Vec2> points, bool isStatic = false);
 
 		/// <summary>
 		/// Updates the position of the collider
