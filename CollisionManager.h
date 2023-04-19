@@ -20,10 +20,19 @@ namespace CollisionSystem
 		CollisionManager() = delete;
 		~CollisionManager() = delete;
 
+		/// <summary>
+		/// A vector of all registered colliders in the collision system.
+		/// </summary>
 		static std::vector<Collider*> _allColliders;
 
+		/// <summary>
+		/// A map of collision pairs to the corresponding collision function.
+		/// </summary>
 		static std::map<std::pair<const char*, const char*>, bool(*)(Collider*, Collider*, float)> _collisionMap;
 
+		/// <summary>
+		/// An event that is called whenever any two colliders collide.
+		/// </summary>
 		static std::function <void(Collider* colA, Collider* colB)> _onAnyCollisionEvent;
 
 		/// <summary>

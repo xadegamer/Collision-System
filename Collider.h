@@ -16,14 +16,14 @@ namespace CollisionSystem
 
 	protected:
 
-		Collision _collision;
-		std::any _owner;
-		Vec2 _position;
-		bool _isEnabled;
-		bool _isTrigger;
-		bool _isStatic;
-		Collider* _currentCollidedObject;
-		std::function <void(Collision other)> _OnCollisionEnterEvent;
+		Collision _collision; // Holds the current collision information
+		std::any _owner; // Can hold any object that owns the collider (e.g., GameObject)
+		Vec2 _position; // Position of the collider in 2D space
+		bool _isEnabled; // Whether the collider is enabled (i.e., able to collide with other objects)
+		bool _isTrigger; // Whether the collider is a trigger (i.e., does not physically interact with other objects)
+		bool _isStatic; // Whether the collider is a static collider (i.e., does not move)
+		Collider* _currentCollidedObject; // Pointer to the collider that is currently colliding with this collider
+		std::function <void(Collision other)> _OnCollisionEnterEvent; // Function to call when a collision occurs with another collider
 
 	public:
 
@@ -34,6 +34,11 @@ namespace CollisionSystem
 		/// <param name="isStatic">Whether the Collider is static or not. Defaults to false.</param>
 		Collider(Vec2 position, bool isStatic = false);
 
+		/// <summary>
+		/// Adds an owner to the current object.
+		/// </summary>
+		/// <typeparam name="T">The type of the owner</typeparam>
+		/// <param name="owner">The owner to be added</param>
 		template<typename T>
 		void AddOwnerAs(T* owner)
 		{
@@ -41,9 +46,10 @@ namespace CollisionSystem
 		}
 
 		/// <summary>
-		/// This function returns the owner of the Collider.
+		/// Gets the owner of the current collider as a specific type.
 		/// </summary>
-		/// <returns>A void pointer to the object that owns this Collider.</returns>
+		/// <typeparam name="T">The type of the owner</typeparam>
+		/// <returns>The owner of the current object as the specified type</returns>
 		template<typename T>
 		T* GetOwnerAs() const 
 		{
