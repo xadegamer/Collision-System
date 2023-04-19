@@ -7,8 +7,6 @@
 
 #include "Vec2.h"
 
-using namespace CollisionSystem;
-
 class CollsionVisualiser
 {
 private:

@@ -134,10 +134,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="BoxCollider.cpp" />
-    <ClCompile Include="CircleCollider.cpp" />
-    <ClCompile Include="Collider.cpp" />
-    <ClCompile Include="CollisionManager.cpp" />
     <ClCompile Include="CollisionResolver.cpp" />
     <ClCompile Include="CollsionVisualiser.cpp" />
     <ClCompile Include="Color.cpp" />
@@ -151,7 +147,6 @@
     <ClCompile Include="LayoutTileMap.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
-    <ClCompile Include="PolygonCollider.cpp" />
     <ClCompile Include="PolygonShape.cpp" />
     <ClCompile Include="Prop.cpp" />
     <ClCompile Include="RigidBody.cpp" />

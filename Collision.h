@@ -4,8 +4,6 @@
 
 #include "Collider.h"
 
-namespace CollisionSystem
-{
 	template <class T>
 	class Collision
 	{
@@ -17,20 +15,14 @@ namespace CollisionSystem
 
 	public:
 
-		Collision() = default;
-
 		/// <summary>
 		/// Constructor that initializes the properties of the collision.
 		/// </summary>
 		/// <param name="colliderHit">The collider that was hit.</param>
 		/// <param name="minimumTranslationVector">The minimum translation vector required to separate the two colliders.</param>
 		/// <param name="impulse">The impulse of the collision.</param>
-		Collision(Collider<T>* colliderHit, Vec2 minimumTranslationVector, float impulse)
-		{
-			_colliderHit = colliderHit;
-			_minimumTranslationVector = minimumTranslationVector;
-			_impulse = impulse;
-		}
+		Collision(Collider<T>* colliderHit, Vec2 minimumTranslationVector, float impulse) : _colliderHit(colliderHit), _minimumTranslationVector(minimumTranslationVector), _impulse(impulse) {}
+
 
 		/// <summary>
 		/// Getter function for the collider that was hit in the collision.
@@ -54,6 +46,8 @@ namespace CollisionSystem
 		/// Getter function for the impulse for the collision.
 		/// </summary>
 		/// <returns>The impulse for the collision</returns>
-		inline float GetImpulse() { return _impulse; }
+		float GetImpulse()
+		{
+			return _impulse; 
+		}
 	};
-}

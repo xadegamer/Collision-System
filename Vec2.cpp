@@ -1,8 +1,6 @@
 #include "Vec2.h"
 #include <cmath>
 
-namespace CollisionSystem
-{
 	Vec2::Vec2() : x(0), y(0)
 	{
 	}
@@ -168,4 +166,3 @@ namespace CollisionSystem
 		out << "(" << v.GetX() << ", " << v.GetY() << ")";
 		return out;
 	}
-}

@@ -1,8 +1,6 @@
 #pragma once
 #include "Collider.h"
 
-namespace CollisionSystem
-{
 	template <class T>
 	class CircleCollider : public Collider<T>
 	{
@@ -20,26 +18,37 @@ namespace CollisionSystem
 		/// <param name="radius">The radius of the circle collider</param>
 		/// <param name="radiousMutiplier">A multiplier for the radius of the circle collider</param>
 		/// <param name="isStatic">A bool indicating if the collider is static or not</param>
-		CircleCollider(T* owner, Vec2 nextPosition, float radius, float radiousMutiplier = 1, bool isStatic = false);
+		CircleCollider(T* owner, Vec2 nextPosition, float radius, float radiousMutiplier = 1, bool isStatic = false)
+		{
+			_radius = radius * radiousMutiplier;
+			UpdatePosition(position);
+		}
 
 		/// <summary>
 		/// Update the position of the circle collider.
 		/// </summary>
 		/// <param name="nextPosition">The next position of the circle collider</param>
-		void UpdatePosition(Vec2 nextPosition) override;
+		void UpdatePosition(Vec2 nextPosition) override
+		{
+			Vec2 currentPosition = Vec2(nextPosition.GetX() + _radius, nextPosition.GetY() + _radius);
+			_position = currentPosition;
+		}
 
 		/// <summary>
 		/// Getter function for the center position of the circle collider.
 		/// </summary>
 		/// <returns>The center position of the circle collider</returns>
-		Vec2 GetCenter() override;
+		Vec2 GetCenter() override
+		{
+			return _position;
+		}
 
 		/// <summary>
 		/// Getter function for the radius of the circle collider.
 		/// </summary>
 		/// <returns>The radius of the circle collider</returns>
-		float GetRadius();
+		float GetRadius()
+		{
+			return _radius;
+		}
 	};
-}
-
-#include "CircleCollider.h"

@@ -20,8 +20,6 @@
 #include "CircleCollider.h"
 #include "PolygonCollider.h"
 
-using namespace CollisionSystem;
-
 enum Tag
 {
 	DEFAULT,

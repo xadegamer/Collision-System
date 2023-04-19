@@ -4,12 +4,10 @@
 #include <functional>
 #include <iostream>
 #include <string>
-
+#include "CollisionManager.h"
 #include "Collision.h"
 #include "Vec2.h"
 
-namespace CollisionSystem
-{
 	template <class T>
 	class Collider
 	{
@@ -38,7 +36,7 @@ namespace CollisionSystem
 			_currentCollidedObject = nullptr;
 			_isEnabled = true;
 
-			CollisionManager::AddCollider(this);
+			CollisionManager<T>::AddCollider(this);
 
 			this->_owner = owner;
 			this->_isStatic = isStatic;
@@ -107,42 +105,62 @@ namespace CollisionSystem
 		/// This function returns the owner of the Collider.
 		/// </summary>
 		/// <returns>A void pointer to the object that owns this Collider.</returns>
-		T* GetOwner();
+		T* GetOwner()
+		{
+			return _owner;
+		}
 
 		/// <summary>
 		/// This function returns whether the Collider is a trigger or not.
 		/// </summary>
 		/// <returns>True if the Collider is a trigger, false otherwise.</returns>
-		bool IsTrigger();
+		bool IsTrigger()
+		{
+			return _isTrigger;
+		}
 
 		/// <summary>
 		/// This function sets whether the Collider is a trigger or not.
 		/// </summary>
 		/// <param name="isTrigger">Whether the Collider is a trigger or not.</param>
-		void SetTrigger(bool isTrigger);
+		void SetTrigger(bool isTrigger)
+		{
+			_isTrigger = isTrigger;
+		}
 
 		/// <summary>
 		/// This function returns whether the Collider is static or not.
 		/// </summary>
 		/// <returns>True if the Collider is static, false otherwise.</returns>
-		bool IsStatic();
+		bool IsStatic()
+		{
+			return _isStatic;
+		}
 
 		/// <summary>
 		/// This function sets whether the Collider is static or not.
 		/// </summary>
 		/// <param name="isStatic">Whether the Collider is static or not.</param>
-		void SetStatic(bool isStatic);
+		void SetStatic(bool isStatic)
+		{
+			_isStatic = isStatic;
+		}
 
 		/// <summary>
 		/// Gets whether this collider is currently enabled.
 		/// </summary>
 		/// <returns>A boolean indicating whether this collider is currently enabled.</returns>
-		bool GetIsEnabled();
+		bool GetIsEnabled()
+		{
+			return _isEnabled;
+		}
 
 		/// <summary>
 		/// Sets whether this collider is enabled.
 		/// </summary>
 		/// <param name="isEnabled">A boolean indicating whether this collider should be enabled or not.</param>
-		void SetIsEnabled(bool isEnabled);
+		void SetIsEnabled(bool isEnabled)
+		{
+			_isEnabled = isEnabled;
+		}
 	};
-}

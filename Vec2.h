@@ -2,8 +2,6 @@
 
 #include <ostream>
 
-namespace CollisionSystem
-{
 	class Vec2
 	{
 
@@ -64,5 +62,3 @@ namespace CollisionSystem
 
 		bool operator<(const Vec2& other) const;
 	};
-}
-

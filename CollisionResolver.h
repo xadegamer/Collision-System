@@ -2,8 +2,6 @@
 
 #include "GameObject.h"
 
-using namespace CollisionSystem;
-
 class CollisionResolver
 {
 public:
