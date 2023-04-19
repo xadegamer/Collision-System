@@ -48,7 +48,7 @@ protected:
 	Transform* transform;
 	SDL_Color color = Color::GetRandomColor();
 
-	Collider* collider = nullptr;
+	Collider<GameObject>* collider = nullptr;
 
 	virtual void Update(float deltaTime);
 
@@ -120,7 +120,7 @@ public:
 
 	inline bool CompareTag(Tag tag) { return this->tag == tag; }
 
-	virtual void OnCollisionEnter(Collision collision) {};
+	virtual void OnCollisionEnter(Collision<GameObject> collision) {};
 
 	void CheckComponent(Component* newCom);
 

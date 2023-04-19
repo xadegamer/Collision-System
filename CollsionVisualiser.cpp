@@ -1,6 +1,7 @@
 #include "CollsionVisualiser.h"
 
 #include "CollisionManager.h"
+
 #include "GameObject.h"
 
 void CollsionVisualiser::DrawBoxAtPosition(SDL_Color sdlColor, Vec2 position, int width, int height)
@@ -42,16 +43,16 @@ void CollsionVisualiser::DrawPolygon(SDL_Color sdlColor, std::vector<Vec2> _poin
 
 void CollsionVisualiser::DrawAllColliders()
 {
-	for (int i = 0; i < CollisionManager::GetAllColliders().size(); i++)
+	for (int i = 0; i < CollisionManager<GameObject>::GetAllColliders().size(); i++)
 	{
-		Collider* colliderA = CollisionManager::GetAllColliders()[i];
+		Collider<GameObject>* colliderA = CollisionManager<GameObject>::GetAllColliders()[i];
 
 		if (!colliderA->GetIsEnabled()) continue;
 
 		SDL_Color colliderColour = ((GameObject*)colliderA->GetOwner())->GetColor();
 
 		// try to cast to a circle collider
-		CircleCollider* circleCollider = dynamic_cast<CircleCollider*>(colliderA);
+		CircleCollider<GameObject>* circleCollider = dynamic_cast<CircleCollider<GameObject>*>(colliderA);
 		if (circleCollider != nullptr)
 		{
 			DrawCircleAtPosition(colliderColour, circleCollider->GetCenter(), circleCollider->GetRadius());
@@ -59,7 +60,7 @@ void CollsionVisualiser::DrawAllColliders()
 		}
 
 		// try to cast to a box collider
-		BoxCollider* boxCollider = dynamic_cast<BoxCollider*>(colliderA);
+		BoxCollider<GameObject>* boxCollider = dynamic_cast<BoxCollider<GameObject>*>(colliderA);
 		if (boxCollider != nullptr)
 		{
 			DrawBoxAtPosition(colliderColour, boxCollider->GetPosition(), boxCollider->GetWidth(), boxCollider->GetHeight());
@@ -67,7 +68,7 @@ void CollsionVisualiser::DrawAllColliders()
 		}
 
 		// try to cast to a polygon collider
-		PolygonCollider* polygonCollider = dynamic_cast<PolygonCollider*>(colliderA);
+		PolygonCollider<GameObject>* polygonCollider = dynamic_cast<PolygonCollider<GameObject>*>(colliderA);
 		if (polygonCollider != nullptr)
 		{
 			DrawPolygon(colliderColour, polygonCollider->GetWorldPoints());

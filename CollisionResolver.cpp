@@ -6,22 +6,21 @@
 
 void CollisionResolver::Initialize()
 {
-	CollisionManager::AddListener(CollisionResolver::ResolveCollision);
+	CollisionManager<GameObject>::AddListener(CollisionResolver::ResolveCollision);
 }
 
-void CollisionResolver::ResolveCollision(Collider* colA, Collider* colB)
+void CollisionResolver::ResolveCollision(Collider<GameObject>* colA, Collider<GameObject>* colB)
 {
 	if (!colA->IsStatic())
 	{
-		GameObject* gameObjectA = (GameObject*)colA->GetOwner();
+		GameObject* gameObjectA = colA->GetOwner();
 		Vector2 minimumTranslationVector = Vector2 (colA->GetCollision().GetMinimumTranslationVector().GetX(), colA->GetCollision().GetMinimumTranslationVector().GetY());
-		gameObjectA->GetTransform()->SetPosition(gameObjectA->GetTransform()->GetPosition() - (minimumTranslationVector * colA->GetCollision().GetImpulse()));
+		colA->GetOwner()->GetTransform()->SetPosition(colA->GetOwner()->GetTransform()->GetPosition() - (minimumTranslationVector * colA->GetCollision().GetImpulse()));
 	}
 
 	if (!colB->IsStatic())
 	{
-		GameObject* gameObjectB = (GameObject*)colB->GetOwner();
 		Vector2 minimumTranslationVector = Vector2(colB->GetCollision().GetMinimumTranslationVector().GetX(), colB->GetCollision().GetMinimumTranslationVector().GetY());
-		gameObjectB->GetTransform()->SetPosition(gameObjectB->GetTransform()->GetPosition() - (minimumTranslationVector * colB->GetCollision().GetImpulse()));
+		colB->GetOwner()->GetTransform()->SetPosition(colB->GetOwner()->GetTransform()->GetPosition() - (minimumTranslationVector * colB->GetCollision().GetImpulse()));
 	}
 }

@@ -18,7 +18,7 @@ Player::Player(Vector2 position) : GameObject(position)
 
 	rigidBody->SetPosition(transform->GetPosition());
 
-	collider = new CircleCollider { (GameObject*)this, Vec2(transform->GetPosition().x, transform->GetPosition().y), 50};
+	collider = new CircleCollider<GameObject>{this, Vec2(transform->GetPosition().x, transform->GetPosition().y), 50};
 
 	collider->AddListener(std::bind(&Player::OnCollisionEnter, this, std::placeholders::_1));
 
@@ -68,7 +68,7 @@ void Player::LateUpdate(float deltaTime)
 	transform->Translate(rigidBody->GetPosition());
 }
 
-void Player::OnCollisionEnter(Collision collision)
+void Player::OnCollisionEnter(Collision<GameObject> collision)
 {
 	GameObject* collided = (GameObject*)collision.GetColliderHit()->GetOwner();
 }

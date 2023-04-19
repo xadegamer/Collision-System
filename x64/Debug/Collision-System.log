@@ -1,17 +1,109 @@
 ﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(517,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (SDL Game.vcxproj, SDL-GAME-Colllision.vcxproj).  This can lead to incorrect clean and rebuild behavior.
   BoxCollider.cpp
-E:\Year 2\Semester 2\Git Projects\Collision-System\BoxCollider.h(51): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(14,11): error C2143: syntax error: missing ';' before '<'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(58,3): message : see reference to class template instantiation 'CollisionSystem::Collision<T>' being compiled
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(14,1): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(14,1): error C2238: unexpected token(s) preceding ';'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(28,13): error C2061: syntax error: identifier 'Collider'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(28,3): error C2535: 'CollisionSystem::Collision<T>::Collision(void)': member function already defined or declared
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(20,3): message : see declaration of 'CollisionSystem::Collision<T>::Collision'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(39,11): error C2143: syntax error: missing ';' before '<'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(39,1): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(40,1): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(30,4): error C3861: '_colliderHit': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(30,19): error C3861: 'colliderHit': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(31,32): error C3861: 'minimumTranslationVector': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(32,15): error C3861: 'impulse': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(30,4): error C2065: '_colliderHit': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(30,19): error C2065: 'colliderHit': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(31,32): error C2065: 'minimumTranslationVector': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(32,15): error C2065: 'impulse': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\BoxCollider.cpp(15,3): error C3861: '_position': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\BoxCollider.cpp(15,3): error C2065: '_position': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\BoxCollider.cpp(21,15): error C3861: '_position': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\BoxCollider.cpp(21,50): error C3861: '_position': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\BoxCollider.cpp(21,15): error C2065: '_position': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\BoxCollider.cpp(21,50): error C2065: '_position': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\BoxCollider.cpp(46,25): error C3861: '_position': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\BoxCollider.cpp(46,43): error C3861: '_position': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\BoxCollider.cpp(47,25): error C3861: '_position': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\BoxCollider.cpp(47,56): error C3861: '_position': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\BoxCollider.cpp(48,25): error C3861: '_position': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\BoxCollider.cpp(48,56): error C3861: '_position': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\BoxCollider.cpp(49,25): error C3861: '_position': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\BoxCollider.cpp(49,43): error C3861: '_position': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\BoxCollider.cpp(46,25): error C2065: '_position': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\BoxCollider.cpp(46,43): error C2065: '_position': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\BoxCollider.cpp(47,25): error C2065: '_position': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\BoxCollider.cpp(47,56): error C2065: '_position': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\BoxCollider.cpp(48,25): error C2065: '_position': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\BoxCollider.cpp(48,56): error C2065: '_position': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\BoxCollider.cpp(49,25): error C2065: '_position': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\BoxCollider.cpp(49,43): error C2065: '_position': undeclared identifier
   CircleCollider.cpp
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(14,11): error C2143: syntax error: missing ';' before '<'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(58,3): message : see reference to class template instantiation 'CollisionSystem::Collision<T>' being compiled
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(14,1): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(14,1): error C2238: unexpected token(s) preceding ';'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(28,13): error C2061: syntax error: identifier 'Collider'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(28,3): error C2535: 'CollisionSystem::Collision<T>::Collision(void)': member function already defined or declared
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(20,3): message : see declaration of 'CollisionSystem::Collision<T>::Collision'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(39,11): error C2143: syntax error: missing ';' before '<'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(39,1): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(40,1): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(30,4): error C3861: '_colliderHit': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(30,19): error C3861: 'colliderHit': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(31,32): error C3861: 'minimumTranslationVector': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(32,15): error C3861: 'impulse': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(30,4): error C2065: '_colliderHit': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(30,19): error C2065: 'colliderHit': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(31,32): error C2065: 'minimumTranslationVector': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(32,15): error C2065: 'impulse': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\CircleCollider.cpp(9,18): error C3861: 'position': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\CircleCollider.cpp(9,18): error C2065: 'position': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\CircleCollider.cpp(16,3): error C3861: '_position': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\CircleCollider.cpp(16,3): error C2065: '_position': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\CircleCollider.cpp(22,10): error C3861: '_position': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\CircleCollider.cpp(22,10): error C2065: '_position': undeclared identifier
   Collider.cpp
-E:\Year 2\Semester 2\Git Projects\Collision-System\BoxCollider.h(51): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\PolygonCollider.h(41): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(14,11): error C2143: syntax error: missing ';' before '<'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(58,3): message : see reference to class template instantiation 'CollisionSystem::Collision<T>' being compiled
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(14,1): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(14,1): error C2238: unexpected token(s) preceding ';'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(28,13): error C2061: syntax error: identifier 'Collider'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(28,3): error C2535: 'CollisionSystem::Collision<T>::Collision(void)': member function already defined or declared
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(20,3): message : see declaration of 'CollisionSystem::Collision<T>::Collision'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(39,11): error C2143: syntax error: missing ';' before '<'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(39,1): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(40,1): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(30,4): error C3861: '_colliderHit': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(30,19): error C3861: 'colliderHit': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(31,32): error C3861: 'minimumTranslationVector': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(32,15): error C3861: 'impulse': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(30,4): error C2065: '_colliderHit': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(30,19): error C2065: 'colliderHit': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(31,32): error C2065: 'minimumTranslationVector': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(32,15): error C2065: 'impulse': undeclared identifier
   CollisionManager.cpp
-E:\Year 2\Semester 2\Git Projects\Collision-System\BoxCollider.h(51): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\PolygonCollider.h(41): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\CollisionManager.cpp(292,35): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(14,11): error C2143: syntax error: missing ';' before '<'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(58,3): message : see reference to class template instantiation 'CollisionSystem::Collision<T>' being compiled
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(14,1): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(14,1): error C2238: unexpected token(s) preceding ';'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(28,13): error C2061: syntax error: identifier 'Collider'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(28,3): error C2535: 'CollisionSystem::Collision<T>::Collision(void)': member function already defined or declared
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(20,3): message : see declaration of 'CollisionSystem::Collision<T>::Collision'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(39,11): error C2143: syntax error: missing ';' before '<'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(39,1): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(40,1): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(30,4): error C3861: '_colliderHit': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(30,19): error C3861: 'colliderHit': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(31,32): error C3861: 'minimumTranslationVector': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(32,15): error C3861: 'impulse': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(30,4): error C2065: '_colliderHit': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(30,19): error C2065: 'colliderHit': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(31,32): error C2065: 'minimumTranslationVector': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(32,15): error C2065: 'impulse': undeclared identifier
   CollisionResolver.cpp
-E:\Year 2\Semester 2\Git Projects\Collision-System\BoxCollider.h(51): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\PolygonCollider.h(41): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(17,13): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(61,54): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(61,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
@@ -19,9 +111,46 @@ E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(62,54): warning
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(62,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(63,21): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(63,18): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(14,11): error C2143: syntax error: missing ';' before '<'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(58,3): message : see reference to class template instantiation 'CollisionSystem::Collision<T>' being compiled
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(14,1): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(14,1): error C2238: unexpected token(s) preceding ';'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(28,13): error C2061: syntax error: identifier 'Collider'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(28,3): error C2535: 'CollisionSystem::Collision<T>::Collision(void)': member function already defined or declared
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(20,3): message : see declaration of 'CollisionSystem::Collision<T>::Collision'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(39,11): error C2143: syntax error: missing ';' before '<'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(39,1): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(40,1): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(30,4): error C3861: '_colliderHit': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(30,19): error C3861: 'colliderHit': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(31,32): error C3861: 'minimumTranslationVector': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(32,15): error C3861: 'impulse': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(30,4): error C2065: '_colliderHit': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(30,19): error C2065: 'colliderHit': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(31,32): error C2065: 'minimumTranslationVector': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(32,15): error C2065: 'impulse': undeclared identifier
   CollsionVisualiser.cpp
-E:\Year 2\Semester 2\Git Projects\Collision-System\BoxCollider.h(51): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\PolygonCollider.h(41): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+E:\Year 2\Semester 2\Git Projects\Collision-System\CollsionVisualiser.h(23,32): error C2061: syntax error: identifier 'SDL_Color'
+E:\Year 2\Semester 2\Git Projects\Collision-System\CollsionVisualiser.h(31,35): error C2061: syntax error: identifier 'SDL_Color'
+E:\Year 2\Semester 2\Git Projects\Collision-System\CollsionVisualiser.h(38,26): error C2061: syntax error: identifier 'SDL_Color'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(14,11): error C2143: syntax error: missing ';' before '<'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(58,3): message : see reference to class template instantiation 'CollisionSystem::Collision<T>' being compiled
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(14,1): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(14,1): error C2238: unexpected token(s) preceding ';'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(28,13): error C2061: syntax error: identifier 'Collider'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(28,3): error C2535: 'CollisionSystem::Collision<T>::Collision(void)': member function already defined or declared
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(20,3): message : see declaration of 'CollisionSystem::Collision<T>::Collision'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(39,11): error C2143: syntax error: missing ';' before '<'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(39,1): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(40,1): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(30,4): error C3861: '_colliderHit': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(30,19): error C3861: 'colliderHit': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(31,32): error C3861: 'minimumTranslationVector': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(32,15): error C3861: 'impulse': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(30,4): error C2065: '_colliderHit': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(30,19): error C2065: 'colliderHit': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(31,32): error C2065: 'minimumTranslationVector': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(32,15): error C2065: 'impulse': undeclared identifier
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(17,13): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(61,54): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(61,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
@@ -29,20 +158,33 @@ E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(62,54): warning
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(62,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(63,21): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(63,18): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\CollsionVisualiser.cpp(9,39): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-E:\Year 2\Semester 2\Git Projects\Collision-System\CollsionVisualiser.cpp(9,39): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\CollsionVisualiser.cpp(9,56): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-E:\Year 2\Semester 2\Git Projects\Collision-System\CollsionVisualiser.cpp(9,56): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\CollsionVisualiser.cpp(18,11): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+E:\Year 2\Semester 2\Git Projects\Collision-System\CollsionVisualiser.cpp(7,26): error C2511: 'void CollsionVisualiser::DrawBoxAtPosition(SDL_Color,CollisionSystem::Vec2,int,int)': overloaded member function not found in 'CollsionVisualiser'
+E:\Year 2\Semester 2\Git Projects\Collision-System\CollsionVisualiser.h(12,7): message : see declaration of 'CollsionVisualiser'
+E:\Year 2\Semester 2\Git Projects\Collision-System\CollsionVisualiser.cpp(10,39): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+E:\Year 2\Semester 2\Git Projects\Collision-System\CollsionVisualiser.cpp(10,39): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+E:\Year 2\Semester 2\Git Projects\Collision-System\CollsionVisualiser.cpp(10,56): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+E:\Year 2\Semester 2\Git Projects\Collision-System\CollsionVisualiser.cpp(10,56): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+E:\Year 2\Semester 2\Git Projects\Collision-System\CollsionVisualiser.cpp(14,26): error C2511: 'void CollsionVisualiser::DrawCircleAtPosition(SDL_Color,CollisionSystem::Vec2,int)': overloaded member function not found in 'CollsionVisualiser'
+E:\Year 2\Semester 2\Git Projects\Collision-System\CollsionVisualiser.h(12,7): message : see declaration of 'CollsionVisualiser'
 E:\Year 2\Semester 2\Git Projects\Collision-System\CollsionVisualiser.cpp(19,11): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\CollsionVisualiser.cpp(20,90): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\CollsionVisualiser.cpp(20,67): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\CollsionVisualiser.cpp(26,33): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\CollsionVisualiser.cpp(31,35): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+E:\Year 2\Semester 2\Git Projects\Collision-System\CollsionVisualiser.cpp(20,11): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+E:\Year 2\Semester 2\Git Projects\Collision-System\CollsionVisualiser.cpp(21,90): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+E:\Year 2\Semester 2\Git Projects\Collision-System\CollsionVisualiser.cpp(21,67): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+E:\Year 2\Semester 2\Git Projects\Collision-System\CollsionVisualiser.cpp(25,26): error C2511: 'void CollsionVisualiser::DrawPolygon(SDL_Color,std::vector<CollisionSystem::Vec2,std::allocator<CollisionSystem::Vec2>>)': overloaded member function not found in 'CollsionVisualiser'
+E:\Year 2\Semester 2\Git Projects\Collision-System\CollsionVisualiser.h(12,7): message : see declaration of 'CollsionVisualiser'
+E:\Year 2\Semester 2\Git Projects\Collision-System\CollsionVisualiser.cpp(27,33): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\CollsionVisualiser.cpp(32,35): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\CollsionVisualiser.cpp(57,95): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\CollsionVisualiser.cpp(65,113): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\CollsionVisualiser.cpp(65,87): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+E:\Year 2\Semester 2\Git Projects\Collision-System\CollsionVisualiser.cpp(33,35): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+E:\Year 2\Semester 2\Git Projects\Collision-System\CollsionVisualiser.cpp(58,4): error C2660: 'CollsionVisualiser::DrawCircleAtPosition': function does not take 3 arguments
+E:\Year 2\Semester 2\Git Projects\Collision-System\CollsionVisualiser.h(31,14): message : see declaration of 'CollsionVisualiser::DrawCircleAtPosition'
+E:\Year 2\Semester 2\Git Projects\Collision-System\CollsionVisualiser.cpp(58,4): message : while trying to match the argument list '(SDL_Color, CollisionSystem::Vec2, float)'
+E:\Year 2\Semester 2\Git Projects\Collision-System\CollsionVisualiser.cpp(66,4): error C2660: 'CollsionVisualiser::DrawBoxAtPosition': function does not take 4 arguments
+E:\Year 2\Semester 2\Git Projects\Collision-System\CollsionVisualiser.h(23,14): message : see declaration of 'CollsionVisualiser::DrawBoxAtPosition'
+E:\Year 2\Semester 2\Git Projects\Collision-System\CollsionVisualiser.cpp(66,4): message : while trying to match the argument list '(SDL_Color, CollisionSystem::Vec2, float, float)'
+E:\Year 2\Semester 2\Git Projects\Collision-System\CollsionVisualiser.cpp(74,4): error C2660: 'CollsionVisualiser::DrawPolygon': function does not take 2 arguments
+E:\Year 2\Semester 2\Git Projects\Collision-System\CollsionVisualiser.h(38,14): message : see declaration of 'CollsionVisualiser::DrawPolygon'
+E:\Year 2\Semester 2\Git Projects\Collision-System\CollsionVisualiser.cpp(74,4): message : while trying to match the argument list '(SDL_Color, std::vector<CollisionSystem::Vec2,std::allocator<CollisionSystem::Vec2>>)'
+  Color.cpp
   Component.cpp
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(17,13): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(61,54): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
@@ -51,8 +193,25 @@ E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(62,54): warning
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(62,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(63,21): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(63,18): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\BoxCollider.h(51): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\PolygonCollider.h(41): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(14,11): error C2143: syntax error: missing ';' before '<'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(58,3): message : see reference to class template instantiation 'CollisionSystem::Collision<T>' being compiled
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(14,1): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(14,1): error C2238: unexpected token(s) preceding ';'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(28,13): error C2061: syntax error: identifier 'Collider'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(28,3): error C2535: 'CollisionSystem::Collision<T>::Collision(void)': member function already defined or declared
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(20,3): message : see declaration of 'CollisionSystem::Collision<T>::Collision'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(39,11): error C2143: syntax error: missing ';' before '<'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(39,1): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(40,1): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(30,4): error C3861: '_colliderHit': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(30,19): error C3861: 'colliderHit': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(31,32): error C3861: 'minimumTranslationVector': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(32,15): error C3861: 'impulse': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(30,4): error C2065: '_colliderHit': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(30,19): error C2065: 'colliderHit': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(31,32): error C2065: 'minimumTranslationVector': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(32,15): error C2065: 'impulse': undeclared identifier
+  Direction.cpp
   Enemy.cpp
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(17,13): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(61,54): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
@@ -61,8 +220,24 @@ E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(62,54): warning
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(62,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(63,21): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(63,18): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\BoxCollider.h(51): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\PolygonCollider.h(41): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(14,11): error C2143: syntax error: missing ';' before '<'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(58,3): message : see reference to class template instantiation 'CollisionSystem::Collision<T>' being compiled
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(14,1): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(14,1): error C2238: unexpected token(s) preceding ';'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(28,13): error C2061: syntax error: identifier 'Collider'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(28,3): error C2535: 'CollisionSystem::Collision<T>::Collision(void)': member function already defined or declared
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(20,3): message : see declaration of 'CollisionSystem::Collision<T>::Collision'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(39,11): error C2143: syntax error: missing ';' before '<'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(39,1): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(40,1): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(30,4): error C3861: '_colliderHit': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(30,19): error C3861: 'colliderHit': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(31,32): error C3861: 'minimumTranslationVector': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(32,15): error C3861: 'impulse': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(30,4): error C2065: '_colliderHit': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(30,19): error C2065: 'colliderHit': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(31,32): error C2065: 'minimumTranslationVector': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(32,15): error C2065: 'impulse': undeclared identifier
   Engine.cpp
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(17,13): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(61,54): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
@@ -71,8 +246,24 @@ E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(62,54): warning
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(62,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(63,21): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(63,18): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\BoxCollider.h(51): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\PolygonCollider.h(41): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(14,11): error C2143: syntax error: missing ';' before '<'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(58,3): message : see reference to class template instantiation 'CollisionSystem::Collision<T>' being compiled
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(14,1): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(14,1): error C2238: unexpected token(s) preceding ';'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(28,13): error C2061: syntax error: identifier 'Collider'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(28,3): error C2535: 'CollisionSystem::Collision<T>::Collision(void)': member function already defined or declared
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(20,3): message : see declaration of 'CollisionSystem::Collision<T>::Collision'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(39,11): error C2143: syntax error: missing ';' before '<'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(39,1): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(40,1): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(30,4): error C3861: '_colliderHit': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(30,19): error C3861: 'colliderHit': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(31,32): error C3861: 'minimumTranslationVector': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(32,15): error C3861: 'impulse': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(30,4): error C2065: '_colliderHit': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(30,19): error C2065: 'colliderHit': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(31,32): error C2065: 'minimumTranslationVector': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(32,15): error C2065: 'impulse': undeclared identifier
 E:\Year 2\Semester 2\Git Projects\Collision-System\Engine.cpp(56,38): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\Engine.cpp(60,42): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   Game.cpp
@@ -83,8 +274,24 @@ E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(62,54): warning
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(62,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(63,21): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(63,18): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\BoxCollider.h(51): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\PolygonCollider.h(41): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(14,11): error C2143: syntax error: missing ';' before '<'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(58,3): message : see reference to class template instantiation 'CollisionSystem::Collision<T>' being compiled
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(14,1): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(14,1): error C2238: unexpected token(s) preceding ';'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(28,13): error C2061: syntax error: identifier 'Collider'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(28,3): error C2535: 'CollisionSystem::Collision<T>::Collision(void)': member function already defined or declared
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(20,3): message : see declaration of 'CollisionSystem::Collision<T>::Collision'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(39,11): error C2143: syntax error: missing ';' before '<'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(39,1): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(40,1): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(30,4): error C3861: '_colliderHit': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(30,19): error C3861: 'colliderHit': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(31,32): error C3861: 'minimumTranslationVector': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(32,15): error C3861: 'impulse': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(30,4): error C2065: '_colliderHit': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(30,19): error C2065: 'colliderHit': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(31,32): error C2065: 'minimumTranslationVector': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(32,15): error C2065: 'impulse': undeclared identifier
   GameObject.cpp
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(17,13): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(61,54): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
@@ -93,8 +300,25 @@ E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(62,54): warning
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(62,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(63,21): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(63,18): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\BoxCollider.h(51): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\PolygonCollider.h(41): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(14,11): error C2143: syntax error: missing ';' before '<'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(58,3): message : see reference to class template instantiation 'CollisionSystem::Collision<T>' being compiled
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(14,1): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(14,1): error C2238: unexpected token(s) preceding ';'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(28,13): error C2061: syntax error: identifier 'Collider'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(28,3): error C2535: 'CollisionSystem::Collision<T>::Collision(void)': member function already defined or declared
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(20,3): message : see declaration of 'CollisionSystem::Collision<T>::Collision'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(39,11): error C2143: syntax error: missing ';' before '<'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(39,1): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(40,1): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(30,4): error C3861: '_colliderHit': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(30,19): error C3861: 'colliderHit': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(31,32): error C3861: 'minimumTranslationVector': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(32,15): error C3861: 'impulse': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(30,4): error C2065: '_colliderHit': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(30,19): error C2065: 'colliderHit': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(31,32): error C2065: 'minimumTranslationVector': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(32,15): error C2065: 'impulse': undeclared identifier
+  InputManager.cpp
   LayoutTileMap.cpp
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(17,13): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(61,54): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
@@ -103,43 +327,26 @@ E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(62,54): warning
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(62,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(63,21): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(63,18): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\BoxCollider.h(51): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\PolygonCollider.h(41): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(14,11): error C2143: syntax error: missing ';' before '<'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(58,3): message : see reference to class template instantiation 'CollisionSystem::Collision<T>' being compiled
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(14,1): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(14,1): error C2238: unexpected token(s) preceding ';'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(28,13): error C2061: syntax error: identifier 'Collider'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(28,3): error C2535: 'CollisionSystem::Collision<T>::Collision(void)': member function already defined or declared
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(20,3): message : see declaration of 'CollisionSystem::Collision<T>::Collision'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(39,11): error C2143: syntax error: missing ';' before '<'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(39,1): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(40,1): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(30,4): error C3861: '_colliderHit': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(30,19): error C3861: 'colliderHit': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(31,32): error C3861: 'minimumTranslationVector': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(32,15): error C3861: 'impulse': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(30,4): error C2065: '_colliderHit': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(30,19): error C2065: 'colliderHit': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(31,32): error C2065: 'minimumTranslationVector': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(32,15): error C2065: 'impulse': undeclared identifier
 E:\Year 2\Semester 2\Git Projects\Collision-System\LayoutTileMap.cpp(32,47): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\LayoutTileMap.cpp(32,33): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  Player.cpp
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(17,13): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(61,54): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(61,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(62,54): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(62,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(63,21): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(63,18): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\BoxCollider.h(51): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\PolygonCollider.h(41): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-  PolygonCollider.cpp
-E:\Year 2\Semester 2\Git Projects\Collision-System\PolygonCollider.h(41): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\PolygonCollider.cpp(23,25): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  Prop.cpp
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(17,13): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(61,54): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(61,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(62,54): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(62,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(63,21): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(63,18): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\BoxCollider.h(51): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\PolygonCollider.h(41): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-  Wall.cpp
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(17,13): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(61,54): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(61,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(62,54): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(62,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(63,21): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(63,18): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\BoxCollider.h(51): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\PolygonCollider.h(41): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
   main.cpp
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(17,13): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(61,54): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
@@ -148,7 +355,131 @@ E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(62,54): warning
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(62,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(63,21): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(63,18): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\BoxCollider.h(51): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-E:\Year 2\Semester 2\Git Projects\Collision-System\PolygonCollider.h(41): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(14,11): error C2143: syntax error: missing ';' before '<'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(58,3): message : see reference to class template instantiation 'CollisionSystem::Collision<T>' being compiled
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(14,1): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(14,1): error C2238: unexpected token(s) preceding ';'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(28,13): error C2061: syntax error: identifier 'Collider'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(28,3): error C2535: 'CollisionSystem::Collision<T>::Collision(void)': member function already defined or declared
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(20,3): message : see declaration of 'CollisionSystem::Collision<T>::Collision'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(39,11): error C2143: syntax error: missing ';' before '<'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(39,1): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(40,1): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(30,4): error C3861: '_colliderHit': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(30,19): error C3861: 'colliderHit': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(31,32): error C3861: 'minimumTranslationVector': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(32,15): error C3861: 'impulse': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(30,4): error C2065: '_colliderHit': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(30,19): error C2065: 'colliderHit': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(31,32): error C2065: 'minimumTranslationVector': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(32,15): error C2065: 'impulse': undeclared identifier
+  Player.cpp
+E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(17,13): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(61,54): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(61,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(62,54): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(62,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(63,21): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(63,18): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(14,11): error C2143: syntax error: missing ';' before '<'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(58,3): message : see reference to class template instantiation 'CollisionSystem::Collision<T>' being compiled
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(14,1): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(14,1): error C2238: unexpected token(s) preceding ';'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(28,13): error C2061: syntax error: identifier 'Collider'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(28,3): error C2535: 'CollisionSystem::Collision<T>::Collision(void)': member function already defined or declared
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(20,3): message : see declaration of 'CollisionSystem::Collision<T>::Collision'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(39,11): error C2143: syntax error: missing ';' before '<'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(39,1): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(40,1): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(30,4): error C3861: '_colliderHit': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(30,19): error C3861: 'colliderHit': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(31,32): error C3861: 'minimumTranslationVector': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(32,15): error C3861: 'impulse': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(30,4): error C2065: '_colliderHit': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(30,19): error C2065: 'colliderHit': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(31,32): error C2065: 'minimumTranslationVector': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(32,15): error C2065: 'impulse': undeclared identifier
+  PolygonCollider.cpp
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(14,11): error C2143: syntax error: missing ';' before '<'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(58,3): message : see reference to class template instantiation 'CollisionSystem::Collision<T>' being compiled
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(14,1): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(14,1): error C2238: unexpected token(s) preceding ';'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(28,13): error C2061: syntax error: identifier 'Collider'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(28,3): error C2535: 'CollisionSystem::Collision<T>::Collision(void)': member function already defined or declared
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(20,3): message : see declaration of 'CollisionSystem::Collision<T>::Collision'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(39,11): error C2143: syntax error: missing ';' before '<'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(39,1): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(40,1): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(30,4): error C3861: '_colliderHit': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(30,19): error C3861: 'colliderHit': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(31,32): error C3861: 'minimumTranslationVector': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(32,15): error C3861: 'impulse': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(30,4): error C2065: '_colliderHit': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(30,19): error C2065: 'colliderHit': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(31,32): error C2065: 'minimumTranslationVector': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(32,15): error C2065: 'impulse': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\PolygonCollider.cpp(15,3): error C3861: '_position': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\PolygonCollider.cpp(15,3): error C2065: '_position': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\PolygonCollider.cpp(27,19): error C2065: '_position': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\PolygonCollider.cpp(27,19): error C3861: '_position': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\PolygonCollider.cpp(48,51): error C3861: '_position': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\PolygonCollider.cpp(48,89): error C3861: '_position': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\PolygonCollider.cpp(48,51): error C2065: '_position': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\PolygonCollider.cpp(48,89): error C2065: '_position': undeclared identifier
+  PolygonShape.cpp
+  Prop.cpp
+E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(17,13): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(61,54): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(61,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(62,54): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(62,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(63,21): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(63,18): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(14,11): error C2143: syntax error: missing ';' before '<'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(58,3): message : see reference to class template instantiation 'CollisionSystem::Collision<T>' being compiled
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(14,1): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(14,1): error C2238: unexpected token(s) preceding ';'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(28,13): error C2061: syntax error: identifier 'Collider'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(28,3): error C2535: 'CollisionSystem::Collision<T>::Collision(void)': member function already defined or declared
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(20,3): message : see declaration of 'CollisionSystem::Collision<T>::Collision'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(39,11): error C2143: syntax error: missing ';' before '<'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(39,1): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(40,1): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(30,4): error C3861: '_colliderHit': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(30,19): error C3861: 'colliderHit': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(31,32): error C3861: 'minimumTranslationVector': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(32,15): error C3861: 'impulse': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(30,4): error C2065: '_colliderHit': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(30,19): error C2065: 'colliderHit': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(31,32): error C2065: 'minimumTranslationVector': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(32,15): error C2065: 'impulse': undeclared identifier
   Generating Code...
-  Collision-System.vcxproj -> E:\Year 2\Semester 2\Git Projects\Collision-System\x64\Debug\Collision-System.exe
+E:\Year 2\Semester 2\Git Projects\Collision-System\Direction.cpp(36): warning C4715: 'Direction::GetDirection': not all control paths return a value
+  Compiling...
+  Wall.cpp
+E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(17,13): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(61,54): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(61,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(62,54): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(62,34): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(63,21): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(63,18): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(14,11): error C2143: syntax error: missing ';' before '<'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(58,3): message : see reference to class template instantiation 'CollisionSystem::Collision<T>' being compiled
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(14,1): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(14,1): error C2238: unexpected token(s) preceding ';'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(28,13): error C2061: syntax error: identifier 'Collider'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(28,3): error C2535: 'CollisionSystem::Collision<T>::Collision(void)': member function already defined or declared
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(20,3): message : see declaration of 'CollisionSystem::Collision<T>::Collision'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(39,11): error C2143: syntax error: missing ';' before '<'
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(39,1): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(40,1): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(30,4): error C3861: '_colliderHit': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(30,19): error C3861: 'colliderHit': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(31,32): error C3861: 'minimumTranslationVector': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(32,15): error C3861: 'impulse': identifier not found
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(30,4): error C2065: '_colliderHit': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(30,19): error C2065: 'colliderHit': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(31,32): error C2065: 'minimumTranslationVector': undeclared identifier
+E:\Year 2\Semester 2\Git Projects\Collision-System\Collision.h(32,15): error C2065: 'impulse': undeclared identifier
+  Generating Code...

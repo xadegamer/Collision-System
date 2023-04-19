@@ -1,9 +1,11 @@
 #pragma once
+
 #include "Collider.h"
 
 namespace CollisionSystem
 {
-	class BoxCollider : public Collider
+	template <class T>
+	class BoxCollider : public Collider<T>
 	{
 	private:
 
@@ -18,7 +20,7 @@ namespace CollisionSystem
 		/// <param name="nextPosition">The position of the collider</param>
 		/// <param name="size">The size of the box</param>
 		/// <param name="isStatic">Whether the collider is static or not (default is false)</param>
-		BoxCollider(void* owner, Vec2 nextPosition, Vec2 size, bool isStatic = false);
+		BoxCollider(T* owner, Vec2 nextPosition, Vec2 size, bool isStatic = false);
 
 		/// <summary>
 		/// Updates the position of the collider to the given position.
@@ -36,19 +38,19 @@ namespace CollisionSystem
 		/// Gets the width of the collider.
 		/// </summary>
 		/// <returns>The width of the collider</returns>
-		inline float GetWidth() { return _size.GetX(); }
+		float GetWidth();
 
 		/// <summary>
 		/// Gets the height of the collider.
 		/// </summary>
 		/// <returns>The height of the collider</returns>
-		inline float GetHeight() { return _size.GetY(); }
+		float GetHeight();
 
 		/// <summary>
 		/// Gets the number of points that define the collider's shape in world space.
 		/// </summary>
 		/// <returns>The number of points that define the collider's shape in world space</returns>
-		inline int GetNumPoints() { return GetWorldPoints().size(); }
+		int GetNumPoints();
 
 		/// <summary>
 		/// Gets a vector of the points that define the collider's shape in world space.

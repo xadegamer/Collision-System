@@ -26,13 +26,13 @@ Enemy::Enemy(Vector2 position) : GameObject(position)
 	switch (random)
 	{
 		case 0:
-			collider = new BoxCollider{ (GameObject*)this, Vec2(transform->GetPosition().x, transform->GetPosition().y), Vec2(100, 100) };
+			collider = new BoxCollider<GameObject>{ this, Vec2(transform->GetPosition().x, transform->GetPosition().y), Vec2(100, 100) };
 			break;
 		case 1:
-			collider = new CircleCollider{ (GameObject*)this, Vec2(transform->GetPosition().x, transform->GetPosition().y), 50 };
+			collider = new CircleCollider<GameObject>{ this, Vec2(transform->GetPosition().x, transform->GetPosition().y), 50 };
 			break;
 		case 2:
-			collider = new PolygonCollider((GameObject*)this, Vec2(transform->GetPosition().x, transform->GetPosition().y), PolygonShape::GetRandomPolygon(50));
+			collider = new PolygonCollider<GameObject>(this, Vec2(transform->GetPosition().x, transform->GetPosition().y), PolygonShape::GetRandomPolygon(50));
 			break;
 		default:break;
 	}
@@ -57,7 +57,7 @@ void Enemy::LateUpdate(float deltaTime)
 	transform->Translate(rigidBody->GetPosition());
 }
 
-void Enemy::OnCollisionEnter(Collision collision)
+void Enemy::OnCollisionEnter(Collision<GameObject> collision)
 {
 	GameObject* other = (GameObject*)collision.GetColliderHit()->GetOwner();
 

@@ -2,23 +2,45 @@
 
 namespace CollisionSystem
 {
-	BoxCollider::BoxCollider(void* owner, Vec2 nextPosition, Vec2 size, bool isStatic) : Collider(owner, nextPosition, isStatic)
+	template<class T>
+	BoxCollider<T>::BoxCollider(T* owner, Vec2 nextPosition, Vec2 size, bool isStatic) : Collider<T>(owner, nextPosition, isStatic)
 	{
 		_size = size;
 		UpdatePosition(nextPosition);
 	}
 
-	void BoxCollider::UpdatePosition(Vec2 nextPosition)
+	template<class T>
+	void BoxCollider<T>::UpdatePosition(Vec2 nextPosition)
 	{
 		_position = nextPosition;
 	}
 
-	Vec2 BoxCollider::GetCenter()
+	template<class T>
+	Vec2 BoxCollider<T>::GetCenter()
 	{
 		return Vec2(_position.GetX() + GetWidth() / 2, _position.GetY() + GetHeight() / 2);
 	}
 
-	std::vector<Vec2> BoxCollider::GetWorldPoints()
+	template<class T>
+	float BoxCollider<T>::GetWidth()
+	{
+		_size.GetX();
+	}
+
+	template<class T>
+	float BoxCollider<T>::GetHeight()
+	{
+		_size.GetY();
+	}
+
+	template<class T>
+	int BoxCollider<T>::GetNumPoints()
+	{
+		return GetWorldPoints().size();
+	}
+
+	template<class T>
+	std::vector<Vec2> BoxCollider<T>::GetWorldPoints()
 	{
 		std::vector<Vec2> points;
 		points.push_back(Vec2(_position.GetX(), _position.GetY()));

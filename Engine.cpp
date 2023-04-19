@@ -20,7 +20,7 @@ void Engine::Start()
 
 	CollisionResolver::Initialize();
 
-	CollisionManager::Init();
+	CollisionManager<GameObject>::Init();
 
 	game = new Game();
 
@@ -55,7 +55,7 @@ void Engine::Update()
 {
 	game->Update(deltaTimer.getDeltaTime());
 
-	CollisionManager::HandleAllCollision();
+	CollisionManager<GameObject>::HandleAllCollision();
 
 	game->LateUpdate(deltaTimer.getDeltaTime());
 }
@@ -75,7 +75,7 @@ void Engine::Render()
 
 void Engine::ShutDown()
 {
-	CollisionManager::CleanUp();
+	CollisionManager<GameObject>::CleanUp();
 
 	delete game;
 	game = nullptr;

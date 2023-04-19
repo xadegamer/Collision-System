@@ -1,8 +1,6 @@
 #pragma once
 
-#include "Collider.h"
-
-#include "Collision.h"
+#include "GameObject.h"
 
 using namespace CollisionSystem;
 
@@ -17,5 +15,5 @@ public:
 	/// </summary>
 	/// <param name="A">The first collider involved in the collision</param>
 	/// <param name="B">The second collider involved in the collision</param>
-	static void ResolveCollision(Collider* A, Collider* B);
+	static void ResolveCollision(Collider<GameObject>* A, Collider<GameObject>* B);
 };
