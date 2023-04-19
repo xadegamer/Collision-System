@@ -3,15 +3,9 @@
 
 namespace CollisionSystem
 {
-	Collider::Collider(void* owner, Vec2 nextPosition, bool isStatic)
+	void Collider::AddColliderToManager()
 	{
-		_currentCollidedObject = nullptr;
-		_isEnabled = true;
-
 		CollisionManager::AddCollider(this);
-
-		this->_owner = owner;
-		this->_isStatic = isStatic;
 	}
 
 	void Collider::OnCollision()

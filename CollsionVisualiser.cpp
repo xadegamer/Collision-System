@@ -48,7 +48,7 @@ void CollsionVisualiser::DrawAllColliders()
 
 		if (!colliderA->GetIsEnabled()) continue;
 
-		SDL_Color colliderColour = ((GameObject*)colliderA->GetOwner())->GetColor();
+		SDL_Color colliderColour = colliderA->GetOwnerAs<GameObject>()->GetColor();
 
 		// try to cast to a circle collider
 		CircleCollider* circleCollider = dynamic_cast<CircleCollider*>(colliderA);

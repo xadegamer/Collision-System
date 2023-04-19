@@ -70,5 +70,5 @@ void Player::LateUpdate(float deltaTime)
 
 void Player::OnCollisionEnter(Collision collision)
 {
-	GameObject* collided = (GameObject*)collision.GetColliderHit()->GetOwner();
+	GameObject* collided = collision.GetColliderHit()->GetOwnerAs<GameObject>();
 }

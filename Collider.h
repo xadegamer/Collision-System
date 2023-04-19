@@ -5,9 +5,9 @@
 #include <iostream>
 #include <string>
 
-
 #include "Collision.h"
 #include "Vec2.h"
+
 
 namespace CollisionSystem
 {
@@ -34,32 +34,28 @@ namespace CollisionSystem
 		/// <param name="owner">A void pointer to the object that owns this Collider.</param>
 		/// <param name="position">The position of the Collider.</param>
 		/// <param name="isStatic">Whether the Collider is static or not. Defaults to false.</param>
-		Collider(void* owner, Vec2 position, bool isStatic = false);
+		template<typename T>
+		Collider(T* owner, Vec2 position, bool isStatic = false)
+		{
+			_currentCollidedObject = nullptr;
+			_isEnabled = true;
+			this->_owner = static_cast<void*>(owner);
+			this->_isStatic = isStatic;
+			this->_position = position;
+			AddColliderToManager();
+		}
 
-		//template<typename T>
-		//Collider(T* owner, Vec2 position, bool isStatic = false)
-		//{
-		//	_currentCollidedObject = nullptr;
-		//	_isEnabled = true;
+		/// <summary>
+		/// This function returns the owner of the Collider.
+		/// </summary>
+		/// <returns>A void pointer to the object that owns this Collider.</returns>
+		template<typename T>
+		T* GetOwnerAs() const 
+		{
+			return static_cast<T*>(_owner);
+		}
 
-		//	CollisionManager::AddCollider(this);
-
-		//	this->_owner = static_cast<void*>(owner);
-		//	this->_isStatic = isStatic;
-		//	this->_position = position;
-		//}
-
-		//template<typename T>
-		//T* GetOwnerAs() const 
-		//{
-		//	return static_cast<T*>(_owner);
-		//}
-
-		//template<typename T>
-		//void SetOwner(T* owner) 
-		//{
-		//	_owner = static_cast<void*>(owner);
-		//}
+		void AddColliderToManager();
 
 		/// <summary>
 		/// This pure virtual function is used to update the position of the Collider in the game world.
@@ -103,12 +99,6 @@ namespace CollisionSystem
 		/// </summary>
 		/// <returns>The position of the Collider.</returns>
 		inline Vec2 GetPosition() { return _position; }
-
-		/// <summary>
-		/// This function returns the owner of the Collider.
-		/// </summary>
-		/// <returns>A void pointer to the object that owns this Collider.</returns>
-		inline void* GetOwner() { return _owner; }
 
 		/// <summary>
 		/// This function returns whether the Collider is a trigger or not.

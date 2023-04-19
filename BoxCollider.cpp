@@ -2,12 +2,6 @@
 
 namespace CollisionSystem
 {
-	BoxCollider::BoxCollider(void* owner, Vec2 nextPosition, Vec2 size, bool isStatic) : Collider(owner, nextPosition, isStatic)
-	{
-		_size = size;
-		UpdatePosition(nextPosition);
-	}
-
 	void BoxCollider::UpdatePosition(Vec2 nextPosition)
 	{
 		_position = nextPosition;

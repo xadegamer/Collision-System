@@ -59,7 +59,7 @@ void Enemy::LateUpdate(float deltaTime)
 
 void Enemy::OnCollisionEnter(Collision collision)
 {
-	GameObject* other = (GameObject*)collision.GetColliderHit()->GetOwner();
+	GameObject* other = collision.GetColliderHit()->GetOwnerAs<GameObject>();
 
 	if (!other->CompareTag(Tag::ENEMY))
 	{

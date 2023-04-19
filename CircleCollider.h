@@ -19,7 +19,12 @@ namespace CollisionSystem
 		/// <param name="radius">The radius of the circle collider</param>
 		/// <param name="radiousMutiplier">A multiplier for the radius of the circle collider</param>
 		/// <param name="isStatic">A bool indicating if the collider is static or not</param>
-		CircleCollider(void* owner, Vec2 nextPosition, float radius, float radiousMutiplier = 1, bool isStatic = false);
+		template<typename T>
+		CircleCollider(T* owner, Vec2 nextPosition, float radius, float radiousMutiplier = 1, bool isStatic = false) : Collider(owner, nextPosition, isStatic)
+		{
+			_radius = radius * radiousMutiplier;
+			UpdatePosition(nextPosition);
+		}
 
 		/// <summary>
 		/// Update the position of the circle collider.
