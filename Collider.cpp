@@ -3,8 +3,12 @@
 
 namespace CollisionSystem
 {
-	void Collider::AddColliderToManager()
+	Collider::Collider(Vec2 position, bool isStatic)
 	{
+		_currentCollidedObject = nullptr;
+		_isEnabled = true;
+		_isStatic = isStatic;
+		_position = position;
 		CollisionManager::AddCollider(this);
 	}
 

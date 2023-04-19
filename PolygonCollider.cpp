@@ -2,6 +2,12 @@
 
 namespace CollisionSystem
 {
+	PolygonCollider::PolygonCollider(Vec2 position, std::vector<Vec2> points, bool isStatic) : Collider(position, isStatic)
+	{
+		_points = points;
+		UpdatePosition(position);
+	}
+
 	void PolygonCollider::UpdatePosition(Vec2 nextPosition)
 	{
 		_position = nextPosition;

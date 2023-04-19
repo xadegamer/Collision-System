@@ -4,7 +4,7 @@
 #include <functional>
 #include <iostream>
 #include <string>
-
+#include <any>
 #include "Collision.h"
 #include "Vec2.h"
 
@@ -17,7 +17,7 @@ namespace CollisionSystem
 	protected:
 
 		Collision _collision;
-		void* _owner;
+		std::any _owner;
 		Vec2 _position;
 		bool _isEnabled;
 		bool _isTrigger;
@@ -30,18 +30,14 @@ namespace CollisionSystem
 		/// <summary>
 		/// This is the constructor for the Collider class. It initializes the owner of the Collider, its position, and whether it is a static object or not.
 		/// </summary>
-		/// <param name="owner">A void pointer to the object that owns this Collider.</param>
 		/// <param name="position">The position of the Collider.</param>
 		/// <param name="isStatic">Whether the Collider is static or not. Defaults to false.</param>
+		Collider(Vec2 position, bool isStatic = false);
+
 		template<typename T>
-		Collider(T* owner, Vec2 position, bool isStatic = false)
+		void AddOwnerAs(T* owner)
 		{
-			_currentCollidedObject = nullptr;
-			_isEnabled = true;
-			this->_owner = static_cast<void*>(owner);
-			this->_isStatic = isStatic;
-			this->_position = position;
-			AddColliderToManager();
+			_owner = std::any(owner);
 		}
 
 		/// <summary>
@@ -51,10 +47,8 @@ namespace CollisionSystem
 		template<typename T>
 		T* GetOwnerAs() const 
 		{
-			return static_cast<T*>(_owner);
+			return std::any_cast<T*>(_owner);
 		}
-
-		void AddColliderToManager();
 
 		/// <summary>
 		/// This pure virtual function is used to update the position of the Collider in the game world.
