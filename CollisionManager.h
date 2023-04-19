@@ -138,7 +138,9 @@ namespace CollisionSystem
 	public:
 
 		/// <summary>
-		/// Initializes the collision detection system.
+		/// Initializes the CollisionManager and sets up the collision map. The collision map is a map of function pointers
+		/// for checking different types of collisions between different types of colliders, using std::pair and typeid to
+		/// identify the colliders. This function is called only once at the beginning of the program.
 		/// </summary>
 		static void Init();
 
