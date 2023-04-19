@@ -25,7 +25,6 @@ namespace CollisionSystem
 		Collider* _currentCollidedObject;
 		std::function <void(Collision other)> _OnCollisionEnterEvent;
 
-
 	public:
 
 		/// <summary>

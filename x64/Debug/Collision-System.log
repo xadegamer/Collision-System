@@ -151,13 +151,4 @@ E:\Year 2\Semester 2\Git Projects\Collision-System\MathUtility.h(63,18): warning
 E:\Year 2\Semester 2\Git Projects\Collision-System\BoxCollider.h(56): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
 E:\Year 2\Semester 2\Git Projects\Collision-System\PolygonCollider.h(46): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
   Generating Code...
-Color.obj : warning LNK4204: '' is missing debugging information for referencing module; linking object as if no debug info
-Direction.obj : warning LNK4204: '' is missing debugging information for referencing module; linking object as if no debug info
-InputManager.obj : warning LNK4204: '' is missing debugging information for referencing module; linking object as if no debug info
-RigidBody.obj : warning LNK4204: '' is missing debugging information for referencing module; linking object as if no debug info
-SDLManager.obj : warning LNK4204: '' is missing debugging information for referencing module; linking object as if no debug info
-TileMap.obj : warning LNK4204: '' is missing debugging information for referencing module; linking object as if no debug info
-TimeManager.obj : warning LNK4204: '' is missing debugging information for referencing module; linking object as if no debug info
-Transform.obj : warning LNK4204: '' is missing debugging information for referencing module; linking object as if no debug info
-Vector2.obj : warning LNK4204: '' is missing debugging information for referencing module; linking object as if no debug info
   Collision-System.vcxproj -> E:\Year 2\Semester 2\Git Projects\Collision-System\x64\Debug\Collision-System.exe
