@@ -1,11 +1,8 @@
 #include "Collider.h"
-
 #include "CollisionManager.h"
 
 namespace CollisionSystem
 {
-	std::vector<Collider*> Collider::_allColliders = std::vector<Collider*>();
-
 	Collider::Collider(void* owner, Vec2 nextPosition, bool isStatic)
 	{
 		_currentCollidedObject = nullptr;

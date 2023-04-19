@@ -5,6 +5,7 @@
 #include <iostream>
 #include <string>
 
+
 #include "Collision.h"
 #include "Vec2.h"
 
@@ -15,7 +16,6 @@ namespace CollisionSystem
 
 	protected:
 
-		static std::vector<Collider*> _allColliders;
 		Collision _collision;
 		void* _owner;
 		Vec2 _position;
@@ -24,6 +24,7 @@ namespace CollisionSystem
 		bool _isStatic;
 		Collider* _currentCollidedObject;
 		std::function <void(Collision other)> _OnCollisionEnterEvent;
+
 
 	public:
 
@@ -34,6 +35,31 @@ namespace CollisionSystem
 		/// <param name="position">The position of the Collider.</param>
 		/// <param name="isStatic">Whether the Collider is static or not. Defaults to false.</param>
 		Collider(void* owner, Vec2 position, bool isStatic = false);
+
+		//template<typename T>
+		//Collider(T* owner, Vec2 position, bool isStatic = false)
+		//{
+		//	_currentCollidedObject = nullptr;
+		//	_isEnabled = true;
+
+		//	CollisionManager::AddCollider(this);
+
+		//	this->_owner = static_cast<void*>(owner);
+		//	this->_isStatic = isStatic;
+		//	this->_position = position;
+		//}
+
+		//template<typename T>
+		//T* GetOwnerAs() const 
+		//{
+		//	return static_cast<T*>(_owner);
+		//}
+
+		//template<typename T>
+		//void SetOwner(T* owner) 
+		//{
+		//	_owner = static_cast<void*>(owner);
+		//}
 
 		/// <summary>
 		/// This pure virtual function is used to update the position of the Collider in the game world.

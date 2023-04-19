@@ -128,10 +128,21 @@ namespace CollisionSystem
 
 	public:
 
+		/// <summary>
+		/// Initializes the collision detection system.
+		/// </summary>
 		static void Init();
 
+		/// <summary>
+		/// Adds a collider to the collision detection system.
+		/// </summary>
+		/// <param name="col">The collider to add</param>
 		static void AddCollider(Collider* col);
 
+		/// <summary>
+		/// Removes a collider from the collision detection system.
+		/// </summary>
+		/// <param name="col">The collider to remove</param>
 		static void RemoveCollider(Collider* col);
 
 		/// <summary>
