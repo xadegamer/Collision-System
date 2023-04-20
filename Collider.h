@@ -16,14 +16,14 @@ namespace CollisionSystem
 
 	protected:
 
-		Collision _collision; // Holds the current collision information
-		std::any _owner; // Can hold any object that owns the collider (e.g., GameObject)
-		Vec2 _position; // Position of the collider in 2D space
-		bool _isEnabled; // Whether the collider is enabled (i.e., able to collide with other objects)
-		bool _isTrigger; // Whether the collider is a trigger (i.e., does not physically interact with other objects)
-		bool _isStatic; // Whether the collider is a static collider (i.e., does not move)
-		Collider* _currentCollidedObject; // Pointer to the collider that is currently colliding with this collider
-		std::function <void(Collision other)> _OnCollisionEnterEvent; // Function to call when a collision occurs with another collider
+		Collision _collision;											// Holds the current collision information
+		std::any _owner;												// Can hold any object that owns the collider (e.g., GameObject)
+		Vec2 _position;													// Position of the collider in 2D space
+		bool _isEnabled;												// Whether the collider is enabled (i.e., able to collide with other objects)
+		bool _isTrigger;												// Whether the collider is a trigger (i.e., does not physically interact with other objects)
+		bool _isStatic;													// Whether the collider is a static collider (i.e., does not move)
+		Collider* _currentCollidedObject;								// Pointer to the collider that is currently colliding with this collider
+		std::function <void(Collision other)> _OnCollisionEnterEvent;	// Function to call when a collision occurs with another collider
 
 	public:
 

@@ -4,6 +4,8 @@
 #include <iostream>
 #include <vector>
 
+#include "PolygonShape.h"
+
 namespace CollisionSystem
 {
 	class PolygonCollider : public Collider

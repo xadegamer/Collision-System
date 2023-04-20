@@ -1,9 +1,6 @@
 #pragma once
 
 #include "Collider.h"
-
-#include "Collision.h"
-
 using namespace CollisionSystem;
 
 class CollisionResolver

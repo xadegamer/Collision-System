@@ -15,10 +15,10 @@ namespace CollisionSystem
 		/// Constructor for creating a BoxCollider.
 		/// </summary>
 		/// <param name="owner">The owner of the collider</param>
-		/// <param name="nextPosition">The position of the collider</param>
+		/// <param name="position">The position of the collider</param>
 		/// <param name="size">The size of the box</param>
 		/// <param name="isStatic">Whether the collider is static or not (default is false)</param>
-		BoxCollider(Vec2 nextPosition, Vec2 size, bool isStatic = false);
+		BoxCollider(Vec2 position, Vec2 size, bool isStatic = false);
 
 		/// <summary>
 		/// Updates the position of the collider to the given position.

@@ -2,10 +2,10 @@
 
 namespace CollisionSystem
 {
-	BoxCollider::BoxCollider(Vec2 nextPosition, Vec2 size, bool isStatic) : Collider(nextPosition, isStatic)
+	BoxCollider::BoxCollider(Vec2 position, Vec2 size, bool isStatic) : Collider(position, isStatic)
 	{
 		_size = size;
-		UpdatePosition(nextPosition);
+		UpdatePosition(position);
 	}
 
 	void BoxCollider::UpdatePosition(Vec2 nextPosition)

@@ -1,5 +1,4 @@
 #include "Collider.h"
-#include "CollisionManager.h"
 
 namespace CollisionSystem
 {
@@ -9,7 +8,6 @@ namespace CollisionSystem
 		_isEnabled = true;
 		_isStatic = isStatic;
 		_position = position;
-		CollisionManager::AddCollider(this);
 	}
 
 	void Collider::OnCollision()

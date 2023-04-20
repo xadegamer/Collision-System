@@ -135,6 +135,12 @@ namespace CollisionSystem
 		/// <returns>True if the point is inside the polygon, false otherwise.</returns>
 		static bool PolygonContainsPoint(const std::vector<Vec2>& polyPoints, const Vec2& point);
 
+		/// <summary>
+		/// Adds a collider to the collision detection system.
+		/// </summary>
+		/// <param name="col">The collider to add</param>
+		static void AddCollider(Collider* col);
+
 	public:
 
 		/// <summary>
@@ -142,13 +148,24 @@ namespace CollisionSystem
 		/// for checking different types of collisions between different types of colliders, using std::pair and typeid to
 		/// identify the colliders. This function is called only once at the beginning of the program.
 		/// </summary>
-		static void Init();
+		static void Initialize();
 
 		/// <summary>
-		/// Adds a collider to the collision detection system.
+		/// Registers a new collider and the owner, adds it to the list of colliders and returns the created collider.
 		/// </summary>
-		/// <param name="col">The collider to add</param>
-		static void AddCollider(Collider* col);
+		/// <typeparam name="Owner">The owner class of the collider</typeparam>
+		/// <typeparam name="ColliderType">The type of the collider being registered</typeparam>
+		/// <param name="owner">The instance of the owner class</param>
+		/// <param name="col">The instance of the collider being registered</param>
+		/// <returns>The registered collider of the given type</returns>
+		template <class TOwner, class TColliderType, typename = std::enable_if_t<std::is_base_of_v<Collider, TColliderType>>>
+		static TColliderType* RegisterNewCollider(TOwner* owner, TColliderType* col)
+		{
+			Collider* collider = static_cast<Collider*>(col);
+			collider->AddOwnerAs(owner);
+			AddCollider(col);
+			return static_cast<TColliderType*>(col);
+		}
 
 		/// <summary>
 		/// Removes a collider from the collision detection system.
@@ -179,6 +196,3 @@ namespace CollisionSystem
 		static void CleanUp();
 	};
 }
-
-
-

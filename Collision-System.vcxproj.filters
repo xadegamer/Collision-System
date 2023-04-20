@@ -135,6 +135,9 @@
     <ClCompile Include="PolygonShape.cpp">
       <Filter>Source Files\Collision Assit</Filter>
     </ClCompile>
+    <ClCompile Include="ExampleClass.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Vector2.h">
@@ -223,6 +226,9 @@
     </ClInclude>
     <ClInclude Include="PolygonShape.h">
       <Filter>Header Files\Collision Assit</Filter>
+    </ClInclude>
+    <ClInclude Include="ExampleClass.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

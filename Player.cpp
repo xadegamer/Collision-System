@@ -18,8 +18,7 @@ Player::Player(Vector2 position) : GameObject(position)
 
 	rigidBody->SetPosition(transform->GetPosition());
 
-	collider = new CircleCollider (Vec2(transform->GetPosition().x, transform->GetPosition().y), 50);
-	collider->AddOwnerAs<GameObject>(this);
+	collider = CollisionManager::RegisterNewCollider<GameObject, CircleCollider>(this, new CircleCollider(Vec2(transform->GetPosition().x, transform->GetPosition().y), 50));
 	collider->AddListener(std::bind(&Player::OnCollisionEnter, this, std::placeholders::_1));
 
 	moveSpeed = 100;

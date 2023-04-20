@@ -16,9 +16,7 @@
 
 #include "Color.h"
 
-#include "BoxCollider.h"
-#include "CircleCollider.h"
-#include "PolygonCollider.h"
+#include "CollisionManager.h"
 
 using namespace CollisionSystem;
 
@@ -112,6 +110,8 @@ public:
 		return newObject;
 	}
 
+	virtual void OnCollisionEnter(Collision collision) {};
+
 	inline Transform* GetTransform() { return transform; }
 
 	inline Tag GetTag() { return tag; }
@@ -119,8 +119,6 @@ public:
 	inline void SetTag(Tag tag) { this->tag = tag; }
 
 	inline bool CompareTag(Tag tag) { return this->tag == tag; }
-
-	virtual void OnCollisionEnter(Collision collision) {};
 
 	void CheckComponent(Component* newCom);
 

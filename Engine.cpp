@@ -1,8 +1,11 @@
 #include "Engine.h"
 
-#include "CollisionManager.h"
 #include "CollsionVisualiser.h"
 #include "CollisionResolver.h"
+
+
+#include "CollisionManager.h"
+using namespace CollisionSystem;
 
 TimeManager Engine::systemTimer;
 TimeManager Engine::deltaTimer;
@@ -20,7 +23,7 @@ void Engine::Start()
 
 	CollisionResolver::Initialize();
 
-	CollisionManager::Init();
+	CollisionManager::Initialize();
 
 	game = new Game();
 

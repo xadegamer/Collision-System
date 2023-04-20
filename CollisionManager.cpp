@@ -303,7 +303,7 @@ namespace CollisionSystem
 		return contains;
 	}
 
-	void CollisionManager::Init()
+	void CollisionManager::Initialize()
 	{
 		_collisionMap = {
 			{ { typeid(BoxCollider).name(), typeid(BoxCollider).name()}, BoxToBoxCollisionCheck},
