@@ -14,7 +14,7 @@ private:
 	float xPOS = 0;
 	float yPOS = 0;
 
-	PolygonCollider* polygonCollider = nullptr;
+	Collider* collider = nullptr;
 
 public:
 

@@ -25,6 +25,8 @@ void Engine::Start()
 
 	CollisionManager::Initialize();
 
+	CollsionVisualiser::Initialize();
+
 	game = new Game();
 
 	systemTimer.tick();

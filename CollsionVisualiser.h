@@ -5,9 +5,12 @@
 #include <iostream>
 #include <string>
 #include <vector>
-
+#include <typeinfo>
+#include <map>
+#include <typeindex>
 #include "Vec2.h"
 
+#include "CollisionManager.h"
 using namespace CollisionSystem;
 
 class CollsionVisualiser
@@ -15,30 +18,37 @@ class CollsionVisualiser
 private:
 
 	/// <summary>
-	/// Draw a rectangle of the given color at the specified position, with the given width and height.
+	/// A map that maps the type name of a collider to the function that draws it.
 	/// </summary>
-	/// <param name="sdlColor">The color of the rectangle.</param>
-	/// <param name="position">The position at which to draw the rectangle.</param>
-	/// <param name="width">The width of the rectangle.</param>
-	/// <param name="height">The height of the rectangle.</param>
-	static void DrawBoxAtPosition(SDL_Color sdlColor, Vec2 position, int width, int height);
+	static std::map<const char*, void(*)(SDL_Color, Collider*) > _collisionMap;
 
 	/// <summary>
-	/// Draw a circle of the given color at the specified position, with the given radius.
+	/// Draws a box collider at its current position using the provided color.
 	/// </summary>
-	/// <param name="sdlColor">The color of the circle.</param>
-	/// <param name="position">The position at which to draw the circle.</param>
-	/// <param name="radius">The radius of the circle.</param>
-	static void DrawCircleAtPosition(SDL_Color sdlColor, Vec2 position, int radius);
+	/// <param name="sdlColor">The color used to draw the box collider.</param>
+	/// <param name="boxCollider">The box collider to draw.</param>
+	static void DrawBoxAtPosition(SDL_Color sdlColor, Collider* boxCollider);
 
 	/// <summary>
-	/// Draw a polygon of the given color with the specified points.
+	/// Draws a box collider at its current position using the provided color.
 	/// </summary>
-	/// <param name="sdlColor">The color of the polygon.</param>
-	/// <param name="_points">The points that make up the polygon.</param>
-	static void DrawPolygon(SDL_Color sdlColor, std::vector<Vec2> _points);
+	/// <param name="sdlColor">The color used to draw the box collider.</param>
+	/// <param name="boxCollider">The box collider to draw.</param>
+	static void DrawCircleAtPosition(SDL_Color sdlColor, Collider* circleCollider);
+
+	/// <summary>
+	/// Draws a polygon collider at its current position using the provided color.
+	/// </summary>
+	/// <param name="sdlColor">The color used to draw the polygon collider.</param>
+	/// <param name="polygonCollider">The polygon collider to draw.</param>
+	static void DrawPolygon(SDL_Color sdlColor, Collider* polygonCollider);
 
 public:
+
+	/// <summary>
+	/// Initializes the CollisionVisualiser by mapping each collider type to its corresponding drawing function.
+	/// </summary>
+	static void Initialize();
 
 	/// <summary>
 	/// Draws all the colliders in the scene.

@@ -1,17 +1,25 @@
 #include "CollsionVisualiser.h"
 
-#include "CollisionManager.h"
 #include "GameObject.h"
 
-void CollsionVisualiser::DrawBoxAtPosition(SDL_Color sdlColor, Vec2 position, int width, int height)
+std::map<const char*, void(*)(SDL_Color, Collider*) > CollsionVisualiser::_collisionMap;
+
+void CollsionVisualiser::DrawBoxAtPosition(SDL_Color sdlColor, Collider* collider)
 {
+	BoxCollider* boxCollider = dynamic_cast<BoxCollider*>(collider);
+	Vec2 position = boxCollider->GetPosition();	// get the position of the collider
+	float width = boxCollider->GetWidth();			// get the width of the collider
+	float height = boxCollider->GetHeight();			// get the height of the collider
 	SDL_SetRenderDrawColor(SDLManager::GetRenderer(), sdlColor.r, sdlColor.g, sdlColor.b, sdlColor.a);
 	SDL_Rect visualRect = { position.GetX(), position.GetY(), width, height };
 	SDL_RenderDrawRect(SDLManager::GetRenderer(), &visualRect);
 }
 
-void CollsionVisualiser::DrawCircleAtPosition(SDL_Color sdlColor, Vec2 position, int radius)
+void CollsionVisualiser::DrawCircleAtPosition(SDL_Color sdlColor, Collider* collider)
 {
+	CircleCollider* circleCollider = dynamic_cast<CircleCollider*>(collider);
+	Vec2 position = circleCollider->GetPosition();	// get the position of the collider
+	int radius = circleCollider->GetRadius();			// get the radius of the collider
 	SDL_SetRenderDrawColor(SDLManager::GetRenderer(), sdlColor.r, sdlColor.g, sdlColor.b, sdlColor.a);
 	for (int i = 0; i < 360; i++)
 	{
@@ -21,8 +29,10 @@ void CollsionVisualiser::DrawCircleAtPosition(SDL_Color sdlColor, Vec2 position,
 	}
 }
 
-void CollsionVisualiser::DrawPolygon(SDL_Color sdlColor, std::vector<Vec2> _points)
+void CollsionVisualiser::DrawPolygon(SDL_Color sdlColor, Collider* polygonCollider)
 {
+	PolygonCollider* polygon = dynamic_cast<PolygonCollider*>(polygonCollider);
+	std::vector  _points = polygon->GetWorldPoints();
 	int num_points = _points.size();
 
 	SDL_Point* sdlPoints = new SDL_Point[num_points];
@@ -40,6 +50,16 @@ void CollsionVisualiser::DrawPolygon(SDL_Color sdlColor, std::vector<Vec2> _poin
 	SDL_RenderDrawLine(SDLManager::GetRenderer(), sdlPoints[0].x, sdlPoints[0].y, sdlPoints[num_points - 1].x, sdlPoints[num_points - 1].y);
 }
 
+void CollsionVisualiser::Initialize()
+{
+	_collisionMap = 
+	{
+		{typeid(BoxCollider).name(),  &DrawBoxAtPosition},
+		{typeid(CircleCollider).name(), &DrawCircleAtPosition},
+		{typeid(PolygonCollider).name(), &DrawPolygon}
+	};
+}
+
 void CollsionVisualiser::DrawAllColliders()
 {
 	for (int i = 0; i < CollisionManager::GetAllColliders().size(); i++)
@@ -50,28 +70,10 @@ void CollsionVisualiser::DrawAllColliders()
 
 		SDL_Color colliderColour = colliderA->GetOwnerAs<GameObject>()->GetColor();
 
-		// try to cast to a circle collider
-		CircleCollider* circleCollider = dynamic_cast<CircleCollider*>(colliderA);
-		if (circleCollider != nullptr)
+		auto collisionFunc = _collisionMap.find({ typeid(*colliderA).name()});
+		if (collisionFunc != _collisionMap.end()) 
 		{
-			DrawCircleAtPosition(colliderColour, circleCollider->GetCenter(), circleCollider->GetRadius());
-			continue;
-		}
-
-		// try to cast to a box collider
-		BoxCollider* boxCollider = dynamic_cast<BoxCollider*>(colliderA);
-		if (boxCollider != nullptr)
-		{
-			DrawBoxAtPosition(colliderColour, boxCollider->GetPosition(), boxCollider->GetWidth(), boxCollider->GetHeight());
-			continue;
-		}
-
-		// try to cast to a polygon collider
-		PolygonCollider* polygonCollider = dynamic_cast<PolygonCollider*>(colliderA);
-		if (polygonCollider != nullptr)
-		{
-			DrawPolygon(colliderColour, polygonCollider->GetWorldPoints());
-			continue;
+			collisionFunc->second(colliderColour, colliderA);
 		}
 	}
 }

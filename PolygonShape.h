@@ -4,19 +4,19 @@
 
 #include <vector>
 
-using namespace CollisionSystem;
-
-enum class PolygonShapeType
+namespace CollisionSystem
 {
-	TRIANGLE,
-	SQUARE,
-	PENTAGON,
-	HEXAGON,
-	OCTAGON,
-};
+	enum class PolygonShapeType
+	{
+		TRIANGLE,
+		SQUARE,
+		PENTAGON,
+		HEXAGON,
+		OCTAGON,
+	};
 
-class PolygonShape
-{
+	class PolygonShape
+	{
 	public:
 
 		/// <summary>
@@ -25,7 +25,7 @@ class PolygonShape
 		/// <param name="polygonShapeType">The type of polygon shape to generate</param>
 		/// <param name="radius">The radius of the polygon</param>
 		/// <returns>A vector of Vec2 objects representing the points of the generated polygon</returns>
-		static std::vector<Vec2> GetPolygon( PolygonShapeType polygonShapeType, float radius);
+		static std::vector<Vec2> GetPolygon(PolygonShapeType polygonShapeType, float radius);
 
 		/// <summary>
 		/// Generates and returns a random polygon with the specified radius.
@@ -33,6 +33,6 @@ class PolygonShape
 		/// <param name="radius">The radius of the polygon</param>
 		/// <returns>A vector of Vec2 objects representing the points of the generated polygon</returns>
 		static std::vector<Vec2> GetRandomPolygon(float radius);
-
-};
+	};
+}
 
